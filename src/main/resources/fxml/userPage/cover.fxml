@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="rootPane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proj510.controller.userPage.CoverController">
+   <children>
+      <AnchorPane fx:id="coverPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPress" prefHeight="450.0" prefWidth="800.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="265.0" layoutY="165.0" prefHeight="119.0" prefWidth="270.0" text="This is cover." textAlignment="CENTER">
+               <font>
+                  <Font name="Century Gothic" size="31.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="322.0" layoutY="401.0" prefHeight="34.0" prefWidth="155.0" text="press to continue">
+               <font>
+                  <Font name="Century Gothic" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
