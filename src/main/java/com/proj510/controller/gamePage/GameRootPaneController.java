@@ -59,6 +59,8 @@ public class GameRootPaneController {
     }
 
     public void initPane() {
+        pagePane.setDisable(false);
+        winPane.setDisable(true);
         winPane.setVisible(false);
         gameModel = new GameModel();
         gameControllerModel = new GameControllerModel();
@@ -129,6 +131,8 @@ public class GameRootPaneController {
         totalSteps.setText(String.format("Total Steps: %d", gameModel.getMapModel().getSteps()));
         //清除上次游戏记录
         userData.setMapRecord(null);
+        winPane.setDisable(false);
+        pagePane.setDisable(true);
         winPane.setVisible(true);
     }
 

@@ -8,6 +8,7 @@ public class BoxModel extends Rectangle {
     private int row;
     private int col;//坐标为物块左上角
     private boolean isSelected;
+    private boolean isMoving;
     //表示box大小种类
     private int typeId;
     //唯一编号
@@ -28,6 +29,7 @@ public class BoxModel extends Rectangle {
         this.row = row;
         this.col = col;
         isSelected = false;
+        isMoving = false;
 
         boxNumber++;
         key = boxNumber;
@@ -88,6 +90,14 @@ public class BoxModel extends Rectangle {
 
     public void setKey(int key) {
         this.key = key;
+    }
+
+    public boolean isMoving() {
+        return isMoving;
+    }
+
+    public void setMoving(boolean moving) {
+        isMoving = moving;
     }
 
     @Override

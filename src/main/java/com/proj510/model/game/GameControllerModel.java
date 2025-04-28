@@ -2,10 +2,14 @@ package com.proj510.model.game;
 
 import com.proj510.data.MapRecord;
 import com.proj510.data.UserData;
+import javafx.animation.TranslateTransition;
+import javafx.util.Duration;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.proj510.model.game.GameModel.GRID_SIZE;
 
 public class GameControllerModel {
     private UserData userData;
@@ -19,89 +23,98 @@ public class GameControllerModel {
         this.boxes = gameModel.getBoxes();
     }
 
-    public GameControllerModel() {}
+    public GameControllerModel() {
+    }
 
     public boolean doMove(BoxModel box, int row, int col, Direction direction) {
-        if (mapModel.getId(row, col) == 1) {//小兵
-            int nextRow = row + direction.getRow();
-            int nextCol = col + direction.getCol();
-            if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInWidthSize(nextCol)) {
-                if (mapModel.getId(nextRow, nextCol) == 0) {
+        if (!box.isMoving()) {
+            if (mapModel.getId(row, col) == 1) {//小兵
+                int nextRow = row + direction.getRow();
+                int nextCol = col + direction.getCol();
+                if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInWidthSize(nextCol)) {
+                    if (mapModel.getId(nextRow, nextCol) == 0) {
+                        mapModel.getMatrix()[row][col] = 0;
+                        mapModel.getMatrix()[nextRow][nextCol] = 1;
+                        moveWithAnimation(box, nextCol, nextRow, direction);
+                        return true;
+                    }
+                }
+            } else if (mapModel.getId(row, col) == 2) {//横
+                int nextRow = row + direction.getRow();
+                int nextCol = col + direction.getCol();
+                if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInWidthSize(nextCol) && mapModel.checkInWidthSize(nextCol + 1)) {
                     mapModel.getMatrix()[row][col] = 0;
-                    mapModel.getMatrix()[nextRow][nextCol] = 1;
-                    box.setRow(nextRow);
-                    box.setCol(nextCol);
-                    box.setX(box.getCol() * GameModel.GRID_SIZE);
-                    box.setY(box.getRow() * GameModel.GRID_SIZE);
-                    return true;
-                }
-            }
-        } else if (mapModel.getId(row, col) == 2) {//横
-            int nextRow = row + direction.getRow();
-            int nextCol = col + direction.getCol();
-            if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInWidthSize(nextCol) && mapModel.checkInWidthSize(nextCol + 1)) {
-                mapModel.getMatrix()[row][col] = 0;
-                mapModel.getMatrix()[row][col + 1] = 0;//先将原本位置归零，便于判断
-                if (mapModel.getId(nextRow, nextCol) == 0 && mapModel.getId(nextRow, nextCol + 1) == 0) {
+                    mapModel.getMatrix()[row][col + 1] = 0;//先将原本位置归零，便于判断
+                    if (mapModel.getId(nextRow, nextCol) == 0 && mapModel.getId(nextRow, nextCol + 1) == 0) {
 
-                    mapModel.getMatrix()[nextRow][nextCol] = 2;
-                    mapModel.getMatrix()[nextRow][nextCol + 1] = 2;
-                    box.setRow(nextRow);
-                    box.setCol(nextCol);
-                    box.setX(box.getCol() * GameModel.GRID_SIZE);
-                    box.setY(box.getRow() * GameModel.GRID_SIZE);
-                    return true;
-                } else {    //若不可移动，撤销归零
-                    mapModel.getMatrix()[row][col] = 2;
-                    mapModel.getMatrix()[row][col + 1] = 2;
+                        mapModel.getMatrix()[nextRow][nextCol] = 2;
+                        mapModel.getMatrix()[nextRow][nextCol + 1] = 2;
+                        moveWithAnimation(box, nextCol, nextRow, direction);
+                        return true;
+                    } else {    //若不可移动，撤销归零
+                        mapModel.getMatrix()[row][col] = 2;
+                        mapModel.getMatrix()[row][col + 1] = 2;
+                    }
                 }
-            }
-        } else if (mapModel.getId(row, col) == 3) {//竖
-            int nextRow = row + direction.getRow();
-            int nextCol = col + direction.getCol();
-            if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInHeightSize(nextRow + 1) && mapModel.checkInWidthSize(nextCol)) {
-                mapModel.getMatrix()[row][col] = 0;
-                mapModel.getMatrix()[row + 1][col] = 0;
-                if (mapModel.getId(nextRow, nextCol) == 0 && mapModel.getId(nextRow + 1, nextCol) == 0) {
-                    mapModel.getMatrix()[nextRow][nextCol] = 3;
-                    mapModel.getMatrix()[nextRow + 1][nextCol] = 3;
-                    box.setRow(nextRow);
-                    box.setCol(nextCol);
-                    box.setX(box.getCol() * GameModel.GRID_SIZE);
-                    box.setY(box.getRow() * GameModel.GRID_SIZE);
-                    return true;
-                } else {
-                    mapModel.getMatrix()[row][col] = 3;
-                    mapModel.getMatrix()[row + 1][col] = 3;
+            } else if (mapModel.getId(row, col) == 3) {//竖
+                int nextRow = row + direction.getRow();
+                int nextCol = col + direction.getCol();
+                if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInHeightSize(nextRow + 1) && mapModel.checkInWidthSize(nextCol)) {
+                    mapModel.getMatrix()[row][col] = 0;
+                    mapModel.getMatrix()[row + 1][col] = 0;
+                    if (mapModel.getId(nextRow, nextCol) == 0 && mapModel.getId(nextRow + 1, nextCol) == 0) {
+                        mapModel.getMatrix()[nextRow][nextCol] = 3;
+                        mapModel.getMatrix()[nextRow + 1][nextCol] = 3;
+                        moveWithAnimation(box, nextCol, nextRow, direction);
+                        return true;
+                    } else {
+                        mapModel.getMatrix()[row][col] = 3;
+                        mapModel.getMatrix()[row + 1][col] = 3;
+                    }
                 }
-            }
-        } else if (mapModel.getId(row, col) == 4) {//曹操
-            int nextRow = row + direction.getRow();
-            int nextCol = col + direction.getCol();
-            if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInWidthSize(nextCol) && mapModel.checkInHeightSize(nextRow + 1) && mapModel.checkInWidthSize(nextCol + 1)) {
-                mapModel.getMatrix()[row][col] = 0;
-                mapModel.getMatrix()[row][col + 1] = 0;
-                mapModel.getMatrix()[row + 1][col] = 0;
-                mapModel.getMatrix()[row + 1][col + 1] = 0;
-                if (mapModel.getId(nextRow, nextCol) == 0 && mapModel.getId(nextRow + 1, nextCol + 1) == 0) {
-                    mapModel.getMatrix()[nextRow][nextCol] = 4;
-                    mapModel.getMatrix()[nextRow][nextCol + 1] = 4;
-                    mapModel.getMatrix()[nextRow + 1][nextCol] = 4;
-                    mapModel.getMatrix()[nextRow + 1][nextCol + 1] = 4;
-                    box.setRow(nextRow);
-                    box.setCol(nextCol);
-                    box.setX(box.getCol() * GameModel.GRID_SIZE);
-                    box.setY(box.getRow() * GameModel.GRID_SIZE);
-                    return true;
-                } else {
-                    mapModel.getMatrix()[row][col] = 4;
-                    mapModel.getMatrix()[row][col + 1] = 4;
-                    mapModel.getMatrix()[row + 1][col] = 4;
-                    mapModel.getMatrix()[row + 1][col + 1] = 4;
+            } else if (mapModel.getId(row, col) == 4) {//曹操
+                int nextRow = row + direction.getRow();
+                int nextCol = col + direction.getCol();
+                if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInWidthSize(nextCol) && mapModel.checkInHeightSize(nextRow + 1) && mapModel.checkInWidthSize(nextCol + 1)) {
+                    mapModel.getMatrix()[row][col] = 0;
+                    mapModel.getMatrix()[row][col + 1] = 0;
+                    mapModel.getMatrix()[row + 1][col] = 0;
+                    mapModel.getMatrix()[row + 1][col + 1] = 0;
+                    if (mapModel.getId(nextRow, nextCol) == 0
+                            && mapModel.getId(nextRow + 1, nextCol + 1) == 0
+                            && mapModel.getId(nextRow, nextCol + 1) == 0
+                            && mapModel.getId(nextRow + 1, nextCol) == 0) {
+                        mapModel.getMatrix()[nextRow][nextCol] = 4;
+                        mapModel.getMatrix()[nextRow][nextCol + 1] = 4;
+                        mapModel.getMatrix()[nextRow + 1][nextCol] = 4;
+                        mapModel.getMatrix()[nextRow + 1][nextCol + 1] = 4;
+                        moveWithAnimation(box, nextCol, nextRow, direction);
+                        return true;
+                    } else {
+                        mapModel.getMatrix()[row][col] = 4;
+                        mapModel.getMatrix()[row][col + 1] = 4;
+                        mapModel.getMatrix()[row + 1][col] = 4;
+                        mapModel.getMatrix()[row + 1][col + 1] = 4;
+                    }
                 }
             }
         }
         return false;
+    }
+
+    public void moveWithAnimation(BoxModel boxModel, int nextCol, int nextRow, Direction direction) {
+        boxModel.setCol(nextCol);
+        boxModel.setRow(nextRow);
+        //创建动画
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(0.1), boxModel);
+        transition.setByX(direction.getCol() * GRID_SIZE);
+        transition.setByY(direction.getRow() * GRID_SIZE);
+        boxModel.setMoving(true);
+        transition.play();
+
+        transition.setOnFinished(e -> {
+            boxModel.setMoving(false);
+        });
     }
 
     public void undo() {
