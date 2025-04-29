@@ -3,12 +3,14 @@ package com.proj510.data;
 import java.util.Arrays;
 
 public class MapPre {
-    public MapPre(int[][] matrix, int targetCol, int targetRow) {
+    public MapPre(String name, int[][] matrix, int targetCol, int targetRow) {
+        this.name = name;
         this.matrix = matrix;
         this.targetCol = targetCol;
         this.targetRow = targetRow;
     }
 
+    private String name;
     private int[][] matrix;
     private int targetRow;
     private int targetCol;
@@ -43,5 +45,13 @@ public class MapPre {
 
     public void setTargetCol(int targetCol) {
         this.targetCol = targetCol;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

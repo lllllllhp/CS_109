@@ -5,8 +5,7 @@ import com.proj510.data.UserData;
 import com.proj510.model.game.GameControllerModel;
 import com.proj510.model.game.GameModel;
 import com.proj510.model.game.MapModel;
-import com.proj510.data.MapPreset;
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -92,34 +91,37 @@ public class GameRootPaneController {
     }
 
     @FXML
-    public void handleUndo(ActionEvent actionEvent) {
+    public void handleUndo() {
         gameControllerModel.undo();
     }
 
     @FXML
-    public void handleRestart(ActionEvent actionEvent) {
+    public void handleRestart() {
         gameControllerModel.restart();
     }
 
     @FXML
-    public void handleSave(ActionEvent actionEvent) {
+    public void handleSave() {
         gameControllerModel.saveGame();
     }
 
     @FXML
-    public void upButton(ActionEvent actionEvent) {
+    public void upButton() {
         gameModel.doMoveUp();
     }
+
     @FXML
-    public void downButton(ActionEvent actionEvent) {
+    public void downButton() {
         gameModel.doMoveDown();
     }
+
     @FXML
-    public void leftButton(ActionEvent actionEvent) {
+    public void leftButton() {
         gameModel.doMoveLeft();
     }
+
     @FXML
-    public void rightButton(ActionEvent actionEvent) {
+    public void rightButton() {
         gameModel.doMoveRight();
     }
 
@@ -131,6 +133,8 @@ public class GameRootPaneController {
         totalSteps.setText(String.format("Total Steps: %d", gameModel.getMapModel().getSteps()));
         //清除上次游戏记录
         userData.setMapRecord(null);
+
+        winPane.toFront();
         winPane.setDisable(false);
         pagePane.setDisable(true);
         winPane.setVisible(true);
@@ -138,7 +142,7 @@ public class GameRootPaneController {
 
     //-----------------------------------------------------------------------------------------------------------------------
     //win pane
-    public void returnToMainPage(ActionEvent actionEvent) {
+    public void returnToMainPage() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userPage/mainPage.fxml"));
             Parent root = loader.load();

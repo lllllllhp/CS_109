@@ -112,9 +112,9 @@ public class GameControllerModel {
         boxModel.setMoving(true);
         transition.play();
 
-        transition.setOnFinished(e -> {
-            boxModel.setMoving(false);
-        });
+        transition.setOnFinished(e ->
+                boxModel.setMoving(false)
+        );
     }
 
     public void undo() {

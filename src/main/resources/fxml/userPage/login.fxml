@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proj510.controller.userPage.LoginController">
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proj510.controller.userPage.LoginController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0">
          <children>
@@ -28,7 +28,7 @@
                   <Font name="Century Gothic" size="22.0" />
                </font>
             </Label>
-            <Button layoutX="311.0" layoutY="345.0" mnemonicParsing="false" onAction="#handleConfirm" prefHeight="50.0" prefWidth="179.0" text="confirm">
+            <Button layoutX="310.0" layoutY="345.0" mnemonicParsing="false" onAction="#handleConfirm" prefHeight="50.0" prefWidth="179.0" text="confirm">
                <font>
                   <Font name="Century Gothic" size="25.0" />
                </font>

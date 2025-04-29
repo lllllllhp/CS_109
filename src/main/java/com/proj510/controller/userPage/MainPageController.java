@@ -25,6 +25,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class MainPageController {
     private Stage currentStage;
@@ -53,12 +54,12 @@ public class MainPageController {
     GameRootPaneController gameRootPaneController;
 
     @FXML
-    public void handleNewGame(ActionEvent actionEvent) {
+    public void handleNewGame() {
         chooseMap();
     }
 
     @FXML
-    public void handleLoadGame(ActionEvent actionEvent) {
+    public void handleLoadGame() {
         if (userData.getMapRecord() != null) {
             loadGamePage();
             gameRootPaneController.initLoadGamePage();
@@ -93,6 +94,7 @@ public class MainPageController {
     }
 
     public void chooseMap() {
+        tips.setText("请选择你的地图");
         mainPane.setVisible(false);
         choosePane.setVisible(true);
         loadMapLabels();
@@ -101,8 +103,8 @@ public class MainPageController {
     public void loadMapLabels() {
         Path mapFolder = Paths.get("src/main/resources/maps");
         if (Files.exists(mapFolder) && Files.isDirectory(mapFolder)) {
-            try {
-                var mapFiles = Files.list(mapFolder).toList();
+            try (Stream<Path> pathStream = Files.list(mapFolder)){
+                var mapFiles = pathStream.toList();
                 if (mapFiles.isEmpty()) {
                     System.out.println("暂无关卡文件");
                     tips.setText("暂无关卡文件");
@@ -116,13 +118,13 @@ public class MainPageController {
                         try {
                             map = Files.readString(path);
                             MapPre mapPre = gson.fromJson(map, MapPre.class);
-                            Label mapLabel = getMapLabel(path, mapPre);
+                            Label mapLabel = getMapLabel(mapPre);
                             mapContainer.getChildren().addAll(mapLabel);
                         } catch (IOException e) {
                             System.out.println("地图读取失败");
                             warning.setText("地图读取失败");
                         }
-                        //todo 创建地图选择按钮
+                        //创建地图选择按钮 todo 美化
                     });
                 }
             } catch (Exception e) {
@@ -140,8 +142,8 @@ public class MainPageController {
         }
     }
 
-    private Label getMapLabel(Path path, MapPre mapPre) {
-        Label mapLabel = new Label(path.getFileName().toString());
+    private Label getMapLabel(MapPre mapPre) {
+        Label mapLabel = new Label(mapPre.getName());
         mapLabel.setPrefWidth(200);
         //设置监听
         mapLabel.setOnMouseClicked(event -> {
@@ -173,6 +175,7 @@ public class MainPageController {
     public void setCurrentStage(Stage currentStage) {
         this.currentStage = currentStage;
     }
+
     public void setUserData(UserData userData) {
         this.userData = userData;
     }

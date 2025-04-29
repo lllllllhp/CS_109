@@ -21,13 +21,13 @@ public class GameModel {
     private MapModel mapModel;
     private BoxModel selectedBox;
     private Rectangle broader;
+    private Rectangle target;
     private Pane gamePane;
     private Map<Integer, BoxModel> boxes = new HashMap<>();
 
     public static int GRID_SIZE = 75;
-    private int steps;
     //记录所有移动
-    private Deque<MovementRecord> movementStack = new ArrayDeque<>();
+    private final Deque<MovementRecord> movementStack = new ArrayDeque<>();
     //目标box,随map init
     private BoxModel mainBox;
 
@@ -81,7 +81,12 @@ public class GameModel {
         broader.setStroke(Color.BLACK);
         broader.setStrokeWidth(2);
         gamePane.getChildren().addAll(broader);
-
+        //目的地提示
+        target = new Rectangle(mapModel.getTargetCol() * GRID_SIZE, mapModel.getTargetRow() * GRID_SIZE, 2 * GRID_SIZE, 2 * GRID_SIZE);
+        target.setFill(Color.GREEN);
+        target.setOpacity(0.2);
+        target.setDisable(true);
+        gamePane.getChildren().addAll(target);
         //copy a map
         int[][] map = new int[mapModel.getHeight()][mapModel.getWidth()];
         for (int i = 0; i < map.length; i++) {
@@ -129,6 +134,7 @@ public class GameModel {
                 }
             }
         }
+
     }
 
     public void loadGame() {
