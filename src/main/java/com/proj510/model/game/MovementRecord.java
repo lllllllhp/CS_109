@@ -1,8 +1,8 @@
 package com.proj510.model.game;
 
 public class MovementRecord {
-    private int boxKey;
     private int stepNum;
+    private int boxKey;
     private int col;
     private int row;
     private Direction direction;
@@ -13,6 +13,15 @@ public class MovementRecord {
         this.row = row;
         this.col = col;
         this.direction = direction;
+    }
+
+    static public MovementRecord deepCopy(MovementRecord movementRecord) {
+        return new MovementRecord(
+                movementRecord.getStepNum(),
+                movementRecord.getBoxKey(),
+                movementRecord.getRow(),
+                movementRecord.getCol(),
+                movementRecord.getDirection());
     }
 
     public int getCol() {
@@ -39,14 +48,6 @@ public class MovementRecord {
         this.direction = direction;
     }
 
-    public int getStepNum() {
-        return stepNum;
-    }
-
-    public void setStepNum(int stepNum) {
-        this.stepNum = stepNum;
-    }
-
     public int getBoxKey() {
         return boxKey;
     }
@@ -55,8 +56,16 @@ public class MovementRecord {
         this.boxKey = boxKey;
     }
 
+    public int getStepNum() {
+        return stepNum;
+    }
+
+    public void setStepNum(int stepNum) {
+        this.stepNum = stepNum;
+    }
+
     @Override
     public String toString() {
-        return String.format("Step%d: row: %d col: %d Direction: %s", getStepNum(), getRow(), getCol(), getDirection().name());
+        return String.format("Step:%d:row: %d col: %d Direction: %s", getStepNum(), getRow(), getCol(), getDirection().name());
     }
 }

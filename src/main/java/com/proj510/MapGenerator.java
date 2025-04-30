@@ -14,7 +14,7 @@ public class MapGenerator {
         String name = "哎哟我滴妈你别笑";
         String fileName = name + ".json";
 
-        Path path = Paths.get("src/main/resources/maps", fileName);
+        Path path = Path.of("src/main/resources/maps", fileName);
         Gson gson = new GsonBuilder().create();
 
         int[][] map = new int[][]{

@@ -6,7 +6,7 @@ import com.proj510.data.MapPreset;
 import java.util.Arrays;
 
 public class MapModel {
-    int[][] matrix;
+    protected int[][] matrix;
     int[][] copyMatrix;  //备份，用于restart
     private int targetRow;
     private int targetCol;
@@ -44,6 +44,21 @@ public class MapModel {
         this.targetRow = mapPreset.getTargetRow();
     }
 
+    public int[][] getMatrixData() {
+        int[][] copy = new int[matrix.length][];
+        for (int i = 0; i < matrix.length; i++) {
+            copy[i] = Arrays.copyOf(matrix[i], matrix[i].length);
+        }
+        return copy;
+    }
+
+    public int[][] getCopyData() {
+        int[][] copy = new int[copyMatrix.length][];
+        for (int i = 0; i < copyMatrix.length; i++) {
+            copy[i] = Arrays.copyOf(copyMatrix[i], copyMatrix[i].length);
+        }
+        return copy;
+    }
     //default map
     public MapModel() {
         this(MapPreset.MAP1);
@@ -111,6 +126,10 @@ public class MapModel {
 
     public void minusSteps() {
         steps--;
+    }
+
+    public void setMatrix(int[][] matrix) {
+        this.matrix = matrix;
     }
 
     @Override

@@ -17,7 +17,7 @@ public class UserData {
     private MapRecord mapRecord;
 
     public void save() {
-        Path savingPath = Paths.get("src/main/resources/User", id, "userData.json");
+        Path savingPath = Path.of("src/main/resources/User", id, "userData.json");
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String userData = gson.toJson(this);
         try {

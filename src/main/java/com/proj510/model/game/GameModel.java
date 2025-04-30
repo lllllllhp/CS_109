@@ -64,12 +64,9 @@ public class GameModel {
         System.out.println(clickedBox);
     }//handle mouse click
 
-    public void initGame() {
+    public void initView() {
         //clear all
         gamePane.getChildren().clear();
-        boxes.clear();
-        movementStack.clear();
-        setMainBox(null);
         //加载步数
         rootPaneController.updateSteps();
         //size
@@ -87,6 +84,20 @@ public class GameModel {
         target.setOpacity(0.2);
         target.setDisable(true);
         gamePane.getChildren().addAll(target);
+
+        initGameData();
+
+        for (Map.Entry<Integer, BoxModel> entry : boxes.entrySet()) {
+            BoxModel box = entry.getValue();
+            gamePane.getChildren().addAll(box);
+        }
+    }
+
+    public void initGameData() {
+        //clear all
+        boxes.clear();
+        movementStack.clear();
+        setMainBox(null);
         //copy a map
         int[][] map = new int[mapModel.getHeight()][mapModel.getWidth()];
         for (int i = 0; i < map.length; i++) {
@@ -130,11 +141,9 @@ public class GameModel {
                 }
                 if (box != null) {
                     boxes.put(box.getKey(), box);//加到boxMap
-                    gamePane.getChildren().addAll(box);
                 }
             }
         }
-
     }
 
     public void loadGame() {
@@ -143,7 +152,7 @@ public class GameModel {
 
     public void doMoveUp() {
         if (selectedBox != null) {
-            if (gameControllerModel.doMove(selectedBox, selectedBox.getRow(), selectedBox.getCol(), Direction.UP)) {
+            if (GameControllerModel.doMove(mapModel, selectedBox, selectedBox.getRow(), selectedBox.getCol(), Direction.UP)) {
                 afterMove(selectedBox.getRow(), selectedBox.getCol(), Direction.UP);
             }
         }
@@ -151,7 +160,7 @@ public class GameModel {
 
     public void doMoveDown() {
         if (selectedBox != null) {
-            if (gameControllerModel.doMove(selectedBox, selectedBox.getRow(), selectedBox.getCol(), Direction.DOWN)) {
+            if (GameControllerModel.doMove(mapModel, selectedBox, selectedBox.getRow(), selectedBox.getCol(), Direction.DOWN)) {
                 afterMove(selectedBox.getRow(), selectedBox.getCol(), Direction.DOWN);
             }
         }
@@ -159,7 +168,7 @@ public class GameModel {
 
     public void doMoveLeft() {
         if (selectedBox != null) {
-            if (gameControllerModel.doMove(selectedBox, selectedBox.getRow(), selectedBox.getCol(), Direction.LEFT)) {
+            if (GameControllerModel.doMove(mapModel, selectedBox, selectedBox.getRow(), selectedBox.getCol(), Direction.LEFT)) {
                 afterMove(selectedBox.getRow(), selectedBox.getCol(), Direction.LEFT);
             }
         }
@@ -167,7 +176,7 @@ public class GameModel {
 
     public void doMoveRight() {
         if (selectedBox != null) {
-            if (gameControllerModel.doMove(selectedBox, selectedBox.getRow(), selectedBox.getCol(), Direction.RIGHT)) {
+            if (GameControllerModel.doMove(mapModel, selectedBox, selectedBox.getRow(), selectedBox.getCol(), Direction.RIGHT)) {
                 afterMove(selectedBox.getRow(), selectedBox.getCol(), Direction.RIGHT);
             }
         }
@@ -262,5 +271,9 @@ public class GameModel {
 
     public Map<Integer, BoxModel> getBoxes() {
         return boxes;
+    }
+
+    public void setBoxes(Map<Integer, BoxModel> boxes) {
+        this.boxes = boxes;
     }
 }

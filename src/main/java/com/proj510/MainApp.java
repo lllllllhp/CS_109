@@ -31,7 +31,7 @@ public class MainApp extends Application {
 
     @Override
     public void stop() {
-        Path path = Paths.get("src/main/resources/User/Guest_");
+        Path path = Path.of("src/main/resources/User/Guest_");
         if (Files.exists(path) && Files.isDirectory(path)) {
             try (Stream<Path> walk = Files.walk(path)) {
                 walk.forEach(path1 -> {

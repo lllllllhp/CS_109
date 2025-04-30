@@ -26,7 +26,7 @@ public class GameControllerModel {
     public GameControllerModel() {
     }
 
-    public boolean doMove(BoxModel box, int row, int col, Direction direction) {
+    static public boolean doMove(MapModel mapModel, BoxModel box, int row, int col, Direction direction) {
         if (!box.isMoving()) {
             if (mapModel.getId(row, col) == 1) {//小兵
                 int nextRow = row + direction.getRow();
@@ -102,7 +102,7 @@ public class GameControllerModel {
         return false;
     }
 
-    public void moveWithAnimation(BoxModel boxModel, int nextCol, int nextRow, Direction direction) {
+    static public void moveWithAnimation(BoxModel boxModel, int nextCol, int nextRow, Direction direction) {
         boxModel.setCol(nextCol);
         boxModel.setRow(nextRow);
         //创建动画
@@ -136,7 +136,7 @@ public class GameControllerModel {
                     undoDirection = Direction.LEFT;
                 }
                 //移动
-                if (doMove(boxes.get(movementRecord.getBoxKey()), movementRecord.getRow() - undoDirection.getRow(), movementRecord.getCol() - undoDirection.getCol(), undoDirection)) {
+                if (doMove(mapModel, boxes.get(movementRecord.getBoxKey()), movementRecord.getRow() - undoDirection.getRow(), movementRecord.getCol() - undoDirection.getCol(), undoDirection)) {
                     gameModel.getMovementStack().pop();
                     mapModel.minusSteps();
                     gameModel.getRootPaneController().updateSteps();
@@ -149,10 +149,10 @@ public class GameControllerModel {
 
     public void restart() {
         for (int i = 0; i < mapModel.getMatrix().length; i++) {
-            mapModel.getMatrix()[i] = Arrays.copyOf(mapModel.getCopyMatrix()[i], mapModel.getCopyMatrix()[i].length);
+            mapModel.getMatrix()[i] = Arrays.copyOf(mapModel.getCopyData()[i], mapModel.getCopyData()[i].length);
         }
         mapModel.setSteps(0);
-        gameModel.initGame();
+        gameModel.initView();
         System.out.println("Game Restart");
     }
 

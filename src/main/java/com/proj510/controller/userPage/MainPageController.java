@@ -101,7 +101,7 @@ public class MainPageController {
     }
 
     public void loadMapLabels() {
-        Path mapFolder = Paths.get("src/main/resources/maps");
+        Path mapFolder = Path.of("src/main/resources/maps");
         if (Files.exists(mapFolder) && Files.isDirectory(mapFolder)) {
             try (Stream<Path> pathStream = Files.list(mapFolder)){
                 var mapFiles = pathStream.toList();
@@ -112,7 +112,7 @@ public class MainPageController {
                     mapContainer.getChildren().addAll(noMapLabel);
                 } else {
                     mapFiles.forEach(path -> {
-                        //预加载地图
+                        //todo:预加载地图
                         String map;
                         Gson gson = new GsonBuilder().create();
                         try {
