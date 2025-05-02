@@ -2,12 +2,13 @@ package com.proj510.model.game;
 
 import com.proj510.data.MapRecord;
 import com.proj510.data.UserData;
+import com.proj510.utils.aiSolver.AISolver;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static com.proj510.model.game.GameModel.GRID_SIZE;
 
@@ -16,12 +17,6 @@ public class GameControllerModel {
     private GameModel gameModel;
     private MapModel mapModel;
     private Map<Integer, BoxModel> boxes = new HashMap<>();
-
-    public GameControllerModel(GameModel gameModel) {
-        this.gameModel = gameModel;
-        this.mapModel = gameModel.getMapModel();
-        this.boxes = gameModel.getBoxes();
-    }
 
     public GameControllerModel() {
     }
@@ -159,6 +154,48 @@ public class GameControllerModel {
     public void saveGame() {
         userData.setMapRecord(new MapRecord(mapModel));
         userData.save();
+    }
+
+    public void aiSolve() throws InterruptedException {
+        MapModel map = MapModel.copy(mapModel);
+        AISolver aiSolver = new AISolver(map);
+        Deque<MovementRecord> solution = aiSolver.bfsSolver();
+        //重置key
+        gameModel.initView();
+        setBoxes(gameModel.getBoxes());
+
+        if (solution == null || solution.isEmpty()) {
+            System.out.println("无解");
+            return;
+        }
+        //打印操作
+        for (MovementRecord movementRecord : solution) {
+            System.out.println(movementRecord);
+        }
+
+        Timeline timeline = new Timeline();
+
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), event -> {
+            if (!solution.isEmpty()) {
+                MovementRecord movementRecord = solution.pollFirst();
+                if (doMove(mapModel, boxes.get(movementRecord.getBoxKey()), movementRecord.getRow(), movementRecord.getCol(), movementRecord.getDirection())) {
+                    gameModel.afterMove(movementRecord.getRow(), movementRecord.getCol(), movementRecord.getDirection());
+                    System.out.println("step" + movementRecord.getStepNum() + ": move success");
+                } else System.out.println("fail");
+                if (gameModel.isSucceed()) {
+                    gameModel.getRootPaneController().turnToWinPane();
+                    gameModel.endGame();
+                }
+            } else {
+                timeline.stop();
+                System.out.println("complete.");
+            }
+        });
+
+        timeline.getKeyFrames().add(keyFrame);
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        System.out.println("play");
+        timeline.play();
     }
 
     //--------------------------------------------------------------------------------

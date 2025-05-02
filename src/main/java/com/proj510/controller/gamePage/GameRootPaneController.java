@@ -106,6 +106,16 @@ public class GameRootPaneController {
     }
 
     @FXML
+    public void handleSolve() {
+        try {
+            gameControllerModel.aiSolve();
+        } catch (InterruptedException e) {
+            System.out.println("ai解决失败");
+            System.out.println(e.toString());
+        }
+    }
+
+    @FXML
     public void upButton() {
         gameModel.doMoveUp();
     }

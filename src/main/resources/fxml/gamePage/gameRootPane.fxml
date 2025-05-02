@@ -47,10 +47,22 @@
             <Pane fx:id="gamePane" focusTraversable="true" prefHeight="450.0" prefWidth="450.0" />
             <Pane layoutX="498.0" layoutY="303.0" prefHeight="91.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="downButton" focusTraversable="false" layoutX="73.0" layoutY="69.0" mnemonicParsing="false" onAction="#downButton" text="DOWN" />
-                  <Button fx:id="upButton" focusTraversable="false" layoutX="75.0" layoutY="33.0" mnemonicParsing="false" onAction="#upButton" prefHeight="23.0" prefWidth="52.0" text="UP" />
-                  <Button fx:id="leftButton" focusTraversable="false" layoutY="69.0" mnemonicParsing="false" onAction="#leftButton" prefHeight="23.0" prefWidth="52.0" text="LEFT" />
-                  <Button fx:id="rightButton" focusTraversable="false" layoutX="145.0" layoutY="69.0" mnemonicParsing="false" onAction="#rightButton" text="RIGHT" />
+                  <Button fx:id="downButton" focusTraversable="false" layoutX="73.0" layoutY="69.0" mnemonicParsing="false" onAction="#downButton" text="DOWN">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font></Button>
+                  <Button fx:id="upButton" focusTraversable="false" layoutX="75.0" layoutY="33.0" mnemonicParsing="false" onAction="#upButton" prefHeight="23.0" prefWidth="52.0" text="UP">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font></Button>
+                  <Button fx:id="leftButton" focusTraversable="false" layoutY="69.0" mnemonicParsing="false" onAction="#leftButton" prefHeight="23.0" prefWidth="52.0" text="LEFT">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font></Button>
+                  <Button fx:id="rightButton" focusTraversable="false" layoutX="145.0" layoutY="69.0" mnemonicParsing="false" onAction="#rightButton" text="RIGHT">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font></Button>
                </children>
             </Pane>
             <Button focusTraversable="false" layoutX="537.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleSave" prefHeight="49.0" prefWidth="121.0" text="Save">
@@ -59,6 +71,7 @@
                </font>
             </Button>
             <Button focusTraversable="false" layoutX="734.0" layoutY="425.0" mnemonicParsing="false" onAction="#returnToMainPage" text="return" />
+            <Button layoutX="683.0" layoutY="425.0" mnemonicParsing="false" onAction="#handleSolve" prefHeight="23.0" prefWidth="51.0" text="solve" />
          </children>
       </Pane>
    </children>

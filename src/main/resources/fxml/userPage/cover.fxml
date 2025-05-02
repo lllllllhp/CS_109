@@ -8,7 +8,7 @@
 
 <StackPane fx:id="rootPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proj510.controller.userPage.CoverController">
    <children>
-      <AnchorPane fx:id="coverPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleContinue" onMouseClicked="#handleContinue" prefHeight="450.0" prefWidth="800.0">
+      <AnchorPane fx:id="coverPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleContinue" prefHeight="450.0" prefWidth="800.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="264.0" layoutY="165.0" prefHeight="119.0" prefWidth="270.0" text="This is cover." textAlignment="CENTER">
                <font>

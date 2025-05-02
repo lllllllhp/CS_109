@@ -66,6 +66,6 @@ public class MovementRecord {
 
     @Override
     public String toString() {
-        return String.format("Step:%d:row: %d col: %d Direction: %s", getStepNum(), getRow(), getCol(), getDirection().name());
+        return String.format("Step:%d key:%d row: %d col: %d Direction: %s", getStepNum(), getBoxKey(), getRow(), getCol(), getDirection().name());
     }
 }

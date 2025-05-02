@@ -95,6 +95,7 @@ public class GameModel {
 
     public void initGameData() {
         //clear all
+        BoxModel.boxNumber = 0;
         boxes.clear();
         movementStack.clear();
         setMainBox(null);
@@ -186,7 +187,8 @@ public class GameModel {
         mapModel.addSteps();
         System.out.printf("Step%d: try %s\n", mapModel.getSteps(), direction.name());
         rootPaneController.updateSteps();
-        movementStack.push(new MovementRecord(mapModel.getSteps(), selectedBox.getKey(), row - direction.getRow(), col - direction.getCol(), direction));
+        if (selectedBox != null)
+            movementStack.push(new MovementRecord(mapModel.getSteps(), selectedBox.getKey(), row - direction.getRow(), col - direction.getCol(), direction));
         System.out.println(movementStack.peek());
         if (isSucceed()) {
             getRootPaneController().turnToWinPane();

@@ -11,18 +11,18 @@ import java.nio.file.Paths;
 
 public class MapGenerator {
     public static void main(String[] args) {
-        String name = "哎哟我滴妈你别笑";
+        String name = "兵分三路";
         String fileName = name + ".json";
 
         Path path = Path.of("src/main/resources/maps", fileName);
         Gson gson = new GsonBuilder().create();
 
         int[][] map = new int[][]{
-                {0, 0, 0, 1, 1},
-                {1, 4, 4, 0, 1},
-                {3, 4, 4, 1, 3},
-                {3, 1, 0, 0, 3},
-                {0, 1, 2, 2, 0},
+                {1, 4, 4, 1},
+                {3, 4, 4, 3},
+                {3, 2, 2, 3},
+                {3, 1, 1, 3},
+                {3, 0, 0, 3},
         };
         int targetCol = 1;
         int targetRow = 3;

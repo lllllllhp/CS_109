@@ -102,6 +102,6 @@ public class BoxModel extends Rectangle {
 
     @Override
     public String toString() {
-        return String.format("%s\ntypeId=%d row=%d col=%d isSelected=%b", super.toString(), getTypeId(), getRow(), getCol(), isSelected());
+        return String.format("key:%d typeId=%d row=%d col=%d isSelected=%b", getKey(), getTypeId(), getRow(), getCol(), isSelected());
     }
 }

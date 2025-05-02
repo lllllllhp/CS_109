@@ -14,7 +14,6 @@ public class AISolver extends GameModel {
 
     public AISolver(MapModel mapModel) {
         super(mapModel);
-        this.setGameController(new GameControllerModel(this));
         initGameData();
         for (Map.Entry<Integer, BoxModel> boxModelEntry : getBoxes().entrySet()) {
             int key = boxModelEntry.getKey();
@@ -30,26 +29,36 @@ public class AISolver extends GameModel {
     //无解则返回null
     public Deque<MovementRecord> bfsSolver() {
         long startTime = System.currentTimeMillis();
+        tryNum = 0;
         //
         Deque<GameState> deque = new ArrayDeque<>();
-        Set<Integer> isVisited = new HashSet<>();
+        Set<String> isVisited = new HashSet<>();
         //初始状态
         GameState firstState = new GameState(this);
         deque.add(firstState);
-        isVisited.add(firstState.encode().hashCode());
+        isVisited.add(firstState.encode());
 
         while (!deque.isEmpty()) {
-            GameState curState = deque.poll();
+            GameState curState = deque.pollFirst();
 
             //成功
             BoxData mainBox = curState.getBoxDataMap().get(mainKey);
             if (mainBox.getCol() == getMapModel().getTargetCol()
                     && mainBox.getRow() == getMapModel().getTargetRow()) {
-                System.out.println("已访问状态数：" + isVisited.size());
-                System.out.println("剩余待搜索状态数：" + deque.size());
-                System.out.println("总步数：" + curState.getMovementRecords().size());
+                System.out.println("visit maps：" + isVisited.size());
+                System.out.println("TOTAL STEPS：" + curState.getMovementRecords().size());
                 long endTime = System.currentTimeMillis();
-                System.out.println("用时(ms)：" + (endTime - startTime));
+                System.out.println("Time cost(ms)：" + (endTime - startTime));
+                System.out.println("try numbers: " + tryNum);
+
+                if (curState.getMovementRecords() != null) {
+                    for (MovementRecord move : curState.getMovementRecords()) {
+                        System.out.println(move);
+                    }
+                } else {
+                    System.out.println("no solution/error");
+                }
+
                 return curState.getMovementRecords();
             }
 
@@ -58,14 +67,14 @@ public class AISolver extends GameModel {
 
             //加入deque，visited
             for (GameState gameState : nextState) {
-                Integer stateKey = gameState.encode().hashCode();
+                String stateKey = gameState.encode();
                 if (!isVisited.contains(stateKey)) {
                     deque.offer(gameState);
                     isVisited.add(stateKey);
                 }
             }
         }
-        System.out.println("无解");
+        System.out.println("no solution");
         long endTime = System.currentTimeMillis();
         System.out.println(endTime - startTime);
         return null;

@@ -20,7 +20,7 @@ public class GameState extends MapModel {
         newState.setMatrix(gameState.getMatrixData());
 
         Map<Integer, BoxData> newDataMap = new HashMap<>();
-        for (Map.Entry<Integer, BoxData> entry : boxDataMap.entrySet()) {
+        for (Map.Entry<Integer, BoxData> entry : gameState.getBoxDataMap().entrySet()) {
             newDataMap.put(entry.getKey(), new BoxData(entry.getValue()));
         }
         newState.setBoxDataMap(newDataMap);

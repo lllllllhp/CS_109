@@ -44,6 +44,17 @@ public class MapModel {
         this.targetRow = mapPreset.getTargetRow();
     }
 
+    //copy
+    static public MapModel copy(MapModel mapModel) {
+        MapModel newModel = new MapModel();
+        newModel.steps = mapModel.getSteps();
+        newModel.targetCol = mapModel.targetCol;
+        newModel.targetRow = mapModel.targetRow;
+        newModel.matrix = mapModel.getMatrixData();
+        newModel.copyMatrix = mapModel.getCopyData();
+        return newModel;
+    }
+
     public int[][] getMatrixData() {
         int[][] copy = new int[matrix.length][];
         for (int i = 0; i < matrix.length; i++) {
