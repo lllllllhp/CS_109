@@ -45,10 +45,10 @@ public class AISolver extends GameModel {
             BoxData mainBox = curState.getBoxDataMap().get(mainKey);
             if (mainBox.getCol() == getMapModel().getTargetCol()
                     && mainBox.getRow() == getMapModel().getTargetRow()) {
-                System.out.println("visit maps：" + isVisited.size());
-                System.out.println("TOTAL STEPS：" + curState.getMovementRecords().size());
+                System.out.println("visit map: " + isVisited.size());
+                System.out.println("TOTAL STEP: " + curState.getMovementRecords().size());
                 long endTime = System.currentTimeMillis();
-                System.out.println("Time cost(ms)：" + (endTime - startTime));
+                System.out.println("Time cost(ms: " + (endTime - startTime));
                 System.out.println("try numbers: " + tryNum);
 
                 if (curState.getMovementRecords() != null) {

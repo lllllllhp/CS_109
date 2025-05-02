@@ -6,6 +6,7 @@ import com.proj510.utils.aiSolver.AISolver;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
+import javafx.concurrent.Task;
 import javafx.util.Duration;
 
 import java.util.*;
@@ -22,10 +23,10 @@ public class GameControllerModel {
     }
 
     static public boolean doMove(MapModel mapModel, BoxModel box, int row, int col, Direction direction) {
+        int nextRow = row + direction.getRow();
+        int nextCol = col + direction.getCol();
         if (!box.isMoving()) {
             if (mapModel.getId(row, col) == 1) {//小兵
-                int nextRow = row + direction.getRow();
-                int nextCol = col + direction.getCol();
                 if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInWidthSize(nextCol)) {
                     if (mapModel.getId(nextRow, nextCol) == 0) {
                         mapModel.getMatrix()[row][col] = 0;
@@ -35,13 +36,10 @@ public class GameControllerModel {
                     }
                 }
             } else if (mapModel.getId(row, col) == 2) {//横
-                int nextRow = row + direction.getRow();
-                int nextCol = col + direction.getCol();
                 if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInWidthSize(nextCol) && mapModel.checkInWidthSize(nextCol + 1)) {
                     mapModel.getMatrix()[row][col] = 0;
                     mapModel.getMatrix()[row][col + 1] = 0;//先将原本位置归零，便于判断
                     if (mapModel.getId(nextRow, nextCol) == 0 && mapModel.getId(nextRow, nextCol + 1) == 0) {
-
                         mapModel.getMatrix()[nextRow][nextCol] = 2;
                         mapModel.getMatrix()[nextRow][nextCol + 1] = 2;
                         moveWithAnimation(box, nextCol, nextRow, direction);
@@ -52,8 +50,6 @@ public class GameControllerModel {
                     }
                 }
             } else if (mapModel.getId(row, col) == 3) {//竖
-                int nextRow = row + direction.getRow();
-                int nextCol = col + direction.getCol();
                 if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInHeightSize(nextRow + 1) && mapModel.checkInWidthSize(nextCol)) {
                     mapModel.getMatrix()[row][col] = 0;
                     mapModel.getMatrix()[row + 1][col] = 0;
@@ -68,8 +64,6 @@ public class GameControllerModel {
                     }
                 }
             } else if (mapModel.getId(row, col) == 4) {//曹操
-                int nextRow = row + direction.getRow();
-                int nextCol = col + direction.getCol();
                 if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInWidthSize(nextCol) && mapModel.checkInHeightSize(nextRow + 1) && mapModel.checkInWidthSize(nextCol + 1)) {
                     mapModel.getMatrix()[row][col] = 0;
                     mapModel.getMatrix()[row][col + 1] = 0;
@@ -157,46 +151,64 @@ public class GameControllerModel {
     }
 
     public void aiSolve() throws InterruptedException {
-        MapModel map = MapModel.copy(mapModel);
-        AISolver aiSolver = new AISolver(map);
-        Deque<MovementRecord> solution = aiSolver.bfsSolver();
-        //重置key
-        gameModel.initView();
-        setBoxes(gameModel.getBoxes());
-
-        if (solution == null || solution.isEmpty()) {
-            System.out.println("无解");
-            return;
-        }
-        //打印操作
-        for (MovementRecord movementRecord : solution) {
-            System.out.println(movementRecord);
-        }
-
-        Timeline timeline = new Timeline();
-
-        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), event -> {
-            if (!solution.isEmpty()) {
-                MovementRecord movementRecord = solution.pollFirst();
-                if (doMove(mapModel, boxes.get(movementRecord.getBoxKey()), movementRecord.getRow(), movementRecord.getCol(), movementRecord.getDirection())) {
-                    gameModel.afterMove(movementRecord.getRow(), movementRecord.getCol(), movementRecord.getDirection());
-                    System.out.println("step" + movementRecord.getStepNum() + ": move success");
-                } else System.out.println("fail");
-                if (gameModel.isSucceed()) {
-                    gameModel.getRootPaneController().turnToWinPane();
-                    gameModel.endGame();
-                }
-            } else {
-                timeline.stop();
-                System.out.println("complete.");
+        Task<Deque<MovementRecord>> task = new Task<>() {
+            @Override
+            protected Deque<MovementRecord> call() {
+                MapModel map = MapModel.copy(mapModel);
+                AISolver aiSolver = new AISolver(map);
+                return aiSolver.bfsSolver();
             }
+        };
+
+        task.setOnSucceeded(event -> {
+            Deque<MovementRecord> solution = task.getValue();
+            //重置key
+            gameModel.initView();
+            setBoxes(gameModel.getBoxes());
+            gameModel.setSelectedBox(null);
+
+            if (solution == null || solution.isEmpty()) {
+                System.out.println("无解");
+                return;
+            }
+            //打印操作
+            for (MovementRecord movementRecord : solution) {
+                System.out.println(movementRecord);
+            }
+
+            Timeline timeline = new Timeline();
+
+            KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.3), e -> {
+                if (!solution.isEmpty()) {
+                    MovementRecord movementRecord = solution.pollFirst();
+                    if (doMove(mapModel, boxes.get(movementRecord.getBoxKey()), movementRecord.getRow(), movementRecord.getCol(), movementRecord.getDirection())) {
+                        gameModel.afterMove(movementRecord.getRow() + movementRecord.getDirection().getRow(), movementRecord.getCol() + movementRecord.getDirection().getCol(), movementRecord.getDirection());
+                        System.out.println(movementRecord);
+                        System.out.println("success");
+                    } else System.out.println("fail");
+                    if (gameModel.isSucceed()) {
+                        gameModel.getRootPaneController().turnToWinPane();
+                        gameModel.endGame();
+                    }
+                } else {
+                    timeline.stop();
+                    System.out.println("complete.");
+                }
+            });
+
+            timeline.getKeyFrames().add(keyFrame);
+            timeline.setCycleCount(Timeline.INDEFINITE);
+            System.out.println("play");
+            timeline.play();
         });
 
-        timeline.getKeyFrames().add(keyFrame);
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        System.out.println("play");
-        timeline.play();
-    }
+        task.setOnFailed(event -> {
+            Throwable error = task.getException();
+            System.out.println(error.toString());
+        });
+
+        new Thread(task).start();
+    }//todo: 加载/演示时禁止操作
 
     //--------------------------------------------------------------------------------
     public GameModel getGameModel() {

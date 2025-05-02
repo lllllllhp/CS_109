@@ -58,10 +58,10 @@ public class GameModel {
                 clickedBox.setSelected(false);
                 selectedBox = null;
             }
+            System.out.println(clickedBox);
         } else {
             System.out.println("is not BoxModel!");
         }
-        System.out.println(clickedBox);
     }//handle mouse click
 
     public void initView() {
@@ -185,11 +185,11 @@ public class GameModel {
 
     public void afterMove(int row, int col, Direction direction) {
         mapModel.addSteps();
-        System.out.printf("Step%d: try %s\n", mapModel.getSteps(), direction.name());
         rootPaneController.updateSteps();
-        if (selectedBox != null)
+        if (selectedBox != null) {
             movementStack.push(new MovementRecord(mapModel.getSteps(), selectedBox.getKey(), row - direction.getRow(), col - direction.getCol(), direction));
-        System.out.println(movementStack.peek());
+            System.out.println(movementStack.peek());
+        }
         if (isSucceed()) {
             getRootPaneController().turnToWinPane();
             endGame();
