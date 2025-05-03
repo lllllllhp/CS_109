@@ -177,11 +177,10 @@ public class GameState extends MapModel {
     //用于去重
     public String encode() {
         StringBuilder sb = new StringBuilder();
-        for (BoxData box : boxDataMap.values()) {
-            sb.append(box.getKey()).append(":")
-                    .append(box.getTypeId()).append(",")
-                    .append(box.getRow()).append(",")
-                    .append(box.getCol()).append(";");
+        for (int[] row : getMatrixData()) {
+            for (int col : row) {
+                sb.append(col);
+            }
         }
         return sb.toString();
     }
