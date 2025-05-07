@@ -6,6 +6,7 @@ import com.lllllllhp.controller.gamePage.GameRootPaneController;
 import com.lllllllhp.data.MapPre;
 import com.lllllllhp.data.UserData;
 import com.lllllllhp.model.game.MapModel;
+import com.lllllllhp.utils.socket.NetUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -38,6 +39,8 @@ public class MainPageController {
     Label rating;
     @FXML
     Label warning;
+    @FXML
+    Label airLabel;
     //choosePane
     @FXML
     Label tips;
@@ -93,10 +96,32 @@ public class MainPageController {
         loadMapLabels();
     }
 
+    @FXML
+    public void handleOnAir() {
+        if (!NetUtils.hasClient() && !NetUtils.hasServer()) {
+            airLabel.setTextFill(Color.GREEN);
+            NetUtils.startServer();
+        } else if (NetUtils.hasServer()){
+            airLabel.setTextFill(Color.BLACK);
+            NetUtils.endServer();
+        }
+    }
+
+    @FXML
+    public void handleSpectate() {
+        if (NetUtils.hasServer()){
+            System.out.println("You're on air now!");
+            warning.setText("You're on air now!");
+        }else if (!NetUtils.hasClient()){
+            NetUtils.startClient();
+        }
+    }
+
+    //------------------------------------------------------------------
     public void loadMapLabels() {
         Path mapFolder = Path.of("src/main/resources/maps");
         if (Files.exists(mapFolder) && Files.isDirectory(mapFolder)) {
-            try (Stream<Path> pathStream = Files.list(mapFolder)){
+            try (Stream<Path> pathStream = Files.list(mapFolder)) {
                 var mapFiles = pathStream.toList();
                 if (mapFiles.isEmpty()) {
                     System.out.println("暂无关卡文件");

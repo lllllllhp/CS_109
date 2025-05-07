@@ -1,28 +1,43 @@
 package com.lllllllhp.utils.socket;
 
+import com.lllllllhp.utils.socket.messageModel.Message;
+
 import java.io.*;
+import java.net.BindException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class SocketServer extends SocketBase {
     ServerSocket serverSocket;
-    private final int PORT;
-    private static final CopyOnWriteArrayList<ObjectOutputStream> clientOutputs = new CopyOnWriteArrayList<>();
+    final int PORT;
+    final CopyOnWriteArrayList<ObjectOutputStream> clientOutputs = new CopyOnWriteArrayList<>();
+    final ExecutorService pool = Executors.newCachedThreadPool();
+    boolean isRunning = false;
 
     public SocketServer(int PORT) {
         this.PORT = PORT;
     }
 
-    public void startServer() throws IOException {
-        serverSocket = new ServerSocket(PORT);
-        System.out.println("服务器启动");
+    public void startServer() {
+        try {
+            serverSocket = new ServerSocket(PORT);
+            isRunning = true;
+            System.out.println("start serverSocket");
 
-        while (true) {
-            Socket client = serverSocket.accept();
-            System.out.println("客户端连接：" + client.getRemoteSocketAddress());
-            //每个客户端生成新的接收线程
-            new Thread(new ClientHandler(client)).start();
+            while (isRunning) {
+                Socket client = serverSocket.accept();
+                System.out.println("client connect：" + client.getRemoteSocketAddress());
+                //每个客户端生成新的接收线程
+                pool.submit(new ClientHandler(client));
+            }
+        } catch (BindException e) {
+            System.out.println("PORT is occupied");
+        } catch (IOException e) {
+            System.out.println("create serverSocket fail");
+            System.out.println(e.toString());
         }
     }
 
@@ -42,16 +57,17 @@ public class SocketServer extends SocketBase {
                 out = new ObjectOutputStream(client.getOutputStream());
                 clientOutputs.add(out);
 
-                while (true) {
+                while (client.isConnected()) {
                     Message msg = (Message) in.readObject();
                     broadcast(msg);
                 }
             } catch (IOException | ClassNotFoundException e) {
                 System.out.println(e.toString());
-                System.out.println(client.getRemoteSocketAddress() + "断开连接");
-            }finally {
+                System.out.println(client.getRemoteSocketAddress() + "disconnected");
+            } finally {
                 try {
                     client.close();
+                    clientOutputs.remove(out);
                 } catch (IOException e) {
                     System.out.println(e.toString());
                 }
@@ -70,7 +86,12 @@ public class SocketServer extends SocketBase {
 
     public void closeServer() {
         try {
-            serverSocket.close();
+            if (serverSocket != null) {
+                isRunning = false;
+                serverSocket.close();
+                System.out.println("close serverSocket succeed");
+            } else System.out.println("close server fail: serverSocket is null");
+            pool.shutdownNow();
         } catch (IOException e) {
             System.out.println(e.toString());
             throw new RuntimeException(e);

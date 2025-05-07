@@ -1,5 +1,7 @@
 package com.lllllllhp.utils.socket;
 
+import com.lllllllhp.utils.socket.messageModel.Message;
+
 import java.io.IOException;
 import java.net.Socket;
 import java.util.function.Consumer;

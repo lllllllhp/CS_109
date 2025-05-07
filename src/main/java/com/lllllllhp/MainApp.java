@@ -1,6 +1,7 @@
 package com.lllllllhp;
 
 import com.lllllllhp.controller.userPage.CoverController;
+import com.lllllllhp.utils.socket.NetUtils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,12 +25,13 @@ public class MainApp extends Application {
         Scene scene = new Scene(root);
         primaryStage.setTitle("Cover");
         primaryStage.setScene(scene);
-        primaryStage.setFullScreen(true);
+        primaryStage.setFullScreen(false);
         primaryStage.show();
     }
 
     @Override
     public void stop() {
+        //删除临时账号
         Path path = Path.of("src/main/resources/User/Guest_");
         if (Files.exists(path) && Files.isDirectory(path)) {
             try (Stream<Path> walk = Files.walk(path)) {
@@ -47,7 +49,15 @@ public class MainApp extends Application {
                 System.out.println(e.toString());
             }
         }
-    }//删除临时账号
+
+        //安全关闭net
+        if (NetUtils.hasServer()) {
+            NetUtils.endServer();
+        }
+        if (NetUtils.hasClient()) {
+            NetUtils.endClient();
+        }
+    }
 
     public static void main(String[] args) {
         launch(args);
