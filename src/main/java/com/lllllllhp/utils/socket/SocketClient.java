@@ -21,7 +21,7 @@ public class SocketClient extends SocketBase {
     Scanner scanner = new Scanner(System.in);
 
     String userName;
-    boolean connected = false;
+    volatile boolean connected = false;
 
     public SocketClient(String SERVER_IP, int PORT) {
         this.SERVER_IP = SERVER_IP;

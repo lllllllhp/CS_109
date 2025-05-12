@@ -14,7 +14,6 @@ public class UserData {
     private int level;
     private double rating;
     private MapRecord mapRecord;
-    private int hashcode;
 
     public void save() {
         Path savingPath = Path.of("src/main/resources/User", id, "userData.json");

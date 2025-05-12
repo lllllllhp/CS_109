@@ -3,6 +3,7 @@ package com.lllllllhp.controller.userPage;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.lllllllhp.data.UserData;
+import com.lllllllhp.utils.dataChecker.DataChecker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,26 +30,27 @@ public class LoginController {
 
     @FXML
     private void handleConfirm(ActionEvent actionEvent) {
-        if (!idField.getText().isEmpty() && !passWordField.getText().isEmpty()) {
-            if (check()) {
-                try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userPage/mainPage.fxml"));
-                    Parent root = loader.load();
-                    MainPageController mainPageController = loader.getController();
-                    mainPageController.setCurrentStage(currentStage);
-                    mainPageController.setUserData(userData);
-
-                    mainPageController.initMainPage();
-
-                    currentStage.getScene().setRoot(root);
-                    currentStage.setTitle(userData.getId());
-                } catch (IOException e) {
-                    System.out.println("error\n" + e.toString());
-                }
-            }
-        } else {
+        if (idField.getText().isEmpty() || passWordField.getText().isEmpty()) {
             warning.setText("Please enter your id and password.");
             System.out.println("Please enter your id and password.");
+            return;
+        }
+
+        if (!check()) return;
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userPage/mainPage.fxml"));
+            Parent root = loader.load();
+            MainPageController mainPageController = loader.getController();
+            mainPageController.setCurrentStage(currentStage);
+            mainPageController.setUserData(userData);
+
+            mainPageController.initMainPage();
+
+            currentStage.getScene().setRoot(root);
+            currentStage.setTitle(userData.getId());
+        } catch (IOException e) {
+            System.out.println("error\n" + e.toString());
         }
     }
 
@@ -64,20 +66,26 @@ public class LoginController {
                 String inputData = Files.readString(path);
                 UserData temp = gson.fromJson(inputData, UserData.class);
 
-                if (temp.getPassWord().equals(passWord)) {
-                    setUserData(temp);//传入数据
-                    System.out.println("Welcome");
-                    return true;
-                } else {
+                //检验hash
+                if (!DataChecker.checkData(temp, path)) {
+                    warning.setText("Data is invalid!");
+                    System.out.println("Data is invalid!");
+                    return false;
+                }
+                //检验密码
+                if (!temp.getPassWord().equals(passWord)) {
                     warning.setText("Please check your password.");
                     System.out.println("Wrong Password.");
                     return false;
                 }
+                setUserData(temp);//传入数据
+                System.out.println("data is valid");
+                return true;
             } catch (IOException e) {
                 System.out.println("Reading error.");
                 System.out.println(e.toString());
+                return false;
             }
-            return false;
         } else {
             //未注册用户，注册新账户
             try {
@@ -96,7 +104,7 @@ public class LoginController {
                 return false;
             }
         }
-    }//todo: 验证数据完整性
+    }
 
     //--------------------------------------------------------------------------------------
     public Stage getCurrentStage() {

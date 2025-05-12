@@ -15,7 +15,7 @@ public class SocketServer extends SocketBase {
     final int PORT;
     final CopyOnWriteArrayList<ObjectOutputStream> clientOutputs = new CopyOnWriteArrayList<>();
     final ExecutorService pool = Executors.newCachedThreadPool();
-    boolean isRunning = false;
+    volatile boolean isRunning = false;
 
     public SocketServer(int PORT) {
         this.PORT = PORT;
@@ -26,18 +26,23 @@ public class SocketServer extends SocketBase {
             serverSocket = new ServerSocket(PORT);
             isRunning = true;
             System.out.println("start serverSocket");
-
-            while (isRunning) {
-                Socket client = serverSocket.accept();
-                System.out.println("client connect：" + client.getRemoteSocketAddress());
-                //每个客户端生成新的接收线程
-                pool.submit(new ClientHandler(client));
-            }
         } catch (BindException e) {
             System.out.println("PORT is occupied");
         } catch (IOException e) {
             System.out.println("create serverSocket fail");
             System.out.println(e.toString());
+        }
+        //连接客户端
+        while (isRunning) {
+            try {
+                Socket client = serverSocket.accept();
+                System.out.println("client connect: " + client.getRemoteSocketAddress());
+                pool.submit(new ClientHandler(client));
+            } catch (IOException e) {
+                // 正常关闭时的异常，不需要打印
+                if (!isRunning) break;
+                System.out.println(e.toString());
+            }
         }
     }
 
