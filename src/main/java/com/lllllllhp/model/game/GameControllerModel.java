@@ -17,7 +17,6 @@ public class GameControllerModel {
     private UserData userData;
     private GameModel gameModel;
     private MapModel mapModel;
-    private Map<Integer, BoxModel> boxes = new HashMap<>();
 
     public GameControllerModel() {
     }
@@ -26,64 +25,68 @@ public class GameControllerModel {
         int nextRow = row + direction.getRow();
         int nextCol = col + direction.getCol();
         if (!box.isMoving()) {
-            if (mapModel.getId(row, col) == 1) {//小兵
-                if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInWidthSize(nextCol)) {
-                    if (mapModel.getId(nextRow, nextCol) == 0) {
+            switch (mapModel.getId(row, col)) {
+                case 1 -> {//小兵
+                    if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInWidthSize(nextCol)
+                            && mapModel.getId(nextRow, nextCol) == 0) {
                         mapModel.getMatrix()[row][col] = 0;
                         mapModel.getMatrix()[nextRow][nextCol] = 1;
                         moveWithAnimation(box, nextCol, nextRow, direction);
                         return true;
                     }
                 }
-            } else if (mapModel.getId(row, col) == 2) {//横
-                if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInWidthSize(nextCol) && mapModel.checkInWidthSize(nextCol + 1)) {
-                    mapModel.getMatrix()[row][col] = 0;
-                    mapModel.getMatrix()[row][col + 1] = 0;//先将原本位置归零，便于判断
-                    if (mapModel.getId(nextRow, nextCol) == 0 && mapModel.getId(nextRow, nextCol + 1) == 0) {
-                        mapModel.getMatrix()[nextRow][nextCol] = 2;
-                        mapModel.getMatrix()[nextRow][nextCol + 1] = 2;
-                        moveWithAnimation(box, nextCol, nextRow, direction);
-                        return true;
-                    } else {    //若不可移动，撤销归零
-                        mapModel.getMatrix()[row][col] = 2;
-                        mapModel.getMatrix()[row][col + 1] = 2;
+                case 2 -> {//横
+                    if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInWidthSize(nextCol) && mapModel.checkInWidthSize(nextCol + 1)) {
+                        mapModel.getMatrix()[row][col] = 0;
+                        mapModel.getMatrix()[row][col + 1] = 0;//先将原本位置归零，便于判断
+                        if (mapModel.getId(nextRow, nextCol) == 0 && mapModel.getId(nextRow, nextCol + 1) == 0) {
+                            mapModel.getMatrix()[nextRow][nextCol] = 2;
+                            mapModel.getMatrix()[nextRow][nextCol + 1] = 2;
+                            moveWithAnimation(box, nextCol, nextRow, direction);
+                            return true;
+                        } else {    //若不可移动，撤销归零
+                            mapModel.getMatrix()[row][col] = 2;
+                            mapModel.getMatrix()[row][col + 1] = 2;
+                        }
                     }
                 }
-            } else if (mapModel.getId(row, col) == 3) {//竖
-                if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInHeightSize(nextRow + 1) && mapModel.checkInWidthSize(nextCol)) {
-                    mapModel.getMatrix()[row][col] = 0;
-                    mapModel.getMatrix()[row + 1][col] = 0;
-                    if (mapModel.getId(nextRow, nextCol) == 0 && mapModel.getId(nextRow + 1, nextCol) == 0) {
-                        mapModel.getMatrix()[nextRow][nextCol] = 3;
-                        mapModel.getMatrix()[nextRow + 1][nextCol] = 3;
-                        moveWithAnimation(box, nextCol, nextRow, direction);
-                        return true;
-                    } else {
-                        mapModel.getMatrix()[row][col] = 3;
-                        mapModel.getMatrix()[row + 1][col] = 3;
+                case 3 -> {//竖
+                    if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInHeightSize(nextRow + 1) && mapModel.checkInWidthSize(nextCol)) {
+                        mapModel.getMatrix()[row][col] = 0;
+                        mapModel.getMatrix()[row + 1][col] = 0;
+                        if (mapModel.getId(nextRow, nextCol) == 0 && mapModel.getId(nextRow + 1, nextCol) == 0) {
+                            mapModel.getMatrix()[nextRow][nextCol] = 3;
+                            mapModel.getMatrix()[nextRow + 1][nextCol] = 3;
+                            moveWithAnimation(box, nextCol, nextRow, direction);
+                            return true;
+                        } else {
+                            mapModel.getMatrix()[row][col] = 3;
+                            mapModel.getMatrix()[row + 1][col] = 3;
+                        }
                     }
                 }
-            } else if (mapModel.getId(row, col) == 4) {//曹操
-                if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInWidthSize(nextCol) && mapModel.checkInHeightSize(nextRow + 1) && mapModel.checkInWidthSize(nextCol + 1)) {
-                    mapModel.getMatrix()[row][col] = 0;
-                    mapModel.getMatrix()[row][col + 1] = 0;
-                    mapModel.getMatrix()[row + 1][col] = 0;
-                    mapModel.getMatrix()[row + 1][col + 1] = 0;
-                    if (mapModel.getId(nextRow, nextCol) == 0
-                            && mapModel.getId(nextRow + 1, nextCol + 1) == 0
-                            && mapModel.getId(nextRow, nextCol + 1) == 0
-                            && mapModel.getId(nextRow + 1, nextCol) == 0) {
-                        mapModel.getMatrix()[nextRow][nextCol] = 4;
-                        mapModel.getMatrix()[nextRow][nextCol + 1] = 4;
-                        mapModel.getMatrix()[nextRow + 1][nextCol] = 4;
-                        mapModel.getMatrix()[nextRow + 1][nextCol + 1] = 4;
-                        moveWithAnimation(box, nextCol, nextRow, direction);
-                        return true;
-                    } else {
-                        mapModel.getMatrix()[row][col] = 4;
-                        mapModel.getMatrix()[row][col + 1] = 4;
-                        mapModel.getMatrix()[row + 1][col] = 4;
-                        mapModel.getMatrix()[row + 1][col + 1] = 4;
+                case 4 -> {//曹操
+                    if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInWidthSize(nextCol) && mapModel.checkInHeightSize(nextRow + 1) && mapModel.checkInWidthSize(nextCol + 1)) {
+                        mapModel.getMatrix()[row][col] = 0;
+                        mapModel.getMatrix()[row][col + 1] = 0;
+                        mapModel.getMatrix()[row + 1][col] = 0;
+                        mapModel.getMatrix()[row + 1][col + 1] = 0;
+                        if (mapModel.getId(nextRow, nextCol) == 0
+                                && mapModel.getId(nextRow + 1, nextCol + 1) == 0
+                                && mapModel.getId(nextRow, nextCol + 1) == 0
+                                && mapModel.getId(nextRow + 1, nextCol) == 0) {
+                            mapModel.getMatrix()[nextRow][nextCol] = 4;
+                            mapModel.getMatrix()[nextRow][nextCol + 1] = 4;
+                            mapModel.getMatrix()[nextRow + 1][nextCol] = 4;
+                            mapModel.getMatrix()[nextRow + 1][nextCol + 1] = 4;
+                            moveWithAnimation(box, nextCol, nextRow, direction);
+                            return true;
+                        } else {
+                            mapModel.getMatrix()[row][col] = 4;
+                            mapModel.getMatrix()[row][col + 1] = 4;
+                            mapModel.getMatrix()[row + 1][col] = 4;
+                            mapModel.getMatrix()[row + 1][col + 1] = 4;
+                        }
                     }
                 }
             }
@@ -125,8 +128,8 @@ public class GameControllerModel {
                     undoDirection = Direction.LEFT;
                 }
                 //移动
-                if (doMove(mapModel, boxes.get(movementRecord.getBoxKey()), movementRecord.getRow() - undoDirection.getRow(), movementRecord.getCol() - undoDirection.getCol(), undoDirection)) {
-                    gameModel.getMovementStack().pop();
+                if (doMove(mapModel, gameModel.getBoxes().get(movementRecord.getBoxKey()), movementRecord.getRow() - undoDirection.getRow(), movementRecord.getCol() - undoDirection.getCol(), undoDirection)) {
+                    System.out.println(gameModel.getMovementStack().pop());
                     mapModel.minusSteps();
                     gameModel.getRootPaneController().updateSteps();
                     System.out.println("Undo succeed.");
@@ -147,6 +150,10 @@ public class GameControllerModel {
 
     public void saveGame() {
         userData.setMapRecord(new MapRecord(mapModel));
+        //记录移动
+        userData.getMapRecord().setRecordDeque(gameModel.getMovementStack());
+        //记录当前box的key
+        userData.getMapRecord().setKeyMap(gameModel.getKeyMap());
         userData.save();
     }
 
@@ -155,37 +162,26 @@ public class GameControllerModel {
             @Override
             protected Deque<MovementRecord> call() {
                 MapModel map = MapModel.copy(mapModel);
-                AISolver aiSolver = new AISolver(map);
+                AISolver aiSolver = new AISolver(map, gameModel.getKeyMap());
                 return aiSolver.bfsSolver();
             }
         };
 
         task.setOnSucceeded(event -> {
             Deque<MovementRecord> solution = task.getValue();
-            //重置key
-            gameModel.initView();
-            setBoxes(gameModel.getBoxes());
-            gameModel.setSelectedBox(null);
 
             if (solution == null || solution.isEmpty()) {
                 System.out.println("无解");
                 return;
             }
-            //打印操作
-            for (MovementRecord movementRecord : solution) {
-                System.out.println(movementRecord);
-            }
-
             Timeline timeline = new Timeline();
 
             KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.3), e -> {
                 if (!solution.isEmpty()) {
                     MovementRecord movementRecord = solution.pollFirst();
-                    if (doMove(mapModel, boxes.get(movementRecord.getBoxKey()), movementRecord.getRow(), movementRecord.getCol(), movementRecord.getDirection())) {
+                    if (doMove(mapModel, gameModel.getBoxes().get(movementRecord.getBoxKey()), movementRecord.getRow(), movementRecord.getCol(), movementRecord.getDirection())) {
                         gameModel.afterMove(movementRecord.getRow() + movementRecord.getDirection().getRow(), movementRecord.getCol() + movementRecord.getDirection().getCol(), movementRecord.getDirection());
-                        System.out.println(movementRecord);
-                        System.out.println("success");
-                    } else System.out.println("fail");
+                    } else System.out.println("fail at: " + movementRecord);
                     if (gameModel.isSucceed()) {
                         gameModel.getRootPaneController().turnToWinPane();
                         gameModel.endGame();
@@ -233,13 +229,5 @@ public class GameControllerModel {
 
     public void setUserData(UserData userData) {
         this.userData = userData;
-    }
-
-    public Map<Integer, BoxModel> getBoxes() {
-        return boxes;
-    }
-
-    public void setBoxes(Map<Integer, BoxModel> boxes) {
-        this.boxes = boxes;
     }
 }

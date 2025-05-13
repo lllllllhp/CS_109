@@ -1,6 +1,7 @@
 package com.lllllllhp;
 
 import com.lllllllhp.controller.userPage.CoverController;
+import com.lllllllhp.utils.audioPlayer.AudioPlayer;
 import com.lllllllhp.utils.socket.NetUtils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,11 @@ import java.util.stream.Stream;
 
 public class MainApp extends Application {
     @Override
+    public void init() {
+
+    }
+
+    @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userPage/cover.fxml"));
         Parent root = loader.load();
@@ -27,6 +33,8 @@ public class MainApp extends Application {
         primaryStage.setScene(scene);
         primaryStage.setFullScreen(false);
         primaryStage.show();
+
+        AudioPlayer.playBGM();
     }
 
     @Override

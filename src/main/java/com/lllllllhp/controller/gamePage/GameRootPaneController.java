@@ -45,7 +45,6 @@ public class GameRootPaneController {
         initPane();
         gameModel.setMapModel(chooseMap);
         gameControllerModel.setMapModel(gameModel.getMapModel());
-        gameControllerModel.setBoxes(gameModel.getBoxes());
         gameModel.initView();
     }
 
@@ -53,8 +52,7 @@ public class GameRootPaneController {
         initPane();
         gameModel.setMapModel(userData.getMapRecord().getMapModel());
         gameControllerModel.setMapModel(gameModel.getMapModel());
-        gameControllerModel.setBoxes(gameModel.getBoxes());
-        gameModel.initView();
+        gameModel.loadGame();
     }
 
     public void initPane() {

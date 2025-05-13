@@ -42,6 +42,7 @@ public class DataChecker {
         try {
             originHash = Files.readString(hashPath);
         } catch (IOException e) {
+            System.out.println("can't find .hash");
             System.out.println(e.toString());
         }
         newHash = toHash(userData);

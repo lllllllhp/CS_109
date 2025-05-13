@@ -12,9 +12,12 @@ public class AISolver extends GameModel {
     int mainKey;//曹操
     public static int tryNum;
 
-    public AISolver(MapModel mapModel) {
+    public AISolver(MapModel mapModel, Map<String, Integer> keyMap) {
         super(mapModel);
         initGameData();
+        //导入目前box的key
+        if (keyMap != null && !keyMap.isEmpty()) loadKeyMap(keyMap);
+
         for (Map.Entry<Integer, BoxModel> boxModelEntry : getBoxes().entrySet()) {
             int key = boxModelEntry.getKey();
             BoxModel box = boxModelEntry.getValue();
@@ -23,6 +26,10 @@ public class AISolver extends GameModel {
             }
             originBoxDataMap.put(key, new BoxData(box));
         }
+    }
+
+    public AISolver(MapModel mapModel) {
+        this(mapModel, null);
     }
 
     //bfs算法，返回可用于原game的record

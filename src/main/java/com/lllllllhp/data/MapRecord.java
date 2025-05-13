@@ -1,10 +1,15 @@
 package com.lllllllhp.data;
 
 import com.lllllllhp.model.game.MapModel;
+import com.lllllllhp.model.game.MovementRecord;
+
+import java.util.*;
 
 public class MapRecord {
     private MapModel mapModel;
     private double time;
+    private Deque<MovementRecord> recordDeque = new ArrayDeque<>();
+    private Map<String, Integer> keyMap = new HashMap<>();
 
     public MapRecord(MapModel mapModel) {
         this.mapModel = mapModel;
@@ -16,5 +21,21 @@ public class MapRecord {
 
     public void setMapModel(MapModel mapModel) {
         this.mapModel = mapModel;
+    }
+
+    public Deque<MovementRecord> getRecordDeque() {
+        return recordDeque;
+    }
+
+    public void setRecordDeque(Deque<MovementRecord> recordDeque) {
+        this.recordDeque = recordDeque;
+    }
+
+    public Map<String, Integer> getKeyMap() {
+        return keyMap;
+    }
+
+    public void setKeyMap(Map<String, Integer> keyMap) {
+        this.keyMap = keyMap;
     }
 }

@@ -2,6 +2,7 @@ package com.lllllllhp.data;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.lllllllhp.utils.dataChecker.DataChecker;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,15 +17,16 @@ public class UserData {
     private MapRecord mapRecord;
 
     public void save() {
-        Path savingPath = Path.of("src/main/resources/User", id, "userData.json");
+        Path dataPath = Path.of("src/main/resources/User", id, "userData.json");
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String userData = gson.toJson(this);
         try {
-            Files.createDirectories(savingPath.getParent());
-            Files.writeString(savingPath, userData);
+            Files.createDirectories(dataPath.getParent());
+            Files.writeString(dataPath, userData);
         } catch (IOException e) {
             System.out.println(e.toString());
         }
+        DataChecker.createHashFile(DataChecker.toHash(this), dataPath);
         System.out.println("Saved.");
     }
 

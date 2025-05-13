@@ -5,6 +5,7 @@ import com.lllllllhp.utils.aiSolver.AISolver;
 import com.lllllllhp.utils.aiSolver.BoxData;
 
 import java.util.Deque;
+import java.util.HashMap;
 import java.util.Map;
 
 public class AITest {

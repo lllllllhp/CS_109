@@ -74,56 +74,61 @@ public class GameState extends MapModel {
         int col = box.getCol();
         int nextRow = row + direction.getRow();
         int nextCol = col + direction.getCol();
-        if (box.getTypeId() == 1) {
-            if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInWidthSize(nextCol)) {
-                return mapModel.getId(nextRow, nextCol) == 0;
-            }
-        } else if (box.getTypeId() == 2) {
-            if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInWidthSize(nextCol) && mapModel.checkInWidthSize(nextCol + 1)) {
-                mapModel.getMatrix()[row][col] = 0;
-                mapModel.getMatrix()[row][col + 1] = 0;//先将原本位置归零，便于判断
-                if (mapModel.getId(nextRow, nextCol) == 0 && mapModel.getId(nextRow, nextCol + 1) == 0) {
-                    mapModel.getMatrix()[row][col] = 2;
-                    mapModel.getMatrix()[row][col + 1] = 2;
-                    return true;
-                } else {    //若不可移动，撤销归零
-                    mapModel.getMatrix()[row][col] = 2;
-                    mapModel.getMatrix()[row][col + 1] = 2;
+        switch (box.getTypeId()) {
+            case 1 -> {
+                if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInWidthSize(nextCol)) {
+                    return mapModel.getId(nextRow, nextCol) == 0;
                 }
             }
-        } else if (box.getTypeId() == 3) {
-            if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInHeightSize(nextRow + 1) && mapModel.checkInWidthSize(nextCol)) {
-                mapModel.getMatrix()[row][col] = 0;
-                mapModel.getMatrix()[row + 1][col] = 0;
-                if (mapModel.getId(nextRow, nextCol) == 0 && mapModel.getId(nextRow + 1, nextCol) == 0) {
-                    mapModel.getMatrix()[row][col] = 3;
-                    mapModel.getMatrix()[row + 1][col] = 3;
-                    return true;
-                } else {
-                    mapModel.getMatrix()[row][col] = 3;
-                    mapModel.getMatrix()[row + 1][col] = 3;
+            case 2 -> {
+                if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInWidthSize(nextCol) && mapModel.checkInWidthSize(nextCol + 1)) {
+                    mapModel.getMatrix()[row][col] = 0;
+                    mapModel.getMatrix()[row][col + 1] = 0;//先将原本位置归零，便于判断
+                    if (mapModel.getId(nextRow, nextCol) == 0 && mapModel.getId(nextRow, nextCol + 1) == 0) {
+                        mapModel.getMatrix()[row][col] = 2;
+                        mapModel.getMatrix()[row][col + 1] = 2;
+                        return true;
+                    } else {    //若不可移动，撤销归零
+                        mapModel.getMatrix()[row][col] = 2;
+                        mapModel.getMatrix()[row][col + 1] = 2;
+                    }
                 }
             }
-        } else if (box.getTypeId() == 4) {
-            if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInWidthSize(nextCol) && mapModel.checkInHeightSize(nextRow + 1) && mapModel.checkInWidthSize(nextCol + 1)) {
-                mapModel.getMatrix()[row][col] = 0;
-                mapModel.getMatrix()[row][col + 1] = 0;
-                mapModel.getMatrix()[row + 1][col] = 0;
-                mapModel.getMatrix()[row + 1][col + 1] = 0;
-                if (mapModel.getId(nextRow, nextCol) == 0
-                        && mapModel.getId(nextRow + 1, nextCol + 1) == 0
-                        && mapModel.getId(nextRow, nextCol + 1) == 0
-                        && mapModel.getId(nextRow + 1, nextCol) == 0) {
-                    mapModel.getMatrix()[row][col] = 4;
-                    mapModel.getMatrix()[row][col + 1] = 4;
-                    mapModel.getMatrix()[row + 1][col] = 4;
-                    mapModel.getMatrix()[row + 1][col + 1] = 4;
-                    return true;
-                } else {
-                    mapModel.getMatrix()[row][col] = 4;
-                    mapModel.getMatrix()[row][col + 1] = 4;
-                    mapModel.getMatrix()[row + 1][col] = 4;
-                    mapModel.getMatrix()[row + 1][col + 1] = 4;
+            case 3 -> {
+                if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInHeightSize(nextRow + 1) && mapModel.checkInWidthSize(nextCol)) {
+                    mapModel.getMatrix()[row][col] = 0;
+                    mapModel.getMatrix()[row + 1][col] = 0;
+                    if (mapModel.getId(nextRow, nextCol) == 0 && mapModel.getId(nextRow + 1, nextCol) == 0) {
+                        mapModel.getMatrix()[row][col] = 3;
+                        mapModel.getMatrix()[row + 1][col] = 3;
+                        return true;
+                    } else {
+                        mapModel.getMatrix()[row][col] = 3;
+                        mapModel.getMatrix()[row + 1][col] = 3;
+                    }
+                }
+            }
+            case 4 -> {
+                if (mapModel.checkInHeightSize(nextRow) && mapModel.checkInWidthSize(nextCol) && mapModel.checkInHeightSize(nextRow + 1) && mapModel.checkInWidthSize(nextCol + 1)) {
+                    mapModel.getMatrix()[row][col] = 0;
+                    mapModel.getMatrix()[row][col + 1] = 0;
+                    mapModel.getMatrix()[row + 1][col] = 0;
+                    mapModel.getMatrix()[row + 1][col + 1] = 0;
+                    if (mapModel.getId(nextRow, nextCol) == 0
+                            && mapModel.getId(nextRow + 1, nextCol + 1) == 0
+                            && mapModel.getId(nextRow, nextCol + 1) == 0
+                            && mapModel.getId(nextRow + 1, nextCol) == 0) {
+                        mapModel.getMatrix()[row][col] = 4;
+                        mapModel.getMatrix()[row][col + 1] = 4;
+                        mapModel.getMatrix()[row + 1][col] = 4;
+                        mapModel.getMatrix()[row + 1][col + 1] = 4;
+                        return true;
+                    } else {
+                        mapModel.getMatrix()[row][col] = 4;
+                        mapModel.getMatrix()[row][col + 1] = 4;
+                        mapModel.getMatrix()[row + 1][col] = 4;
+                        mapModel.getMatrix()[row + 1][col + 1] = 4;
+                    }
                 }
             }
         }
@@ -136,36 +141,41 @@ public class GameState extends MapModel {
         int col = box.getCol();
         int nextRow = row + direction.getRow();
         int nextCol = col + direction.getCol();
-        if (box.getTypeId() == 1) {
-            mapModel.getMatrix()[row][col] = 0;
-            mapModel.getMatrix()[nextRow][nextCol] = 1;
-            box.setRow(nextRow);
-            box.setCol(nextCol);
-        } else if (box.getTypeId() == 2) {
-            mapModel.getMatrix()[row][col] = 0;
-            mapModel.getMatrix()[row][col + 1] = 0;
-            mapModel.getMatrix()[nextRow][nextCol] = 2;
-            mapModel.getMatrix()[nextRow][nextCol + 1] = 2;
-            box.setRow(nextRow);
-            box.setCol(nextCol);
-        } else if (box.getTypeId() == 3) {
-            mapModel.getMatrix()[row][col] = 0;
-            mapModel.getMatrix()[row + 1][col] = 0;
-            mapModel.getMatrix()[nextRow][nextCol] = 3;
-            mapModel.getMatrix()[nextRow + 1][nextCol] = 3;
-            box.setRow(nextRow);
-            box.setCol(nextCol);
-        } else if (box.getTypeId() == 4) {
-            mapModel.getMatrix()[row][col] = 0;
-            mapModel.getMatrix()[row][col + 1] = 0;
-            mapModel.getMatrix()[row + 1][col] = 0;
-            mapModel.getMatrix()[row + 1][col + 1] = 0;
-            mapModel.getMatrix()[nextRow][nextCol] = 4;
-            mapModel.getMatrix()[nextRow][nextCol + 1] = 4;
-            mapModel.getMatrix()[nextRow + 1][nextCol] = 4;
-            mapModel.getMatrix()[nextRow + 1][nextCol + 1] = 4;
-            box.setRow(nextRow);
-            box.setCol(nextCol);
+        switch (box.getTypeId()) {
+            case 1 -> {
+                mapModel.getMatrix()[row][col] = 0;
+                mapModel.getMatrix()[nextRow][nextCol] = 1;
+                box.setRow(nextRow);
+                box.setCol(nextCol);
+            }
+            case 2 -> {
+                mapModel.getMatrix()[row][col] = 0;
+                mapModel.getMatrix()[row][col + 1] = 0;
+                mapModel.getMatrix()[nextRow][nextCol] = 2;
+                mapModel.getMatrix()[nextRow][nextCol + 1] = 2;
+                box.setRow(nextRow);
+                box.setCol(nextCol);
+            }
+            case 3 -> {
+                mapModel.getMatrix()[row][col] = 0;
+                mapModel.getMatrix()[row + 1][col] = 0;
+                mapModel.getMatrix()[nextRow][nextCol] = 3;
+                mapModel.getMatrix()[nextRow + 1][nextCol] = 3;
+                box.setRow(nextRow);
+                box.setCol(nextCol);
+            }
+            case 4 -> {
+                mapModel.getMatrix()[row][col] = 0;
+                mapModel.getMatrix()[row][col + 1] = 0;
+                mapModel.getMatrix()[row + 1][col] = 0;
+                mapModel.getMatrix()[row + 1][col + 1] = 0;
+                mapModel.getMatrix()[nextRow][nextCol] = 4;
+                mapModel.getMatrix()[nextRow][nextCol + 1] = 4;
+                mapModel.getMatrix()[nextRow + 1][nextCol] = 4;
+                mapModel.getMatrix()[nextRow + 1][nextCol + 1] = 4;
+                box.setRow(nextRow);
+                box.setCol(nextCol);
+            }
         }
     }
 

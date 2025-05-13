@@ -16,8 +16,6 @@ public class GameModel {
     private GameControllerModel gameControllerModel;
     private Stage currentStage;
 
-    private UserData userData;
-
     private MapModel mapModel;
     private BoxModel selectedBox;
     private Rectangle broader;
@@ -27,7 +25,7 @@ public class GameModel {
 
     public static int GRID_SIZE = 75;
     //记录所有移动
-    private final Deque<MovementRecord> movementStack = new ArrayDeque<>();
+    private Deque<MovementRecord> movementStack = new ArrayDeque<>();
     //目标box,随map init
     private BoxModel mainBox;
 
@@ -115,29 +113,34 @@ public class GameModel {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[0].length; j++) {
                 BoxModel box = null;
-                if (map[i][j] == 1) {//小兵
-                    box = new BoxModel(1, Color.ORANGE, i, j, GRID_SIZE, GRID_SIZE);//左上角为坐标
-                    map[i][j] = 0;
-                } else if (map[i][j] == 2) {//关羽（横
-                    box = new BoxModel(2, Color.PINK, i, j, GRID_SIZE * 2, GRID_SIZE);
-                    map[i][j] = 0;
-                    map[i][j + 1] = 0;
-                } else if (map[i][j] == 3) {//大兵（竖
-                    box = new BoxModel(3, Color.BLUE, i, j, GRID_SIZE, GRID_SIZE * 2);
-                    map[i][j] = 0;
-                    map[i + 1][j] = 0;
-                } else if (map[i][j] == 4) {//曹操
-                    box = new BoxModel(4, Color.GREEN, i, j, GRID_SIZE * 2, GRID_SIZE * 2);
-                    map[i][j] = 0;
-                    map[i + 1][j] = 0;
-                    map[i][j + 1] = 0;
-                    map[i + 1][j + 1] = 0;
-                    //设置目标box
-                    if (mainBox == null) {
-                        setMainBox(box);
-                        System.out.println("set MainBox succeed.");
-                    } else {
-                        System.out.println("Warning: multiple MainBox.");
+                switch (map[i][j]) {
+                    case 1 -> {
+                        box = new BoxModel(1, Color.ORANGE, i, j, GRID_SIZE, GRID_SIZE);//左上角为坐标
+                        map[i][j] = 0;
+                    }
+                    case 2 -> {
+                        box = new BoxModel(2, Color.PINK, i, j, GRID_SIZE * 2, GRID_SIZE);
+                        map[i][j] = 0;
+                        map[i][j + 1] = 0;
+                    }
+                    case 3 -> {
+                        box = new BoxModel(3, Color.BLUE, i, j, GRID_SIZE, GRID_SIZE * 2);
+                        map[i][j] = 0;
+                        map[i + 1][j] = 0;
+                    }
+                    case 4 -> {
+                        box = new BoxModel(4, Color.GREEN, i, j, GRID_SIZE * 2, GRID_SIZE * 2);
+                        map[i][j] = 0;
+                        map[i + 1][j] = 0;
+                        map[i][j + 1] = 0;
+                        map[i + 1][j + 1] = 0;
+                        //设置目标box
+                        if (mainBox == null) {
+                            setMainBox(box);
+                            System.out.println("set MainBox succeed.");
+                        } else {
+                            System.out.println("Warning: multiple MainBox.");
+                        }
                     }
                 }
                 if (box != null) {
@@ -148,8 +151,37 @@ public class GameModel {
     }
 
     public void loadGame() {
-
+        initView();
+        //导入保存的操作
+        setMovementStack(rootPaneController.getUserData().getMapRecord().getRecordDeque());
+        //重新加载key
+        loadKeyMap(rootPaneController.getUserData().getMapRecord().getKeyMap());
     }//todo
+
+    public Map<String, Integer> getKeyMap() {
+        if (boxes == null) return null;
+        //储存key对应方块的位置，重新加载位置方块对应key不变
+        Map<String, Integer> keyMap = new HashMap<>();
+        for (Map.Entry<Integer, BoxModel> entry : boxes.entrySet()) {
+            String rowCol = String.format("%d%d", entry.getValue().getRow(), entry.getValue().getCol());
+            keyMap.put(rowCol, entry.getKey());
+        }
+
+        return keyMap;
+    }
+
+    public void loadKeyMap(Map<String, Integer> map) {
+        Map<Integer, BoxModel> newBoxes = new HashMap<>();
+        for (Map.Entry<Integer, BoxModel> entry : boxes.entrySet()) {
+            String current = String.format("%d%d", entry.getValue().getRow(), entry.getValue().getCol());
+            int key = map.get(current);
+            entry.getValue().setKey(key);
+            newBoxes.put(key, entry.getValue());
+        }
+
+        setBoxes(newBoxes);
+        System.out.println(newBoxes);
+    }
 
     public void doMoveUp() {
         if (selectedBox != null) {
@@ -198,16 +230,10 @@ public class GameModel {
 
     public boolean isSucceed() {
         return mainBox.getCol() == mapModel.getTargetCol() && mainBox.getRow() == mapModel.getTargetRow();
-
-    } //todo
+    }
 
     public void endGame() {
-        saveGame();
         System.out.println("Saving succeed");
-    }//todo
-
-    public void saveGame() {
-
     }//todo
 
     //-----------------------------------------------------------
@@ -257,6 +283,10 @@ public class GameModel {
 
     public Deque<MovementRecord> getMovementStack() {
         return movementStack;
+    }
+
+    public void setMovementStack(Deque<MovementRecord> movementStack) {
+        this.movementStack = movementStack;
     }
 
     public GameRootPaneController getRootPaneController() {
