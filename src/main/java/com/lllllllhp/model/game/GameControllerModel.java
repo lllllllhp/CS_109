@@ -174,6 +174,7 @@ public class GameControllerModel {
                 System.out.println("无解");
                 return;
             }
+
             Timeline timeline = new Timeline();
 
             KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.3), e -> {
@@ -181,7 +182,10 @@ public class GameControllerModel {
                     MovementRecord movementRecord = solution.pollFirst();
                     if (doMove(mapModel, gameModel.getBoxes().get(movementRecord.getBoxKey()), movementRecord.getRow(), movementRecord.getCol(), movementRecord.getDirection())) {
                         gameModel.afterMove(movementRecord.getRow() + movementRecord.getDirection().getRow(), movementRecord.getCol() + movementRecord.getDirection().getCol(), movementRecord.getDirection());
-                    } else System.out.println("fail at: " + movementRecord);
+                    } else {
+                        System.out.println("fail at: " + movementRecord);
+                        timeline.stop();
+                    }
                     if (gameModel.isSucceed()) {
                         gameModel.getRootPaneController().turnToWinPane();
                         gameModel.endGame();

@@ -2,19 +2,26 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:id="rootPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lllllllhp.controller.userPage.CoverController">
    <children>
-      <AnchorPane fx:id="coverPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleContinue" prefHeight="450.0" prefWidth="800.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="119.0" prefWidth="270.0" text="This is cover." textAlignment="CENTER">
+         <font>
+            <Font name="Century Gothic" size="31.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../image/cover.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="coverPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleContinue" onMouseClicked="#handleContinue" prefHeight="450.0" prefWidth="800.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="264.0" layoutY="165.0" prefHeight="119.0" prefWidth="270.0" text="This is cover." textAlignment="CENTER">
-               <font>
-                  <Font name="Century Gothic" size="31.0" />
-               </font>
-            </Label>
             <Label fx:id="welcome" alignment="CENTER" contentDisplay="CENTER" layoutX="322.0" layoutY="401.0" prefHeight="34.0" prefWidth="155.0" text="press to continue">
                <font>
                   <Font name="Century Gothic" size="16.0" />

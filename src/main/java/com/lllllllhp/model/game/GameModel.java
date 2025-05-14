@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 
 import java.util.*;
 
+import static com.lllllllhp.utils.dataUtils.DataUtils.userData;
+
 public class GameModel {
     private GameRootPaneController rootPaneController;
     private GameControllerModel gameControllerModel;
@@ -153,9 +155,9 @@ public class GameModel {
     public void loadGame() {
         initView();
         //导入保存的操作
-        setMovementStack(rootPaneController.getUserData().getMapRecord().getRecordDeque());
+        setMovementStack(userData.getMapRecord().getRecordDeque());
         //重新加载key
-        loadKeyMap(rootPaneController.getUserData().getMapRecord().getKeyMap());
+        loadKeyMap(userData.getMapRecord().getKeyMap());
     }//todo
 
     public Map<String, Integer> getKeyMap() {
@@ -233,7 +235,7 @@ public class GameModel {
     }
 
     public void endGame() {
-        System.out.println("Saving succeed");
+
     }//todo
 
     //-----------------------------------------------------------

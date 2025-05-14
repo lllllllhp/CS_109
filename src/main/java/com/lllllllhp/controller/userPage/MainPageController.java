@@ -21,9 +21,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Stream;
 
+import static com.lllllllhp.utils.dataUtils.DataUtils.userData;
+
 public class MainPageController {
     private Stage currentStage;
-    private UserData userData;
+
     @FXML
     Pane mainPane;
     @FXML
@@ -72,7 +74,6 @@ public class MainPageController {
             GameRootPaneController gameRootPaneController = loader.getController();
             this.gameRootPaneController = gameRootPaneController;
             gameRootPaneController.setCurrentStage(currentStage);
-            gameRootPaneController.setUserData(userData);
 
             currentStage.getScene().setRoot(root);
             currentStage.setTitle("Game");
@@ -192,10 +193,6 @@ public class MainPageController {
     //------------------------------------------------------------------------------------
     public void setCurrentStage(Stage currentStage) {
         this.currentStage = currentStage;
-    }
-
-    public void setUserData(UserData userData) {
-        this.userData = userData;
     }
 
     public void setCurrentLabel(Label currentLabel) {

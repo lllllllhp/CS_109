@@ -2,6 +2,7 @@ package com.lllllllhp;
 
 import com.lllllllhp.controller.userPage.CoverController;
 import com.lllllllhp.utils.audioPlayer.AudioPlayer;
+import com.lllllllhp.utils.dataUtils.DataUtils;
 import com.lllllllhp.utils.socket.NetUtils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +18,7 @@ import java.util.stream.Stream;
 public class MainApp extends Application {
     @Override
     public void init() {
-
+        AudioPlayer.init();
     }
 
     @Override
@@ -34,11 +35,16 @@ public class MainApp extends Application {
         primaryStage.setFullScreen(false);
         primaryStage.show();
 
-        AudioPlayer.playBGM();
+        //AudioPlayer.playBGM();
     }
 
     @Override
     public void stop() {
+        //退出自动保存
+        if (DataUtils.isMember) {
+            DataUtils.userData.save();
+        }
+
         //删除临时账号
         Path path = Path.of("src/main/resources/User/Guest_");
         if (Files.exists(path) && Files.isDirectory(path)) {

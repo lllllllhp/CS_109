@@ -46,6 +46,10 @@ public class UserData {
         level = 1;
     }//初始化，注册新用户
 
+    public void addRating(double addRating) {
+        this.rating += addRating;
+    }
+
     //------------------------------------------------------------
     public String getId() {
         return id;

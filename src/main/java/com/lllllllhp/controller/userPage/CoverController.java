@@ -1,12 +1,14 @@
 package com.lllllllhp.controller.userPage;
 
 import com.lllllllhp.data.UserData;
+import com.lllllllhp.utils.dataUtils.DataUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -41,6 +43,7 @@ public class CoverController {
             throw new RuntimeException(e);
         }
     }
+
     public void handleGuest() {
         //临时账号，用于临时保存进度
         UserData guest = new UserData("Guest_", "0");
@@ -51,7 +54,8 @@ public class CoverController {
             Parent root = loader.load();
             MainPageController mainPageController = loader.getController();
             mainPageController.setCurrentStage(currentStage);
-            mainPageController.setUserData(guest);
+            DataUtils.setUserData(guest);
+            DataUtils.isMember = false;
 
             mainPageController.initMainPage();
 
@@ -64,6 +68,13 @@ public class CoverController {
 
     @FXML
     private void handleContinue(KeyEvent keyEvent) {
+        loginButton.setVisible(true);
+        guestButton.setVisible(true);
+        welcome.setVisible(false);
+    }
+
+    @FXML
+    private void handleContinue(MouseEvent mouseEvent) {
         loginButton.setVisible(true);
         guestButton.setVisible(true);
         welcome.setVisible(false);

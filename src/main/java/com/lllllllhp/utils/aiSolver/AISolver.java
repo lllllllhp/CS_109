@@ -59,9 +59,7 @@ public class AISolver extends GameModel {
                 System.out.println("try numbers: " + tryNum);
 
                 if (curState.getMovementRecords() != null) {
-                    for (MovementRecord move : curState.getMovementRecords()) {
-                        System.out.println(move);
-                    }
+                    System.out.println("find solution!");
                 } else {
                     System.out.println("no solution/error");
                 }

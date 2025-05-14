@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.lllllllhp.data.UserData;
 import com.lllllllhp.utils.dataChecker.DataChecker;
+import com.lllllllhp.utils.dataUtils.DataUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,9 +18,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import static com.lllllllhp.utils.dataUtils.DataUtils.userData;
+
 public class LoginController {
     private Stage currentStage;
-    private UserData userData;
 
     @FXML
     TextField idField;
@@ -43,7 +45,6 @@ public class LoginController {
             Parent root = loader.load();
             MainPageController mainPageController = loader.getController();
             mainPageController.setCurrentStage(currentStage);
-            mainPageController.setUserData(userData);
 
             mainPageController.initMainPage();
 
@@ -78,7 +79,9 @@ public class LoginController {
                     System.out.println("Wrong Password.");
                     return false;
                 }
-                setUserData(temp);//传入数据
+                //传入数据
+                DataUtils.setUserData(temp);
+
                 System.out.println("data is valid");
                 return true;
             } catch (IOException e) {
@@ -94,7 +97,9 @@ public class LoginController {
                 UserData temp = new UserData(id, passWord);
                 String newData = gson.toJson(temp);
                 Files.writeString(path, newData);
-                setUserData(temp);//传入数据
+                //传入数据
+                DataUtils.setUserData(temp);
+
                 System.out.println("Welcome newcomer.");
                 return true;
             } catch (IOException e) {
@@ -113,13 +118,5 @@ public class LoginController {
 
     public void setCurrentStage(Stage currentStage) {
         this.currentStage = currentStage;
-    }
-
-    public UserData getUserData() {
-        return userData;
-    }
-
-    public void setUserData(UserData userData) {
-        this.userData = userData;
     }
 }

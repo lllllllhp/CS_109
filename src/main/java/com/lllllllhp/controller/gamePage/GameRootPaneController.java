@@ -19,6 +19,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import static com.lllllllhp.utils.dataUtils.DataUtils.userData;
+
 public class GameRootPaneController {
     //gamePage
     @FXML
@@ -35,7 +37,6 @@ public class GameRootPaneController {
     @FXML
     private Pane winPane;
 
-    private UserData userData;
     private GameControllerModel gameControllerModel;
     private Stage currentStage;
     private GameModel gameModel;
@@ -141,6 +142,7 @@ public class GameRootPaneController {
         totalSteps.setText(String.format("Total Steps: %d", gameModel.getMapModel().getSteps()));
         //清除上次游戏记录
         userData.setMapRecord(null);
+        userData.addRating(0.5);
 
         winPane.toFront();
         winPane.setDisable(false);
@@ -156,7 +158,6 @@ public class GameRootPaneController {
             Parent root = loader.load();
             MainPageController mainPageController = loader.getController();
             mainPageController.setCurrentStage(currentStage);
-            mainPageController.setUserData(userData);
             //更新主界面
             mainPageController.initMainPage();
 
@@ -198,14 +199,6 @@ public class GameRootPaneController {
 
     public void setTotalSteps(Label totalSteps) {
         this.totalSteps = totalSteps;
-    }
-
-    public UserData getUserData() {
-        return userData;
-    }
-
-    public void setUserData(UserData userData) {
-        this.userData = userData;
     }
 
     public MapModel getChooseMap() {
