@@ -40,7 +40,7 @@ public class GameModel {
     public GameModel(MapModel mapModel) {
         boxes = new HashMap<>();
         this.mapModel = mapModel;
-    }//todo: init map
+    }
 
     public void selectBox(MouseEvent mouseEvent) {
         BoxModel clickedBox = null;//点击的box

@@ -150,8 +150,16 @@ public class GameRootPaneController {
         winPane.setVisible(true);
     }
 
+    @FXML
+    public void handleReturn() {
+        //退出时保存
+        if (gameControllerModel != null) gameControllerModel.saveGame();
+        returnToMainPage();
+    }
+
     //-----------------------------------------------------------------------------------------------------------------------
     //win pane
+    @FXML
     public void returnToMainPage() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userPage/mainPage.fxml"));

@@ -2,7 +2,7 @@ package com.lllllllhp.data;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.lllllllhp.utils.dataChecker.DataChecker;
+import com.lllllllhp.utils.dataUtils.DataChecker;
 
 import java.io.IOException;
 import java.nio.file.Files;

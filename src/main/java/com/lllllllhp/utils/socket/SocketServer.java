@@ -10,7 +10,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class SocketServer extends SocketBase {
+public class SocketServer {
     ServerSocket serverSocket;
     final int PORT;
     final CopyOnWriteArrayList<ObjectOutputStream> clientOutputs = new CopyOnWriteArrayList<>();

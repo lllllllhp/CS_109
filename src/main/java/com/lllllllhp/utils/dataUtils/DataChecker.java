@@ -1,4 +1,4 @@
-package com.lllllllhp.utils.dataChecker;
+package com.lllllllhp.utils.dataUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

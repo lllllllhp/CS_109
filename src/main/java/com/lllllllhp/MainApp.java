@@ -35,7 +35,7 @@ public class MainApp extends Application {
         primaryStage.setFullScreen(false);
         primaryStage.show();
 
-        //AudioPlayer.playBGM();
+        AudioPlayer.playBGM();
     }
 
     @Override

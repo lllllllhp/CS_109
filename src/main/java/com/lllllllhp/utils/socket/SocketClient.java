@@ -11,7 +11,7 @@ import java.net.Socket;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
-public class SocketClient extends SocketBase {
+public class SocketClient {
     private Socket client;
     private final String SERVER_IP;
     private final int PORT;
