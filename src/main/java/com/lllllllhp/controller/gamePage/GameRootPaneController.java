@@ -138,7 +138,7 @@ public class GameRootPaneController {
     }
 
     public void updateTimer() {
-        timerLabel.setText(gameModel.getTimer().toString());
+        timerLabel.setText(gameModel.getTime().toString());
     }
 
     public void turnToWinPane() {
@@ -164,6 +164,7 @@ public class GameRootPaneController {
     //win pane
     @FXML
     public void returnToMainPage() {
+        gameModel.getTimeline().stop();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userPage/mainPage.fxml"));
             Parent root = loader.load();

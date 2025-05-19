@@ -1,7 +1,6 @@
 package com.lllllllhp.model.game;
 
 import com.lllllllhp.data.MapRecord;
-import com.lllllllhp.data.UserData;
 import com.lllllllhp.utils.aiSolver.AISolver;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -154,6 +153,8 @@ public class GameControllerModel {
         userData.getMapRecord().setRecordDeque(gameModel.getMovementStack());
         //记录当前box的key
         userData.getMapRecord().setKeyMap(gameModel.getKeyMap());
+        //记录用时
+        userData.getMapRecord().setTime(gameModel.getTime());
         userData.save();
     }
 

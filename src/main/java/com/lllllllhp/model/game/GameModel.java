@@ -4,6 +4,7 @@ import com.lllllllhp.controller.gamePage.GameRootPaneController;
 import com.lllllllhp.data.MapPreset;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -26,7 +27,9 @@ public class GameModel {
     private Rectangle target;
     private Pane gamePane;
     private Map<Integer, BoxModel> boxes = new HashMap<>();
-    private final Timer timer = new Timer(0);
+
+    private Time time = new Time(0);
+    private final Timeline timeline = new Timeline();
 
     public static int GRID_SIZE = 75;
     //记录所有移动
@@ -176,6 +179,9 @@ public class GameModel {
         setMovementStack(userData.getMapRecord().getRecordDeque());
         //重新加载key
         loadKeyMap(userData.getMapRecord().getKeyMap());
+
+        setTime(userData.getMapRecord().getTime());
+        rootPaneController.updateTimer();
     }
 
     public Map<String, Integer> getKeyMap() {
@@ -257,12 +263,12 @@ public class GameModel {
     }//todo
 
     public void startTimer() {
-        timer.getTimeline().getKeyFrames().add(new KeyFrame(Duration.seconds(1), actionEvent -> {
-            timer.addSeconds(1);
+        timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), actionEvent -> {
+            time.addSeconds(1);
             rootPaneController.updateTimer();
         }));
-        timer.getTimeline().setCycleCount(Animation.INDEFINITE);
-        timer.getTimeline().play();
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
     }//todo
 
     //-----------------------------------------------------------
@@ -338,7 +344,15 @@ public class GameModel {
         this.boxes = boxes;
     }
 
-    public Timer getTimer() {
-        return timer;
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
+    }
+
+    public Timeline getTimeline() {
+        return timeline;
     }
 }

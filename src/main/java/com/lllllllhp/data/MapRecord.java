@@ -2,12 +2,13 @@ package com.lllllllhp.data;
 
 import com.lllllllhp.model.game.MapModel;
 import com.lllllllhp.model.game.MovementRecord;
+import com.lllllllhp.model.game.Time;
 
 import java.util.*;
 
 public class MapRecord {
     private MapModel mapModel;
-    private double time;
+    private Time time;
     private Deque<MovementRecord> recordDeque = new ArrayDeque<>();
     private Map<String, Integer> keyMap = new HashMap<>();
 
@@ -37,5 +38,13 @@ public class MapRecord {
 
     public void setKeyMap(Map<String, Integer> keyMap) {
         this.keyMap = keyMap;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
     }
 }

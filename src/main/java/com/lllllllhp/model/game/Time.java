@@ -1,44 +1,26 @@
 package com.lllllllhp.model.game;
 
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.util.Duration;
-
-public class Timer {
+public class Time {
     private int hour;
     private int minute;
     private int second;
-    private Timeline timeline = new Timeline();
 
-    public Timer(int hour, int minute, int second) {
+    public Time(int hour, int minute, int second) {
         this.hour = hour;
         this.minute = minute;
         this.second = second;
     }
 
-    public Timer(int minute, int second) {
+    public Time(int minute, int second) {
         this(0, minute, second);
     }
 
-    public Timer(int second) {
+    public Time(int second) {
         this(0, 0, second);
     }
 
-    static public Timer copyTime(Timer time) {
-        return new Timer(time.hour, time.minute, time.second);
-    }
-
-    public void pause() {
-        timeline.pause();
-    }
-
-    public void restart() {
-        timeline.play();
-    }
-
-    public void stop() {
-        timeline.stop();
+    static public Time copyTime(Time time) {
+        return new Time(time.hour, time.minute, time.second);
     }
 
     public void addSeconds(int add) {
@@ -100,14 +82,6 @@ public class Timer {
 
     public void setSecond(int second) {
         this.second = second;
-    }
-
-    public Timeline getTimeline() {
-        return timeline;
-    }
-
-    public void setTimeline(Timeline timeline) {
-        this.timeline = timeline;
     }
 
     @Override
