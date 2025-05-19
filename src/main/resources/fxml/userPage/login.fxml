@@ -28,9 +28,14 @@
                   <Font name="Century Gothic" size="22.0" />
                </font>
             </Label>
-            <Button layoutX="310.0" layoutY="345.0" mnemonicParsing="false" onAction="#handleConfirm" prefHeight="50.0" prefWidth="179.0" text="confirm">
+            <Button focusTraversable="false" layoutX="310.0" layoutY="345.0" mnemonicParsing="false" onAction="#handleConfirm" prefHeight="50.0" prefWidth="179.0" text="confirm">
                <font>
                   <Font name="Century Gothic" size="25.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" layoutX="734.0" layoutY="422.0" mnemonicParsing="false" onAction="#returnToCover" prefHeight="28.0" prefWidth="66.0" text="return">
+               <font>
+                  <Font name="Century Gothic" size="14.0" />
                </font>
             </Button>
          </children>

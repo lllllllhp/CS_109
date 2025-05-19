@@ -7,6 +7,8 @@ import com.lllllllhp.model.game.Time;
 import java.util.*;
 
 public class MapRecord {
+    private String name;
+    private boolean hadSuccess = false;
     private MapModel mapModel;
     private Time time;
     private Deque<MovementRecord> recordDeque = new ArrayDeque<>();
@@ -14,6 +16,7 @@ public class MapRecord {
 
     public MapRecord(MapModel mapModel) {
         this.mapModel = mapModel;
+        this.name = mapModel.getName();
     }
 
     public MapModel getMapModel() {
@@ -46,5 +49,21 @@ public class MapRecord {
 
     public void setTime(Time time) {
         this.time = time;
+    }
+
+    public boolean isHadSuccess() {
+        return hadSuccess;
+    }
+
+    public void setHadSuccess(boolean hadSuccess) {
+        this.hadSuccess = hadSuccess;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

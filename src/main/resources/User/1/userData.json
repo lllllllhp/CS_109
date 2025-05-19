@@ -3,41 +3,44 @@
   "id": "1",
   "passWord": "1",
   "level": 1,
-  "rating": 5.0,
+  "rating": 6.0,
   "mapRecord": {
+    "name": "5_5",
+    "hadSuccess": false,
     "mapModel": {
+      "name": "5_5",
       "matrix": [
         [
           1,
           1,
-          0,
           4,
-          4
-        ],
-        [
-          0,
-          0,
-          0,
           4,
-          4
-        ],
-        [
-          0,
-          1,
-          0,
-          0,
           1
         ],
         [
-          9,
+          3,
+          3,
+          4,
+          4,
+          3
+        ],
+        [
+          3,
+          3,
+          2,
+          2,
+          3
+        ],
+        [
           0,
+          3,
           1,
-          9,
+          1,
           3
         ],
         [
           1,
-          0,
+          3,
           0,
           1,
           3
@@ -47,34 +50,34 @@
         [
           1,
           1,
-          0,
           4,
-          4
-        ],
-        [
-          0,
-          0,
-          0,
           4,
-          4
-        ],
-        [
-          0,
-          1,
-          0,
-          0,
           1
         ],
         [
-          9,
+          3,
+          3,
+          4,
+          4,
+          3
+        ],
+        [
+          3,
+          3,
+          2,
+          2,
+          3
+        ],
+        [
           0,
+          3,
           1,
-          9,
+          1,
           3
         ],
         [
           1,
-          0,
+          3,
           0,
           1,
           3
@@ -87,19 +90,532 @@
     "time": {
       "hour": 0,
       "minute": 0,
-      "second": 44
+      "second": 17
     },
     "recordDeque": [],
     "keyMap": {
       "00": 1,
+      "11": 6,
+      "22": 8,
+      "33": 11,
       "01": 2,
-      "34": 7,
-      "24": 5,
-      "03": 3,
-      "40": 8,
-      "21": 4,
-      "32": 6,
-      "43": 9
+      "34": 12,
+      "02": 3,
+      "14": 7,
+      "04": 4,
+      "40": 13,
+      "31": 9,
+      "10": 5,
+      "32": 10,
+      "43": 14
+    }
+  },
+  "playRecords": {
+    "null": {
+      "hadSuccess": true,
+      "mapModel": {
+        "name": "obstacle2",
+        "matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            9,
+            9,
+            9,
+            0,
+            0
+          ],
+          [
+            9,
+            4,
+            4,
+            0,
+            0
+          ],
+          [
+            9,
+            4,
+            4,
+            0,
+            0
+          ]
+        ],
+        "copyMatrix": [
+          [
+            4,
+            4,
+            0,
+            0,
+            0
+          ],
+          [
+            4,
+            4,
+            0,
+            0,
+            0
+          ],
+          [
+            9,
+            9,
+            9,
+            0,
+            0
+          ],
+          [
+            9,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            9,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "targetRow": 3,
+        "targetCol": 1,
+        "steps": 8
+      },
+      "time": {
+        "hour": 0,
+        "minute": 0,
+        "second": 4
+      },
+      "recordDeque": [
+        {
+          "stepNum": 8,
+          "boxKey": 1,
+          "col": 2,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 7,
+          "boxKey": 1,
+          "col": 3,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 6,
+          "boxKey": 1,
+          "col": 3,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 5,
+          "boxKey": 1,
+          "col": 3,
+          "row": 1,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 4,
+          "boxKey": 1,
+          "col": 3,
+          "row": 0,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 3,
+          "boxKey": 1,
+          "col": 2,
+          "row": 0,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 2,
+          "boxKey": 1,
+          "col": 1,
+          "row": 0,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 1,
+          "boxKey": 1,
+          "col": 0,
+          "row": 0,
+          "direction": "RIGHT"
+        }
+      ],
+      "keyMap": {
+        "31": 1
+      }
+    },
+    "obstacle2": {
+      "name": "obstacle2",
+      "hadSuccess": true,
+      "mapModel": {
+        "name": "obstacle2",
+        "matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            9,
+            9,
+            9,
+            0,
+            0
+          ],
+          [
+            9,
+            4,
+            4,
+            0,
+            0
+          ],
+          [
+            9,
+            4,
+            4,
+            0,
+            0
+          ]
+        ],
+        "copyMatrix": [
+          [
+            4,
+            4,
+            0,
+            0,
+            0
+          ],
+          [
+            4,
+            4,
+            0,
+            0,
+            0
+          ],
+          [
+            9,
+            9,
+            9,
+            0,
+            0
+          ],
+          [
+            9,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            9,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "targetRow": 3,
+        "targetCol": 1,
+        "steps": 8
+      },
+      "time": {
+        "hour": 0,
+        "minute": 0,
+        "second": 3
+      },
+      "recordDeque": [
+        {
+          "stepNum": 8,
+          "boxKey": 1,
+          "col": 2,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 7,
+          "boxKey": 1,
+          "col": 3,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 6,
+          "boxKey": 1,
+          "col": 3,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 5,
+          "boxKey": 1,
+          "col": 3,
+          "row": 1,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 4,
+          "boxKey": 1,
+          "col": 3,
+          "row": 0,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 3,
+          "boxKey": 1,
+          "col": 2,
+          "row": 0,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 2,
+          "boxKey": 1,
+          "col": 1,
+          "row": 0,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 1,
+          "boxKey": 1,
+          "col": 0,
+          "row": 0,
+          "direction": "RIGHT"
+        }
+      ],
+      "keyMap": {
+        "31": 1
+      }
+    },
+    "map2": {
+      "name": "map2",
+      "hadSuccess": true,
+      "mapModel": {
+        "name": "map2",
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            4,
+            0
+          ],
+          [
+            0,
+            4,
+            4,
+            0
+          ]
+        ],
+        "copyMatrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            4,
+            4,
+            0
+          ],
+          [
+            1,
+            4,
+            4,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "targetRow": 3,
+        "targetCol": 1,
+        "steps": 2
+      },
+      "time": {
+        "hour": 0,
+        "minute": 0,
+        "second": 2
+      },
+      "recordDeque": [
+        {
+          "stepNum": 2,
+          "boxKey": 3,
+          "col": 1,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 1,
+          "boxKey": 3,
+          "col": 1,
+          "row": 1,
+          "direction": "DOWN"
+        }
+      ],
+      "keyMap": {
+        "00": 1,
+        "31": 3,
+        "20": 4,
+        "10": 2
+      }
+    },
+    "5_5": {
+      "name": "5_5",
+      "hadSuccess": true,
+      "mapModel": {
+        "name": "5_5",
+        "matrix": [
+          [
+            1,
+            1,
+            3,
+            1,
+            3
+          ],
+          [
+            3,
+            1,
+            3,
+            1,
+            3
+          ],
+          [
+            3,
+            0,
+            0,
+            1,
+            3
+          ],
+          [
+            3,
+            4,
+            4,
+            1,
+            3
+          ],
+          [
+            3,
+            4,
+            4,
+            2,
+            2
+          ]
+        ],
+        "copyMatrix": [
+          [
+            1,
+            1,
+            4,
+            4,
+            1
+          ],
+          [
+            3,
+            3,
+            4,
+            4,
+            3
+          ],
+          [
+            3,
+            3,
+            2,
+            2,
+            3
+          ],
+          [
+            0,
+            3,
+            1,
+            1,
+            3
+          ],
+          [
+            1,
+            3,
+            0,
+            1,
+            3
+          ]
+        ],
+        "targetRow": 3,
+        "targetCol": 1,
+        "steps": 50
+      },
+      "time": {
+        "hour": 0,
+        "minute": 0,
+        "second": 1
+      },
+      "recordDeque": [],
+      "keyMap": {
+        "00": 1,
+        "33": 13,
+        "11": 14,
+        "23": 10,
+        "01": 11,
+        "13": 2,
+        "02": 6,
+        "24": 12,
+        "03": 4,
+        "04": 7,
+        "30": 9,
+        "31": 3,
+        "10": 5,
+        "43": 8
+      }
     }
   }
 }

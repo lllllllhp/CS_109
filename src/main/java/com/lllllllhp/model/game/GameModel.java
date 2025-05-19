@@ -73,8 +73,9 @@ public class GameModel {
     public void initView() {
         //clear all
         gamePane.getChildren().clear();
-        //加载步数
+        //加载步数/时间
         rootPaneController.updateSteps();
+        rootPaneController.updateTimer();
         //size
         gamePane.setPrefWidth(GRID_SIZE * mapModel.getWidth());
         gamePane.setPrefHeight(GRID_SIZE * mapModel.getHeight());
@@ -263,13 +264,14 @@ public class GameModel {
     }//todo
 
     public void startTimer() {
+        timeline.getKeyFrames().clear();
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), actionEvent -> {
             time.addSeconds(1);
             rootPaneController.updateTimer();
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
-    }//todo
+    }
 
     //-----------------------------------------------------------
     public MapModel getMapModel() {

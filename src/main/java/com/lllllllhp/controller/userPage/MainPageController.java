@@ -4,8 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.lllllllhp.controller.gamePage.GameRootPaneController;
 import com.lllllllhp.data.MapPre;
+import com.lllllllhp.data.MapRecord;
 import com.lllllllhp.data.UserData;
 import com.lllllllhp.model.game.MapModel;
+import com.lllllllhp.utils.dataUtils.DataUtils;
 import com.lllllllhp.utils.socket.NetUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,11 +16,13 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Map;
 import java.util.stream.Stream;
 
 import static com.lllllllhp.utils.dataUtils.DataUtils.userData;
@@ -46,6 +50,12 @@ public class MainPageController {
     //choosePane
     @FXML
     Label tips;
+    @FXML
+    Label mapName;
+    @FXML
+    Label stepCost;
+    @FXML
+    Label timeCost;
     private Label currentLabel;
     private MapPre currentMap;
 
@@ -102,7 +112,7 @@ public class MainPageController {
         if (!NetUtils.hasClient() && !NetUtils.hasServer()) {
             airLabel.setTextFill(Color.GREEN);
             NetUtils.startServer();
-        } else if (NetUtils.hasServer()){
+        } else if (NetUtils.hasServer()) {
             airLabel.setTextFill(Color.BLACK);
             NetUtils.endServer();
         }
@@ -110,16 +120,33 @@ public class MainPageController {
 
     @FXML
     public void handleSpectate() {
-        if (NetUtils.hasServer()){
+        if (NetUtils.hasServer()) {
             System.out.println("You're on air now!");
             warning.setText("You're on air now!");
-        }else if (!NetUtils.hasClient()){
+        } else if (!NetUtils.hasClient()) {
             NetUtils.startClient();
+        }
+    }
+
+    @FXML
+    public void logOut() {
+        DataUtils.logOut();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userPage/cover.fxml"));
+            Parent root = loader.load();
+            CoverController coverController = loader.getController();
+            coverController.setCurrentStage(currentStage);
+
+            currentStage.getScene().setRoot(root);
+            currentStage.setTitle("cover");
+        } catch (IOException e) {
+            System.out.println(e.toString());
         }
     }
 
     //------------------------------------------------------------------
     public void loadMapLabels() {
+        mapContainer.getChildren().clear();
         Path mapFolder = Path.of("src/main/resources/maps");
         if (Files.exists(mapFolder) && Files.isDirectory(mapFolder)) {
             try (Stream<Path> pathStream = Files.list(mapFolder)) {
@@ -164,6 +191,8 @@ public class MainPageController {
     private Label getMapLabel(MapPre mapPre) {
         Label mapLabel = new Label(mapPre.getName());
         mapLabel.setPrefWidth(200);
+        mapLabel.setPrefHeight(50);
+        mapLabel.setFont(new Font(15));
         //设置监听
         mapLabel.setOnMouseClicked(event -> {
             if (currentLabel == null) {
@@ -175,6 +204,16 @@ public class MainPageController {
             }
             setCurrentLabel(mapLabel);
             setCurrentMap(mapPre);
+            //展示游戏记录
+            mapName.setText(mapPre.getName());
+            if (userData.getPlayRecords().containsKey(mapPre.getName())) {
+                MapRecord record = userData.getPlayRecords().get(mapPre.getName());
+                stepCost.setText(String.format("Steps: %d", record.getRecordDeque().size()));
+                timeCost.setText(String.format("Time: %s", record.getTime().toString()));
+            } else {
+                stepCost.setText("暂无游玩记录");
+                timeCost.setText("");
+            }
         });
         return mapLabel;
     }
@@ -188,6 +227,12 @@ public class MainPageController {
         } else {
             warning.setText("请选择地图");
         }
+    }
+
+    @FXML
+    public void returnOnMapChoose() {
+        choosePane.setVisible(false);
+        mainPane.setVisible(true);
     }
 
     //------------------------------------------------------------------------------------

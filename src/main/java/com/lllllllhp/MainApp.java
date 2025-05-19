@@ -71,6 +71,8 @@ public class MainApp extends Application {
         if (NetUtils.hasClient()) {
             NetUtils.endClient();
         }
+
+        System.out.println("ByeBye~~");
     }
 
     public static void main(String[] args) {

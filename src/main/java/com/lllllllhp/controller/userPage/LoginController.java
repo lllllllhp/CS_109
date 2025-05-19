@@ -2,6 +2,7 @@ package com.lllllllhp.controller.userPage;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 import com.lllllllhp.data.UserData;
 import com.lllllllhp.utils.dataUtils.DataChecker;
 import com.lllllllhp.utils.dataUtils.DataUtils;
@@ -84,9 +85,16 @@ public class LoginController {
 
                 System.out.println("data is valid");
                 return true;
+            } catch (JsonSyntaxException e) {
+                //文件损坏
+                System.out.println("data corrupted.");
+                System.out.println(e.toString());
+                warning.setText("data corrupted.");
+                return false;
             } catch (IOException e) {
                 System.out.println("Reading error.");
                 System.out.println(e.toString());
+                warning.setText("Reading error.");
                 return false;
             }
         } else {
@@ -108,6 +116,21 @@ public class LoginController {
                 System.out.println(e.toString());
                 return false;
             }
+        }
+    }
+
+    @FXML
+    public void returnToCover() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userPage/cover.fxml"));
+            Parent root = loader.load();
+            CoverController coverController = loader.getController();
+            coverController.setCurrentStage(currentStage);
+
+            currentStage.getScene().setRoot(root);
+            currentStage.setTitle("cover");
+        } catch (IOException e) {
+            System.out.println(e.toString());
         }
     }
 

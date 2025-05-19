@@ -6,6 +6,7 @@ import com.lllllllhp.data.MapPreset;
 import java.util.Arrays;
 
 public class MapModel {
+    private String name;
     protected int[][] matrix;
     int[][] copyMatrix;  //备份，用于restart
     private int targetRow;
@@ -32,6 +33,7 @@ public class MapModel {
         }
         this.targetCol = mapPre.getTargetCol();
         this.targetRow = mapPre.getTargetRow();
+        this.name = mapPre.getName();
     }
     //加载预设map
     public MapModel(MapPreset mapPreset) {
@@ -141,6 +143,14 @@ public class MapModel {
 
     public void setMatrix(int[][] matrix) {
         this.matrix = matrix;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override

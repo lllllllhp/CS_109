@@ -10,4 +10,9 @@ public class DataUtils {
         DataUtils.userData = userData;
         isMember = true;
     }
+
+    public static void logOut() {
+        userData = null;
+        isMember = false;
+    }
 }

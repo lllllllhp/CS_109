@@ -31,7 +31,7 @@
          <children>
             <Pane layoutX="495.0" layoutY="33.0" prefHeight="83.0" prefWidth="208.0">
                <children>
-                  <Label fx:id="timerLabel" alignment="CENTER" prefHeight="37.0" prefWidth="208.0" text="Time: 00:00:00">
+                  <Label fx:id="timerLabel" alignment="CENTER" prefHeight="37.0" prefWidth="208.0" text="Time: ">
                      <font>
                         <Font name="Century Gothic" size="26.0" />
                      </font>

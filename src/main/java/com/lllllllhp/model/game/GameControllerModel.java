@@ -142,7 +142,11 @@ public class GameControllerModel {
         for (int i = 0; i < mapModel.getMatrix().length; i++) {
             mapModel.getMatrix()[i] = Arrays.copyOf(mapModel.getCopyData()[i], mapModel.getCopyData()[i].length);
         }
+
+        gameModel.getTimeline().stop();
+        gameModel.setTime(new Time(0));
         mapModel.setSteps(0);
+
         gameModel.initView();
         System.out.println("Game Restart");
     }

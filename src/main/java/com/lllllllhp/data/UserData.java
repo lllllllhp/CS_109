@@ -7,6 +7,8 @@ import com.lllllllhp.utils.dataUtils.DataChecker;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UserData {
     private boolean isMember;
@@ -15,6 +17,7 @@ public class UserData {
     private int level;
     private double rating;
     private MapRecord mapRecord;
+    private Map<String, MapRecord> playRecords = new HashMap<>();
 
     public void save() {
         Path dataPath = Path.of("src/main/resources/User", id, "userData.json");
@@ -48,6 +51,18 @@ public class UserData {
 
     public void addRating(double addRating) {
         this.rating += addRating;
+    }
+
+    public void saveRecord(MapRecord mapRecord) {
+        //保存step最少的
+        if (!playRecords.containsKey(mapRecord.getName()))
+            playRecords.put(mapRecord.getName(), mapRecord);
+        else if (playRecords.get(mapRecord.getName()).getRecordDeque().size() > mapRecord.getRecordDeque().size()) {
+            playRecords.put(mapRecord.getName(), mapRecord);
+        } else if (playRecords.get(mapRecord.getName()).getRecordDeque().size() == mapRecord.getRecordDeque().size()
+                && playRecords.get(mapRecord.getName()).getTime().getTotal() >= mapRecord.getTime().getTotal()) {
+            playRecords.put(mapRecord.getName(), mapRecord);
+        }
     }
 
     //------------------------------------------------------------
@@ -97,5 +112,13 @@ public class UserData {
 
     public void setMember(boolean member) {
         isMember = member;
+    }
+
+    public Map<String, MapRecord> getPlayRecords() {
+        return playRecords;
+    }
+
+    public void setPlayRecords(Map<String, MapRecord> playRecords) {
+        this.playRecords = playRecords;
     }
 }

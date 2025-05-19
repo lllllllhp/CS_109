@@ -138,11 +138,16 @@ public class GameRootPaneController {
     }
 
     public void updateTimer() {
-        timerLabel.setText(gameModel.getTime().toString());
+        timerLabel.setText(String.format("Time: %s", gameModel.getTime().toString()));
     }
 
     public void turnToWinPane() {
         totalSteps.setText(String.format("Total Steps: %d", gameModel.getMapModel().getSteps()));
+
+        //保存胜利记录
+        gameControllerModel.saveGame();
+        userData.getMapRecord().setHadSuccess(true);
+        userData.saveRecord(userData.getMapRecord());
         //清除上次游戏记录
         userData.setMapRecord(null);
         userData.addRating(0.5);
