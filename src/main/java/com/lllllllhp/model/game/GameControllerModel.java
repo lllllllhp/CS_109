@@ -12,9 +12,9 @@ import javafx.util.Duration;
 import java.util.*;
 
 import static com.lllllllhp.model.game.GameModel.GRID_SIZE;
+import static com.lllllllhp.utils.dataUtils.DataUtils.userData;
 
 public class GameControllerModel {
-    private UserData userData;
     private GameModel gameModel;
     private MapModel mapModel;
 
@@ -225,13 +225,5 @@ public class GameControllerModel {
 
     public void setMapModel(MapModel mapModel) {
         this.mapModel = mapModel;
-    }
-
-    public UserData getUserData() {
-        return userData;
-    }
-
-    public void setUserData(UserData userData) {
-        this.userData = userData;
     }
 }

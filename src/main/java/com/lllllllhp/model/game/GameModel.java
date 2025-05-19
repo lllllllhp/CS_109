@@ -2,12 +2,14 @@ package com.lllllllhp.model.game;
 
 import com.lllllllhp.controller.gamePage.GameRootPaneController;
 import com.lllllllhp.data.MapPreset;
-import com.lllllllhp.data.UserData;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.util.*;
 
@@ -24,6 +26,7 @@ public class GameModel {
     private Rectangle target;
     private Pane gamePane;
     private Map<Integer, BoxModel> boxes = new HashMap<>();
+    private final Timer timer = new Timer(0);
 
     public static int GRID_SIZE = 75;
     //记录所有移动
@@ -85,12 +88,27 @@ public class GameModel {
         target.setDisable(true);
         gamePane.getChildren().addAll(target);
 
+        //加载障碍物
+        for (int i = 0; i < mapModel.getHeight(); i++) {
+            for (int j = 0; j < mapModel.getWidth(); j++) {
+                if (mapModel.getId(i, j) == 9) {
+                    Rectangle obstacle = new Rectangle(j * GRID_SIZE, i * GRID_SIZE, GRID_SIZE, GRID_SIZE);
+                    obstacle.setFill(Color.gray(0.5));
+                    obstacle.setStroke(Color.BLACK);
+                    obstacle.setStrokeWidth(1.5);
+                    gamePane.getChildren().add(obstacle);
+                }
+            }
+        }
+
         initGameData();
 
         for (Map.Entry<Integer, BoxModel> entry : boxes.entrySet()) {
             BoxModel box = entry.getValue();
             gamePane.getChildren().addAll(box);
         }
+        //开始计时
+        startTimer();
     }
 
     public void initGameData() {
@@ -158,7 +176,7 @@ public class GameModel {
         setMovementStack(userData.getMapRecord().getRecordDeque());
         //重新加载key
         loadKeyMap(userData.getMapRecord().getKeyMap());
-    }//todo
+    }
 
     public Map<String, Integer> getKeyMap() {
         if (boxes == null) return null;
@@ -238,6 +256,15 @@ public class GameModel {
 
     }//todo
 
+    public void startTimer() {
+        timer.getTimeline().getKeyFrames().add(new KeyFrame(Duration.seconds(1), actionEvent -> {
+            timer.addSeconds(1);
+            rootPaneController.updateTimer();
+        }));
+        timer.getTimeline().setCycleCount(Animation.INDEFINITE);
+        timer.getTimeline().play();
+    }//todo
+
     //-----------------------------------------------------------
     public MapModel getMapModel() {
         return mapModel;
@@ -309,5 +336,9 @@ public class GameModel {
 
     public void setBoxes(Map<Integer, BoxModel> boxes) {
         this.boxes = boxes;
+    }
+
+    public Timer getTimer() {
+        return timer;
     }
 }

@@ -1,7 +1,6 @@
 package com.lllllllhp.controller.gamePage;
 
 import com.lllllllhp.controller.userPage.MainPageController;
-import com.lllllllhp.data.UserData;
 import com.lllllllhp.model.game.GameControllerModel;
 import com.lllllllhp.model.game.GameModel;
 import com.lllllllhp.model.game.MapModel;
@@ -29,6 +28,8 @@ public class GameRootPaneController {
     private Pane pagePane;
     @FXML
     private Label stepCounter;
+    @FXML
+    private Label timerLabel;
     //victory pane
     @FXML
     private Label totalSteps;
@@ -69,8 +70,6 @@ public class GameRootPaneController {
         gameModel.setRootPaneController(this);
         gameModel.setGamePane(gamePane);
         gameModel.setCurrentStage(currentStage);
-
-        gameControllerModel.setUserData(userData);
     }
 
     @FXML
@@ -136,6 +135,10 @@ public class GameRootPaneController {
 
     public void updateSteps() {
         stepCounter.setText(String.format("Steps: %d", gameModel.getMapModel().getSteps()));
+    }
+
+    public void updateTimer() {
+        timerLabel.setText(gameModel.getTimer().toString());
     }
 
     public void turnToWinPane() {
