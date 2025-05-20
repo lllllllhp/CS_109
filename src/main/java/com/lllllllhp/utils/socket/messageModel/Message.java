@@ -3,7 +3,7 @@ package com.lllllllhp.utils.socket.messageModel;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Message implements Serializable {
+public abstract class Message implements Serializable {
     protected Type type;
     protected String sender;
 
@@ -17,4 +17,6 @@ public class Message implements Serializable {
         this.sender = sender;
         this.dateTime = dateTime;
     }
+
+    public abstract void show();
 }

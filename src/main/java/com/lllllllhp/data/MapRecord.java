@@ -4,9 +4,10 @@ import com.lllllllhp.model.game.MapModel;
 import com.lllllllhp.model.game.MovementRecord;
 import com.lllllllhp.model.game.Time;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class MapRecord {
+public class MapRecord implements Serializable {
     private String name;
     private boolean hadSuccess = false;
     private MapModel mapModel;

@@ -1,6 +1,8 @@
 package com.lllllllhp.model.game;
 
-public class MovementRecord {
+import java.io.Serializable;
+
+public class MovementRecord implements Serializable {
     private int stepNum;
     private int boxKey;
     private int col;

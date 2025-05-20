@@ -5,6 +5,7 @@ import com.lllllllhp.model.game.GameControllerModel;
 import com.lllllllhp.model.game.GameModel;
 import com.lllllllhp.model.game.MapModel;
 
+import com.lllllllhp.utils.socket.NetUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,6 +27,8 @@ public class GameRootPaneController {
     private Pane gamePane;
     @FXML
     private Pane pagePane;
+    @FXML
+    private Pane operatePane;
     @FXML
     private Label stepCounter;
     @FXML
@@ -57,10 +60,43 @@ public class GameRootPaneController {
         gameModel.loadGame();
     }
 
+    public void initSpectatingPage() {
+        if (!NetUtils.hasClient() || !NetUtils.client.isConnected()) return;
+        //-------------------------------
+        pagePane.setDisable(false);
+        winPane.setDisable(true);
+        winPane.setVisible(false);
+        operatePane.setVisible(false);
+        gameModel = new GameModel(){
+            //无法选择box
+            @Override
+            public void selectBox(MouseEvent mouseEvent) {
+            }
+        };
+        gameControllerModel = new GameControllerModel();
+
+        gameModel.setGameController(gameControllerModel);
+        gameControllerModel.setGameModel(gameModel);
+
+        gameModel.setRootPaneController(this);
+        gameModel.setGamePane(gamePane);
+        gameModel.setCurrentStage(currentStage);
+        //---------------------------------------------
+        gameModel.setMapModel(NetUtils.ClientData.spectatingMap.getMapModel());
+        gameControllerModel.setMapModel(NetUtils.ClientData.spectatingMap.getMapModel());
+
+        NetUtils.ClientData.clientGame = gameModel;
+        NetUtils.ClientData.clientGameCon = gameControllerModel;
+
+        gameModel.loadGame();
+    }
+
     public void initPane() {
         pagePane.setDisable(false);
         winPane.setDisable(true);
         winPane.setVisible(false);
+        operatePane.setVisible(true);
+
         gameModel = new GameModel();
         gameControllerModel = new GameControllerModel();
 

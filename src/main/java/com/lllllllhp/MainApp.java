@@ -3,6 +3,7 @@ package com.lllllllhp;
 import com.lllllllhp.controller.userPage.CoverController;
 import com.lllllllhp.utils.audioPlayer.AudioPlayer;
 import com.lllllllhp.utils.dataUtils.DataUtils;
+import com.lllllllhp.utils.settings.Settings;
 import com.lllllllhp.utils.socket.NetUtils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -33,6 +34,7 @@ public class MainApp extends Application {
         primaryStage.setTitle("Cover");
         primaryStage.setScene(scene);
         primaryStage.setFullScreen(false);
+        Settings.setCurrentStage(primaryStage);
         primaryStage.show();
 
         AudioPlayer.playBGM();

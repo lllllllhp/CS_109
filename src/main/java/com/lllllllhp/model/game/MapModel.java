@@ -3,9 +3,10 @@ package com.lllllllhp.model.game;
 import com.lllllllhp.data.MapPre;
 import com.lllllllhp.data.MapPreset;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class MapModel {
+public class MapModel implements Serializable {
     private String name;
     protected int[][] matrix;
     int[][] copyMatrix;  //备份，用于restart

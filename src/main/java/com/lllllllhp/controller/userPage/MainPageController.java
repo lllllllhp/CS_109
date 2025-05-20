@@ -93,6 +93,11 @@ public class MainPageController {
     }
 
     public void initMainPage() {
+        //初始化地图选择界面
+        mapName.setText("");
+        timeCost.setText("");
+        stepCost.setText("");
+        //初始化mainPage
         choosePane.setVisible(false);
         mainPane.setVisible(true);
         id.setText(userData.getId());

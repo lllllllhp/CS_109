@@ -17,4 +17,9 @@ public class Chat extends Message {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return String.format("[%s] %s: %s", dateTime.format(formatter), sender, content);
     }
+
+    @Override
+    public void show() {
+        System.out.println(this);
+    }
 }

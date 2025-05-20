@@ -11,7 +11,7 @@
 
 <StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lllllllhp.controller.userPage.MainPageController">
    <children>
-      <Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0">
+      <Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" visible="false">
          <children>
             <Button focusTraversable="false" layoutX="172.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleNewGame" prefHeight="32.0" prefWidth="129.0" text="New Game">
                <font>
@@ -69,7 +69,7 @@
             </Button>
          </children>
       </Pane>
-      <Pane fx:id="choosePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" visible="false" StackPane.alignment="CENTER">
+      <Pane fx:id="choosePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" StackPane.alignment="CENTER">
          <children>
             <ScrollPane hbarPolicy="NEVER" layoutX="600.0" prefHeight="450.0" prefWidth="200.0">
                <content>

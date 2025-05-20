@@ -2,6 +2,9 @@ package com.lllllllhp.model.game;
 
 import com.lllllllhp.controller.gamePage.GameRootPaneController;
 import com.lllllllhp.data.MapPreset;
+import com.lllllllhp.utils.socket.NetUtils;
+import com.lllllllhp.utils.socket.messageModel.MapInfo;
+import com.lllllllhp.utils.socket.messageModel.MoveInfo;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -12,6 +15,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.*;
 
 import static com.lllllllhp.utils.dataUtils.DataUtils.userData;
@@ -111,6 +116,17 @@ public class GameModel {
             BoxModel box = entry.getValue();
             gamePane.getChildren().addAll(box);
         }
+
+        gameControllerModel.saveGame();
+        //传观战
+        if (NetUtils.hasServer() && NetUtils.server.isRunning()) {
+            try {
+                NetUtils.server.broadcast(new MapInfo(userData.getMapRecord(), userData.getId(), LocalDateTime.now()));
+            } catch (IOException e) {
+                System.out.println(e.toString());
+            }
+        }
+
         //开始计时
         startTimer();
     }
@@ -249,6 +265,17 @@ public class GameModel {
             movementStack.push(new MovementRecord(mapModel.getSteps(), selectedBox.getKey(), row - direction.getRow(), col - direction.getCol(), direction));
             System.out.println(movementStack.peek());
         }
+
+        //广播操作
+        if (NetUtils.hasServer() && NetUtils.server.isRunning()) {
+            try {
+                NetUtils.server.broadcast(new MoveInfo(movementStack.peek(), userData.getId(), LocalDateTime.now()));
+            } catch (IOException e) {
+                System.out.println("broadcast error");
+                System.out.println(e.toString());
+            }
+        }
+
         if (isSucceed()) {
             getRootPaneController().turnToWinPane();
             endGame();

@@ -1,6 +1,8 @@
 package com.lllllllhp.model.game;
 
-public class Time {
+import java.io.Serializable;
+
+public class Time implements Serializable {
     private int hour;
     private int minute;
     private int second;

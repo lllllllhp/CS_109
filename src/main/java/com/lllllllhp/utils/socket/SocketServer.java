@@ -1,5 +1,6 @@
 package com.lllllllhp.utils.socket;
 
+import com.lllllllhp.utils.socket.messageModel.Chat;
 import com.lllllllhp.utils.socket.messageModel.Message;
 
 import java.io.*;
@@ -14,7 +15,8 @@ public class SocketServer {
     ServerSocket serverSocket;
     final int PORT;
     final CopyOnWriteArrayList<ObjectOutputStream> clientOutputs = new CopyOnWriteArrayList<>();
-    final ExecutorService pool = Executors.newCachedThreadPool();
+    final ExecutorService pool = Executors.newFixedThreadPool(5);
+    final ExecutorService broadcastPoll = Executors.newSingleThreadExecutor();
     volatile boolean isRunning = false;
 
     public SocketServer(int PORT) {
@@ -78,16 +80,16 @@ public class SocketServer {
                 }
             }
         }
-
-        public void broadcast(Message msg) throws IOException {
-            for (ObjectOutputStream writer : clientOutputs) {
-                writer.writeObject(msg);
-                writer.flush();
-            }
-            System.out.println(msg);
-        }
     }
 
+    public <T extends Message> void broadcast(T msg) throws IOException {
+        for (ObjectOutputStream writer : clientOutputs) {
+            writer.writeObject(msg);
+            writer.flush();
+        }
+        //展示聊天
+        if (msg instanceof Chat) msg.show();
+    }
 
     public void closeServer() {
         try {
@@ -105,5 +107,9 @@ public class SocketServer {
 
     public int getPORT() {
         return PORT;
+    }
+
+    public boolean isRunning() {
+        return isRunning;
     }
 }

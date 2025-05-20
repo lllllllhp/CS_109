@@ -2,16 +2,21 @@ package com.lllllllhp.model.game;
 
 import com.lllllllhp.data.MapRecord;
 import com.lllllllhp.utils.aiSolver.AISolver;
+import com.lllllllhp.utils.socket.NetUtils;
+import com.lllllllhp.utils.socket.messageModel.Command;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.concurrent.Task;
 import javafx.util.Duration;
 
+import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.*;
 
 import static com.lllllllhp.model.game.GameModel.GRID_SIZE;
 import static com.lllllllhp.utils.dataUtils.DataUtils.userData;
+import static com.lllllllhp.utils.socket.NetUtils.ClientData.clientGame;
 
 public class GameControllerModel {
     private GameModel gameModel;
@@ -109,33 +114,40 @@ public class GameControllerModel {
     }
 
     public void undo() {
-        MovementRecord movementRecord = null;
         if (gameModel.getMovementStack().isEmpty()) {
             System.out.println("You can't undo now.");
-        } else {
-            movementRecord = gameModel.getMovementStack().peek();
-            Direction undoDirection;
-            if (movementRecord != null) {
-                //判断undo方向
-                if (movementRecord.getDirection().equals(Direction.UP)) {
-                    undoDirection = Direction.DOWN;
-                } else if (movementRecord.getDirection().equals(Direction.DOWN)) {
-                    undoDirection = Direction.UP;
-                } else if (movementRecord.getDirection().equals(Direction.LEFT)) {
-                    undoDirection = Direction.RIGHT;
-                } else {
-                    undoDirection = Direction.LEFT;
-                }
-                //移动
-                if (doMove(mapModel, gameModel.getBoxes().get(movementRecord.getBoxKey()), movementRecord.getRow() - undoDirection.getRow(), movementRecord.getCol() - undoDirection.getCol(), undoDirection)) {
-                    System.out.println(gameModel.getMovementStack().pop());
-                    mapModel.minusSteps();
-                    gameModel.getRootPaneController().updateSteps();
-                    System.out.println("Undo succeed.");
-                } else System.out.println("Undo error.");
+            return;
+        }
+
+        MovementRecord movementRecord = gameModel.getMovementStack().peek();
+        Direction undoDirection;
+        if (movementRecord != null) {
+            //判断undo方向
+            if (movementRecord.getDirection().equals(Direction.UP)) {
+                undoDirection = Direction.DOWN;
+            } else if (movementRecord.getDirection().equals(Direction.DOWN)) {
+                undoDirection = Direction.UP;
+            } else if (movementRecord.getDirection().equals(Direction.LEFT)) {
+                undoDirection = Direction.RIGHT;
+            } else {
+                undoDirection = Direction.LEFT;
+            }
+            //移动
+            if (doMove(mapModel, gameModel.getBoxes().get(movementRecord.getBoxKey()), movementRecord.getRow() - undoDirection.getRow(), movementRecord.getCol() - undoDirection.getCol(), undoDirection)) {
+                System.out.println(gameModel.getMovementStack().pop());
+                mapModel.minusSteps();
+                gameModel.getRootPaneController().updateSteps();
+                System.out.println("Undo succeed.");
+            } else System.out.println("Undo error.");
+        }
+
+        if (NetUtils.hasServer() && NetUtils.server.isRunning()) {
+            try {
+                NetUtils.server.broadcast(new Command(Command.CommandType.UNDO, userData.getId(), LocalDateTime.now()));
+            } catch (IOException e) {
+                System.out.println(e.toString());
             }
         }
-        //todo
     }
 
     public void restart() {
@@ -149,6 +161,14 @@ public class GameControllerModel {
 
         gameModel.initView();
         System.out.println("Game Restart");
+
+        if (NetUtils.hasServer() && NetUtils.server.isRunning()) {
+            try {
+                NetUtils.server.broadcast(new Command(Command.CommandType.RESTART, userData.getId(), LocalDateTime.now()));
+            } catch (IOException e) {
+                System.out.println(e.toString());
+            }
+        }
     }
 
     public void saveGame() {
@@ -163,6 +183,15 @@ public class GameControllerModel {
     }
 
     public void aiSolve() throws InterruptedException {
+        //传给观众
+        if (NetUtils.hasServer() && NetUtils.server.isRunning()) {
+            try {
+                NetUtils.server.broadcast(new Command(Command.CommandType.AI_SOLVE, userData.getId(), LocalDateTime.now()));
+            } catch (IOException e) {
+                System.out.println(e.toString());
+            }
+        }
+
         Task<Deque<MovementRecord>> task = new Task<>() {
             @Override
             protected Deque<MovementRecord> call() {
@@ -186,6 +215,8 @@ public class GameControllerModel {
                 if (!solution.isEmpty()) {
                     MovementRecord movementRecord = solution.pollFirst();
                     if (doMove(mapModel, gameModel.getBoxes().get(movementRecord.getBoxKey()), movementRecord.getRow(), movementRecord.getCol(), movementRecord.getDirection())) {
+                        //设置选中的box，防止异常
+                        gameModel.setSelectedBox(getGameModel().getBoxes().get(movementRecord.getBoxKey()));
                         gameModel.afterMove(movementRecord.getRow() + movementRecord.getDirection().getRow(), movementRecord.getCol() + movementRecord.getDirection().getCol(), movementRecord.getDirection());
                     } else {
                         System.out.println("fail at: " + movementRecord);

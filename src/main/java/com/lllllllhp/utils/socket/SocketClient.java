@@ -1,5 +1,6 @@
 package com.lllllllhp.utils.socket;
 
+import com.lllllllhp.utils.dataUtils.DataUtils;
 import com.lllllllhp.utils.socket.messageModel.Chat;
 import com.lllllllhp.utils.socket.messageModel.Message;
 
@@ -10,6 +11,8 @@ import java.net.BindException;
 import java.net.Socket;
 import java.time.LocalDateTime;
 import java.util.Scanner;
+
+import static com.lllllllhp.utils.dataUtils.DataUtils.userData;
 
 public class SocketClient {
     private Socket client;
@@ -35,9 +38,7 @@ public class SocketClient {
             connected = true;
             System.out.println("connect to server");
 
-            System.out.println("Please enter your name: ");
-            userName = scanner.nextLine();
-            System.out.println("succeed, your name: " + userName);
+            userName = userData.getId();
 
             out = new ObjectOutputStream(client.getOutputStream());
             in = new ObjectInputStream(client.getInputStream());
@@ -66,7 +67,7 @@ public class SocketClient {
             try {
                 while (client.isConnected()) {
                     Message msg = (Message) in.readObject();
-                    System.out.println(msg);
+                    msg.show();
                 }
             } catch (IOException | ClassNotFoundException e) {
                 System.out.println(e.toString());
