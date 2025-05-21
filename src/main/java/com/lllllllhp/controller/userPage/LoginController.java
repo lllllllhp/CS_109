@@ -10,19 +10,23 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Random;
 
 import static com.lllllllhp.utils.dataUtils.DataUtils.userData;
 
 public class LoginController {
     private Stage currentStage;
+    String currentCaptcha;
 
     @FXML
     TextField idField;
@@ -30,6 +34,63 @@ public class LoginController {
     TextField passWordField;
     @FXML
     Label warning;
+    @FXML
+    Button Captcha;
+    @FXML
+    TextField captchaField;
+    @FXML
+    public void refresh() {
+        StringBuilder captcha = new StringBuilder();
+        Random random = new Random();
+        // 生成指定长度的随机数字和字母组合
+        for (int i = 0; i < 5; i++) {
+            int charType = random.nextInt(3);
+            switch (charType) {
+                case 0: // 数字
+                    captcha.append(random.nextInt(10));
+                    break;
+                case 1: // 大写字母
+                    captcha.append((char) (random.nextInt(26) + 65));
+                    break;
+                case 2: // 小写字母
+                    captcha.append((char) (random.nextInt(26) + 97));
+                    break;
+            }
+        }
+
+        currentCaptcha = captcha.toString();
+
+        // 设置按钮文本为验证码
+        Captcha.setText(currentCaptcha);
+
+        // 添加视觉干扰 - 随机颜色
+        Color randomColor = Color.rgb(
+                random.nextInt(128),
+                random.nextInt(128),
+                random.nextInt(128)
+        );
+
+        // 添加视觉干扰 - 随机旋转
+        Captcha.setRotate(random.nextInt(11) - 5); // -5到5度之间的随机旋转
+
+        // 更新按钮样式
+        Captcha.setStyle(String.format(
+                "-fx-background-color: #4a86e8; -fx-text-fill: rgb(%d,%d,%d); -fx-font-size: 20px;",
+                (int) (randomColor.getRed() * 255),
+                (int) (randomColor.getGreen() * 255),
+                (int) (randomColor.getBlue() * 255)
+        ));
+    }
+
+    public boolean checkCaptcha() {
+        String captchaCode = captchaField.getText();
+        if (captchaCode.equals(currentCaptcha)) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 
     @FXML
     private void handleConfirm(ActionEvent actionEvent) {
@@ -38,7 +99,11 @@ public class LoginController {
             System.out.println("Please enter your id and password.");
             return;
         }
-
+        if (!checkCaptcha()) {
+            System.out.println("captcha wrong");
+            warning.setText("captcha wrong");
+            return;
+        }
         if (!check()) return;
 
         try {
@@ -61,9 +126,11 @@ public class LoginController {
         String passWord = passWordField.getText();
         Path path = Paths.get("src/main/resources/User", id);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
         if (Files.exists(path) && Files.isDirectory(path)) {
             //已注册用户，检查密码
             path = path.resolve("userData.json");
+
             try {
                 String inputData = Files.readString(path);
                 UserData temp = gson.fromJson(inputData, UserData.class);
