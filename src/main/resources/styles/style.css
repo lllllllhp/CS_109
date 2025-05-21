@@ -10,21 +10,76 @@
     -fx-font-family: "Zpix";
     -fx-padding: 8 16;
     -fx-border-color: #042900;
-    -fx-border-width: 5px;
+    -fx-border-width: 4px;
     -fx-background-radius: 0;
 }
 
-.pixel-button:hover {
+.pixel-midButton {
+    -fx-background-color: rgb(189, 183, 70);
+    -fx-text-fill: #ca4b4b;
+    -fx-font-size: 22px;
+    -fx-font-family: "Zpix";
+    -fx-padding: 6 12;
+    -fx-border-color: #042900;
+    -fx-border-width: 4px;
+    -fx-background-radius: 0;
+}
+
+.pixel-smallButton {
+    -fx-background-color: rgb(189, 183, 70);
+    -fx-text-fill: #ca4b4b;
+    -fx-font-size: 12px;
+    -fx-font-family: "Zpix";
+    -fx-padding: 2 4;
+    -fx-border-color: #042900;
+    -fx-border-width: 3px;
+    -fx-background-radius: 0;
+}
+
+.pixel-button:hover,
+.pixel-midButton:hover,
+.pixel-smallButton:hover {
     -fx-background-color: #706c23;
     -fx-cursor: hand;
 }
 
 .transparent-label {
-    -fx-background-color: rgba(255, 255, 255, 0.5);
+    -fx-background-color: rgba(255, 255, 255, 0.7);
     -fx-text-fill: black;
     -fx-padding: 4px;
+    -fx-background-radius: 3px;
 }
 
-.transparent-pane {
+.transparent-container {
+    -fx-background-color: rgba(255, 255, 255, 0.4);
+}
+
+.transparent-textField {
+    -fx-background-color: rgba(255, 255, 255, 0.85);
+    -fx-background-radius: 3px;
+}
+
+/* 半透明背景 */
+.scroll-pane {
     -fx-background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* 内容透明 */
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* 滚动条透明 */
+.scroll-bar:vertical,
+.scroll-bar:horizontal,
+.scroll-bar .thumb {
+    -fx-background-color: transparent;
+}
+
+/* 边框 */
+.scroll-bar .track,
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
 }

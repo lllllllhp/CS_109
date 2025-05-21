@@ -36,6 +36,8 @@ public class CoverController {
             Parent root = loader.load();
             LoginController loginController = loader.getController();
             loginController.setCurrentStage(currentStage);
+            //直接生成验证码
+            loginController.refresh();
 
             currentStage.getScene().setRoot(root);
             currentStage.setTitle("Login");

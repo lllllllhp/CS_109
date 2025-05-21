@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane fx:id="rootPane" stylesheets="@../../styles/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lllllllhp.controller.userPage.CoverController">
+<StackPane fx:id="rootPane" prefHeight="450.0" prefWidth="800.0" stylesheets="@../../styles/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lllllllhp.controller.userPage.CoverController">
     <children>
         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="119.0" prefWidth="270.0" text="This is cover." textAlignment="CENTER">
         </Label>

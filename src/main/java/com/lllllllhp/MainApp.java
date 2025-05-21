@@ -34,7 +34,7 @@ public class MainApp extends Application {
         CoverController coverController = loader.getController();
         coverController.setCurrentStage(primaryStage);
 
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, 800, 450);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles/style.css")).toExternalForm());
 
         primaryStage.setTitle("Cover");

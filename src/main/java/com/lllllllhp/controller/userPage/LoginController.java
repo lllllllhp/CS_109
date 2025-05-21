@@ -83,13 +83,8 @@ public class LoginController {
     }
 
     public boolean checkCaptcha() {
-        String captchaCode = captchaField.getText();
-        if (captchaCode.equals(currentCaptcha)) {
-            return true;
-        } else {
-            return false;
-        }
-
+        String captchaCode = captchaField.getText().toUpperCase();
+        return captchaCode.equals(currentCaptcha.toUpperCase());
     }
 
     @FXML
