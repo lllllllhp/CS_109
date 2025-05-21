@@ -4,29 +4,25 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lllllllhp.controller.userPage.MainPageController">
+<StackPane stylesheets="@../../styles/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lllllllhp.controller.userPage.MainPageController">
    <children>
-      <Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" visible="false">
+      <Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0">
          <children>
-            <Button focusTraversable="false" layoutX="172.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleNewGame" prefHeight="32.0" prefWidth="129.0" text="New Game">
-               <font>
-                  <Font name="Century Gothic" size="17.0" />
-               </font></Button>
-            <Button focusTraversable="false" layoutX="505.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleLoadGame" prefHeight="32.0" prefWidth="129.0" text="Load Game">
-               <font>
-                  <Font name="Century Gothic" size="17.0" />
-               </font></Button>
-            <Label alignment="CENTER" focusTraversable="false" layoutX="117.0" layoutY="164.0" prefHeight="122.0" prefWidth="567.0" text="Welcome">
-               <font>
-                  <Font name="Century Gothic" size="94.0" />
-               </font>
-            </Label>
-            <Pane fx:id="infoPane" prefHeight="122.0" prefWidth="345.0">
+            <ImageView fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../image/cover.png" />
+               </image>
+            </ImageView>
+            <Button focusTraversable="false" layoutX="150.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleNewGame" prefHeight="42.0" prefWidth="178.0" styleClass="pixel-button" text="New Game" />
+            <Button focusTraversable="false" layoutX="489.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleLoadGame" prefHeight="42.0" prefWidth="178.0" styleClass="pixel-button" text="Load Game" />
+            <Pane fx:id="infoPane" prefHeight="122.0" prefWidth="345.0" styleClass="transparent-pane">
                <children>
                   <Label fx:id="id" layoutX="19.0" layoutY="14.0" prefHeight="32.0" prefWidth="325.0" text="id">
                      <font>
@@ -45,12 +41,12 @@
                   </Label>
                </children>
             </Pane>
-            <Label fx:id="warning" alignment="CENTER" layoutX="153.0" layoutY="276.0" prefHeight="72.0" prefWidth="510.0" textFill="RED">
+            <Label fx:id="warning" alignment="CENTER" layoutX="154.0" layoutY="271.0" prefHeight="72.0" prefWidth="510.0" textFill="RED">
                <font>
                   <Font name="Century Gothic" size="22.0" />
                </font>
             </Label>
-            <Label fx:id="airLabel" alignment="CENTER" focusTraversable="false" layoutX="328.0" layoutY="408.0" onMouseClicked="#handleOnAir" prefHeight="42.0" prefWidth="161.0" text="AIR MODE">
+            <Label fx:id="airLabel" alignment="CENTER" focusTraversable="false" layoutX="328.0" layoutY="408.0" onMouseClicked="#handleOnAir" prefHeight="42.0" prefWidth="161.0" styleClass="transparent-label" text="AIR MODE">
                <font>
                   <Font name="Century Gothic" size="24.0" />
                </font>
@@ -69,7 +65,7 @@
             </Button>
          </children>
       </Pane>
-      <Pane fx:id="choosePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" StackPane.alignment="CENTER">
+      <Pane fx:id="choosePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" visible="false" StackPane.alignment="CENTER">
          <children>
             <ScrollPane hbarPolicy="NEVER" layoutX="600.0" prefHeight="450.0" prefWidth="200.0">
                <content>

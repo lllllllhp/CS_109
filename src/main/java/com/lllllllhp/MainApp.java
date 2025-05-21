@@ -9,17 +9,21 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Objects;
 import java.util.stream.Stream;
 
 public class MainApp extends Application {
     @Override
     public void init() {
         AudioPlayer.init();
+        Settings.initFont();
     }
 
     @Override
@@ -31,6 +35,8 @@ public class MainApp extends Application {
         coverController.setCurrentStage(primaryStage);
 
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles/style.css")).toExternalForm());
+
         primaryStage.setTitle("Cover");
         primaryStage.setScene(scene);
         primaryStage.setFullScreen(false);

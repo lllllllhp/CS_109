@@ -1,0 +1,30 @@
+.root {
+    -fx-font-family: "Zpix";
+    -fx-font-size: 12px;
+}
+
+.pixel-button {
+    -fx-background-color: rgb(189, 183, 70);
+    -fx-text-fill: #ca4b4b;
+    -fx-font-size: 24px;
+    -fx-font-family: "Zpix";
+    -fx-padding: 8 16;
+    -fx-border-color: #042900;
+    -fx-border-width: 5px;
+    -fx-background-radius: 0;
+}
+
+.pixel-button:hover {
+    -fx-background-color: #706c23;
+    -fx-cursor: hand;
+}
+
+.transparent-label {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+    -fx-text-fill: black;
+    -fx-padding: 4px;
+}
+
+.transparent-pane {
+    -fx-background-color: rgba(255, 255, 255, 0.3);
+}

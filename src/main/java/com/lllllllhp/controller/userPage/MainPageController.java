@@ -8,6 +8,7 @@ import com.lllllllhp.data.MapRecord;
 import com.lllllllhp.data.UserData;
 import com.lllllllhp.model.game.MapModel;
 import com.lllllllhp.utils.dataUtils.DataUtils;
+import com.lllllllhp.utils.settings.Settings;
 import com.lllllllhp.utils.socket.NetUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -163,7 +164,6 @@ public class MainPageController {
                     mapContainer.getChildren().addAll(noMapLabel);
                 } else {
                     mapFiles.forEach(path -> {
-                        //todo:预加载地图
                         String map;
                         Gson gson = new GsonBuilder().create();
                         try {
@@ -197,7 +197,7 @@ public class MainPageController {
         Label mapLabel = new Label(mapPre.getName());
         mapLabel.setPrefWidth(200);
         mapLabel.setPrefHeight(50);
-        mapLabel.setFont(new Font(15));
+        mapLabel.setFont(Settings.pixelFont);
         //设置监听
         mapLabel.setOnMouseClicked(event -> {
             if (currentLabel == null) {

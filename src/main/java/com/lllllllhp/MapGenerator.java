@@ -10,7 +10,7 @@ import java.nio.file.Path;
 
 public class MapGenerator {
     public static void main(String[] args) {
-        String name = "obstacle2";
+        String name = "no solution";
         String fileName = name + ".json";
 
         Path path = Path.of("src/main/resources/maps", fileName);
@@ -21,7 +21,7 @@ public class MapGenerator {
                 {4, 4, 0, 0, 0},
                 {9, 9, 9, 0, 0},
                 {9, 0, 0, 0, 0},
-                {9, 0, 0, 0, 0},
+                {9, 0, 0, 0, 9},
         };
         int targetCol = 1;
         int targetRow = 3;

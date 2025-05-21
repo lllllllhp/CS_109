@@ -67,13 +67,6 @@ public class CoverController {
     }//直接进入main page
 
     @FXML
-    private void handleContinue(KeyEvent keyEvent) {
-        loginButton.setVisible(true);
-        guestButton.setVisible(true);
-        welcome.setVisible(false);
-    }
-
-    @FXML
     private void handleContinue(MouseEvent mouseEvent) {
         loginButton.setVisible(true);
         guestButton.setVisible(true);

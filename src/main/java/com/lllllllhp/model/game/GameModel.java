@@ -86,7 +86,7 @@ public class GameModel {
         gamePane.setPrefHeight(GRID_SIZE * mapModel.getHeight());
         //边框
         broader = new Rectangle(0, 0, GRID_SIZE * mapModel.getWidth(), GRID_SIZE * mapModel.getHeight());
-        broader.setFill(Color.gray(0.85));
+        broader.setFill(Color.TRANSPARENT);
         broader.setStroke(Color.BLACK);
         broader.setStrokeWidth(2);
         gamePane.getChildren().addAll(broader);
