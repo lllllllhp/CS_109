@@ -6,88 +6,79 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane stylesheets="@../../styles/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lllllllhp.controller.userPage.MainPageController">
+<StackPane prefHeight="765.0" prefWidth="1360.0" stylesheets="@../../styles/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lllllllhp.controller.userPage.MainPageController">
    <children>
-      <Pane fx:id="choosePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" StackPane.alignment="CENTER">
+      <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="1360.0">
          <children>
-            <ImageView fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../image/gameBackground.png" />
-               </image>
-            </ImageView>
-            <ScrollPane hbarPolicy="NEVER" layoutX="600.0" prefHeight="450.0" prefWidth="200.0" styleClass="transparent-container">
-               <content>
-                  <VBox fx:id="mapContainer" prefHeight="450.0" prefWidth="200.0" styleClass="transparent-container" />
-               </content>
-            </ScrollPane>
-            <Button alignment="CENTER" focusTraversable="false" layoutX="311.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleConfirm" prefHeight="51.0" prefWidth="177.0" styleClass="pixel-button" text="confirm" />
-            <Label fx:id="tips" alignment="CENTER" layoutX="189.0" layoutY="303.0" prefHeight="42.0" prefWidth="247.0" style="-fx-font-size: 20;" text="Label" />
-            <Button focusTraversable="false" layoutX="538.0" layoutY="424.0" mnemonicParsing="false" onAction="#returnOnMapChoose" prefHeight="23.0" prefWidth="62.0" styleClass="pixel-smallButton" text="return" />
-            <Pane layoutX="109.0" layoutY="23.0" prefHeight="280.0" prefWidth="407.0">
-               <children>
-                  <Label fx:id="mapName" focusTraversable="false" prefHeight="83.0" prefWidth="397.0" style="-fx-font-size: 45;" text="mapName" />
-                  <Label fx:id="timeCost" focusTraversable="false" layoutX="80.0" layoutY="199.0" prefHeight="42.0" prefWidth="247.0" style="-fx-font-size: 25;" text="timeCost" />
-                  <Label fx:id="stepCost" focusTraversable="false" layoutX="80.0" layoutY="119.0" prefHeight="42.0" prefWidth="247.0" style="-fx-font-size: 25;" text="stepCost" />
-               </children>
-            </Pane>
-         </children>
-      </Pane>
-      <Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" visible="false">
-         <children>
-            <ImageView fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="765.0" fitWidth="1360.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../image/cover.png" />
                </image>
             </ImageView>
-            <Button focusTraversable="false" layoutX="142.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleNewGame" prefHeight="42.0" prefWidth="178.0" styleClass="pixel-button" text="New Game" />
-            <Button focusTraversable="false" layoutX="481.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleLoadGame" prefHeight="42.0" prefWidth="178.0" styleClass="pixel-button" text="Load Game" />
-            <Pane fx:id="infoPane" prefHeight="122.0" prefWidth="345.0" styleClass="transparent-container">
+            <Button alignment="CENTER" focusTraversable="false" layoutX="346.0" layoutY="597.0" mnemonicParsing="false" onAction="#handleNewGame" prefHeight="42.0" prefWidth="178.0" styleClass="pixel-button" text="New Game" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="300.0" />
+            <Button alignment="CENTER" focusTraversable="false" layoutX="835.0" layoutY="597.0" mnemonicParsing="false" onAction="#handleLoadGame" prefHeight="42.0" prefWidth="178.0" styleClass="pixel-button" text="Load Game" AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="300.0" />
+            <Pane fx:id="infoPane" prefHeight="210.0" prefWidth="800.0" styleClass="profile" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label fx:id="id" layoutX="19.0" layoutY="14.0" prefHeight="32.0" prefWidth="325.0" text="id">
-                     <font>
-                        <Font name="Century Gothic" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="level" layoutX="19.0" layoutY="46.0" prefHeight="32.0" prefWidth="183.0" text="level">
-                     <font>
-                        <Font name="Century Gothic" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="rating" layoutX="19.0" layoutY="78.0" prefHeight="32.0" prefWidth="183.0" text="rating">
-                     <font>
-                        <Font name="Century Gothic" size="20.0" />
-                     </font>
-                  </Label>
+                  <StackPane prefHeight="210.0" prefWidth="210.0" styleClass="avatar">
+                     <children>
+                        <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="avatar">
+                           <image>
+                              <Image url="@../../image/defaultAvatar.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+                  <Label fx:id="id" layoutX="210.0" prefHeight="70.0" prefWidth="590.0" style="-fx-font-size: 45;" text="id" />
+                  <Label fx:id="level" layoutX="210.0" layoutY="70.0" prefHeight="70.0" prefWidth="590.0" style="-fx-font-size: 45;" text="level" />
+                  <Label fx:id="rating" layoutX="210.0" layoutY="140.0" prefHeight="70.0" prefWidth="590.0" style="-fx-font-size: 45;" text="rating" />
                </children>
             </Pane>
-            <Label fx:id="warning" alignment="CENTER" layoutX="154.0" layoutY="271.0" prefHeight="72.0" prefWidth="510.0" textFill="RED">
-               <font>
-                  <Font name="Century Gothic" size="22.0" />
-               </font>
-            </Label>
-            <Label fx:id="airLabel" alignment="CENTER" focusTraversable="false" layoutX="320.0" layoutY="404.0" onMouseClicked="#handleOnAir" prefHeight="42.0" prefWidth="161.0" styleClass="transparent-label" text="AIR MODE">
-               <font>
-                  <Font name="Century Gothic" size="24.0" />
-               </font>
+            <Label fx:id="warning" alignment="CENTER" layoutX="155.0" layoutY="276.0" prefHeight="72.0" prefWidth="510.0" style="-fx-font-size: 23;" textFill="RED" />
+            <Label fx:id="airLabel" alignment="CENTER" focusTraversable="false" layoutX="599.0" layoutY="722.0" onMouseClicked="#handleOnAir" prefHeight="42.0" prefWidth="161.0" style="-fx-font-size: 25;" styleClass="transparent-label" text="AIR MODE" AnchorPane.bottomAnchor="0.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Button focusTraversable="false" layoutX="717.0" layoutY="425.0" mnemonicParsing="false" onAction="#handleSpectate" text="spectating">
+            <Button alignment="CENTER" focusTraversable="false" layoutX="1280.0" layoutY="708.0" mnemonicParsing="false" onAction="#handleSpectate" prefHeight="25.0" prefWidth="79.0" styleClass="pixel-smallButton" text="spectating" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font></Button>
-            <Button focusTraversable="false" layoutX="717.0" layoutY="397.0" mnemonicParsing="false" onAction="#logOut" prefHeight="23.0" prefWidth="79.0" text="log out">
+            <Button alignment="CENTER" focusTraversable="false" layoutX="717.0" layoutY="389.0" mnemonicParsing="false" onAction="#logOut" prefHeight="23.0" prefWidth="79.0" styleClass="pixel-smallButton" text="log out" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </Button>
          </children>
-      </Pane>
+      </AnchorPane>
+      <AnchorPane fx:id="choosePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="1360.0" visible="false" StackPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="765.0" fitWidth="1360.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../image/gameBackground.png" />
+               </image>
+            </ImageView>
+            <ScrollPane hbarPolicy="NEVER" layoutX="600.0" prefHeight="765.0" prefWidth="300.0" styleClass="transparent-container" AnchorPane.rightAnchor="0.0">
+               <content>
+                  <VBox fx:id="mapContainer" prefHeight="765.0" prefWidth="300.0" styleClass="transparent-container" />
+               </content>
+            </ScrollPane>
+            <Button alignment="CENTER" focusTraversable="false" layoutX="449.0" layoutY="644.0" mnemonicParsing="false" onAction="#handleConfirm" prefHeight="51.0" prefWidth="177.0" styleClass="pixel-button" text="confirm" AnchorPane.bottomAnchor="65.60000000000002" AnchorPane.leftAnchor="449.0" />
+            <Label fx:id="tips" alignment="CENTER" layoutX="286.0" layoutY="550.0" prefHeight="72.0" prefWidth="504.0" style="-fx-font-size: 30;" text="Label" AnchorPane.bottomAnchor="143.60000000000002" AnchorPane.leftAnchor="286.0" />
+            <Button focusTraversable="false" layoutY="737.0" mnemonicParsing="false" onAction="#returnOnMapChoose" prefHeight="23.0" prefWidth="62.0" styleClass="pixel-smallButton" text="return" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+            <Pane layoutX="167.0" layoutY="95.0" prefHeight="476.0" prefWidth="777.0">
+               <children>
+                  <Label fx:id="mapName" focusTraversable="false" prefHeight="158.0" prefWidth="778.0" style="-fx-font-size: 70;" text="mapName" />
+                  <Label fx:id="timeCost" focusTraversable="false" layoutX="167.0" layoutY="282.0" prefHeight="89.0" prefWidth="444.0" style="-fx-font-size: 40;" text="timeCost" />
+                  <Label fx:id="stepCost" focusTraversable="false" layoutX="167.0" layoutY="193.0" prefHeight="89.0" prefWidth="444.0" style="-fx-font-size: 40;" text="stepCost" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
    </children>
 </StackPane>

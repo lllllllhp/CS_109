@@ -104,6 +104,7 @@ public class MainPageController {
         id.setText(userData.getId());
         level.setText(String.valueOf(userData.getLevel()));
         rating.setText(String.valueOf(userData.getRating()));
+        currentStage.setTitle(userData.getId());
     }
 
     public void chooseMap() {
@@ -195,8 +196,9 @@ public class MainPageController {
 
     private Label getMapLabel(MapPre mapPre) {
         Label mapLabel = new Label(mapPre.getName());
-        mapLabel.setPrefWidth(200);
-        mapLabel.setPrefHeight(50);
+        mapLabel.setPrefWidth(300);
+        mapLabel.setPrefHeight(80);
+        mapLabel.setStyle("-fx-font-size: 30px");
         mapLabel.setFont(Settings.pixelFont);
         //设置监听
         mapLabel.setOnMouseClicked(event -> {

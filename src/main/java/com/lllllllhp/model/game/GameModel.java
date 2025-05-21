@@ -36,7 +36,7 @@ public class GameModel {
     private Time time = new Time(0);
     private final Timeline timeline = new Timeline();
 
-    public static int GRID_SIZE = 75;
+    public static double GRID_SIZE = 75;
     //记录所有移动
     private Deque<MovementRecord> movementStack = new ArrayDeque<>();
     //目标box,随map init
@@ -76,6 +76,8 @@ public class GameModel {
     }//handle mouse click
 
     public void initView() {
+        //初始GRID_SIZE
+        GRID_SIZE = rootPaneController.getPagePane().getScene().getHeight() / mapModel.getHeight();
         //clear all
         gamePane.getChildren().clear();
         //加载步数/时间
@@ -88,7 +90,7 @@ public class GameModel {
         broader = new Rectangle(0, 0, GRID_SIZE * mapModel.getWidth(), GRID_SIZE * mapModel.getHeight());
         broader.setFill(Color.TRANSPARENT);
         broader.setStroke(Color.BLACK);
-        broader.setStrokeWidth(2);
+        broader.setStrokeWidth(5);
         gamePane.getChildren().addAll(broader);
         //目的地提示
         target = new Rectangle(mapModel.getTargetCol() * GRID_SIZE, mapModel.getTargetRow() * GRID_SIZE, 2 * GRID_SIZE, 2 * GRID_SIZE);
@@ -104,7 +106,7 @@ public class GameModel {
                     Rectangle obstacle = new Rectangle(j * GRID_SIZE, i * GRID_SIZE, GRID_SIZE, GRID_SIZE);
                     obstacle.setFill(Color.gray(0.5));
                     obstacle.setStroke(Color.BLACK);
-                    obstacle.setStrokeWidth(1.5);
+                    obstacle.setStrokeWidth(5);
                     gamePane.getChildren().add(obstacle);
                 }
             }
@@ -277,6 +279,7 @@ public class GameModel {
         }
 
         if (isSucceed()) {
+            timeline.stop();
             getRootPaneController().turnToWinPane();
             endGame();
         }

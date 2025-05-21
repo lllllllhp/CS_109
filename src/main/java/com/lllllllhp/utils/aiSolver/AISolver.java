@@ -9,7 +9,8 @@ import java.util.*;
 public class AISolver extends GameModel {
     //用于减少ai算法占用内存
     private final Map<Integer, BoxData> originBoxDataMap = new HashMap<>();
-    int mainKey;//曹操
+    static int mainKey;//曹操
+    static MapModel mapModel;
     public static int tryNum;
 
     public AISolver(MapModel mapModel, Map<String, Integer> keyMap) {
@@ -26,14 +27,66 @@ public class AISolver extends GameModel {
             }
             originBoxDataMap.put(key, new BoxData(box));
         }
+        AISolver.mapModel = mapModel;
     }
 
     public AISolver(MapModel mapModel) {
         this(mapModel, null);
     }
 
-    //bfs算法，返回可用于原game的record
+    //aStar算法，返回可用于原game的record
     //无解则返回null
+    public Deque<MovementRecord> aStarSolver() {
+        long startTime = System.currentTimeMillis();
+        tryNum = 0;
+        //
+        PriorityQueue<GameState> priorityQueue = new PriorityQueue<>(Comparator.comparing(GameState::getF));
+        Set<String> isVisited = new HashSet<>();
+        //初始状态
+        GameState firstState = new GameState(this);
+        priorityQueue.add(firstState);
+        isVisited.add(firstState.encode());
+
+        while (!priorityQueue.isEmpty()) {
+            GameState curState = priorityQueue.poll();
+
+            //成功
+            BoxData mainBox = curState.getBoxDataMap().get(mainKey);
+            if (mainBox.getCol() == getMapModel().getTargetCol()
+                    && mainBox.getRow() == getMapModel().getTargetRow()) {
+                System.out.println("visit map: " + isVisited.size());
+                System.out.println("TOTAL STEP: " + curState.getMovementRecords().size());
+                long endTime = System.currentTimeMillis();
+                System.out.println("Time cost(ms: " + (endTime - startTime));
+                System.out.println("try numbers: " + tryNum);
+
+                if (curState.getMovementRecords() != null) {
+                    System.out.println("find solution!");
+                } else {
+                    System.out.println("no solution/error");
+                }
+
+                return curState.getMovementRecords();
+            }
+
+            //拓展
+            List<GameState> nextState = curState.generateNextState();
+
+            //加入deque，visited
+            for (GameState gameState : nextState) {
+                String stateKey = gameState.encode();
+                if (!isVisited.contains(stateKey)) {
+                    priorityQueue.offer(gameState);
+                    isVisited.add(stateKey);
+                }
+            }
+        }
+        System.out.println("no solution");
+        long endTime = System.currentTimeMillis();
+        System.out.println(endTime - startTime);
+        return null;
+    }
+
     public Deque<MovementRecord> bfsSolver() {
         long startTime = System.currentTimeMillis();
         tryNum = 0;
@@ -84,6 +137,7 @@ public class AISolver extends GameModel {
         System.out.println(endTime - startTime);
         return null;
     }
+
 
     public Map<Integer, BoxData> getOriginBoxDataMap() {
         return originBoxDataMap;

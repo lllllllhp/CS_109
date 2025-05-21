@@ -16,7 +16,6 @@ import java.util.*;
 
 import static com.lllllllhp.model.game.GameModel.GRID_SIZE;
 import static com.lllllllhp.utils.dataUtils.DataUtils.userData;
-import static com.lllllllhp.utils.socket.NetUtils.ClientData.clientGame;
 
 public class GameControllerModel {
     private GameModel gameModel;
@@ -197,7 +196,7 @@ public class GameControllerModel {
             protected Deque<MovementRecord> call() {
                 MapModel map = MapModel.copy(mapModel);
                 AISolver aiSolver = new AISolver(map, gameModel.getKeyMap());
-                return aiSolver.bfsSolver();
+                return aiSolver.aStarSolver();
             }
         };
 

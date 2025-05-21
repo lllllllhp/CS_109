@@ -261,4 +261,8 @@ public class GameRootPaneController {
     public void setChooseMap(MapModel chooseMap) {
         this.chooseMap = chooseMap;
     }
+
+    public Pane getPagePane() {
+        return pagePane;
+    }
 }

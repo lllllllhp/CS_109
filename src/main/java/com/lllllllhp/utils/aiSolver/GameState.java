@@ -4,15 +4,37 @@ import com.lllllllhp.model.game.*;
 
 import java.util.*;
 
+import static com.lllllllhp.utils.aiSolver.AISolver.mainKey;
+import static com.lllllllhp.utils.aiSolver.AISolver.mapModel;
+
 public class GameState extends MapModel {
     private Map<Integer, BoxData> boxDataMap = new HashMap<>();
     //记录达到目前状态的移动
     Deque<MovementRecord> movementRecords = new ArrayDeque<>();
 
+    //启发式函数
+    private int g;//当前步数
+    private int h;//启发式函数值
+
+    public int getF() {
+        return g + h;
+    }
+
+    //曼哈顿距离
+    private int estimate(GameState state) {
+        BoxData main = state.getBoxDataMap().get(mainKey);
+        int dx = Math.abs(main.getCol() - mapModel.getTargetCol());
+        int dy = Math.abs(main.getRow() - mapModel.getTargetRow());
+        return dx + dy;
+    }
+
     //仅用于初始状态
     public GameState(AISolver aiSolver) {
         matrix = aiSolver.getMapModel().getMatrixData();
         this.boxDataMap = aiSolver.getOriginBoxDataMap();
+
+        g = 0;
+        h = estimate(this);
     }
 
     public GameState deepCopy(GameState gameState) {
@@ -58,6 +80,11 @@ public class GameState extends MapModel {
                     // 构造新步骤记录
                     int step = nextState.getMovementRecords().isEmpty() ? 1 : nextState.getMovementRecords().peekLast().getStepNum() + 1;
                     MovementRecord record = new MovementRecord(step, key, boxCopy.getRow() - direction.getRow(), boxCopy.getCol() - direction.getCol(), direction);
+
+                    //计算启发式函数
+                    nextState.g = step;
+                    nextState.h = estimate(nextState);
+
                     nextState.getMovementRecords().offer(record);
 
                     list.add(nextState);
@@ -209,5 +236,13 @@ public class GameState extends MapModel {
 
     public void setBoxDataMap(Map<Integer, BoxData> boxDataMap) {
         this.boxDataMap = boxDataMap;
+    }
+
+    public int getH() {
+        return h;
+    }
+
+    public int getG() {
+        return g;
     }
 }

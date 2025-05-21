@@ -5,25 +5,30 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane fx:id="rootPane" prefHeight="450.0" prefWidth="800.0" stylesheets="@../../styles/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lllllllhp.controller.userPage.CoverController">
+<StackPane fx:id="rootPane" prefHeight="765.0" prefWidth="1360.0" stylesheets="@../../styles/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lllllllhp.controller.userPage.CoverController">
     <children>
         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="119.0" prefWidth="270.0" text="This is cover." textAlignment="CENTER">
         </Label>
-        <ImageView fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="765.0" fitWidth="1360.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../image/cover.png" />
             </image>
         </ImageView>
-        <AnchorPane fx:id="coverPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleContinue" prefHeight="450.0" prefWidth="800.0">
+        <AnchorPane fx:id="coverPane" focusTraversable="true" onMouseClicked="#handleContinue" prefHeight="765.0" prefWidth="1360.0">
             <children>
-                <Label fx:id="welcome" alignment="CENTER" contentDisplay="CENTER" layoutX="280.0" layoutY="401.0" prefHeight="34.0" prefWidth="240.0" style="-fx-font-size: 16;" styleClass="transparent-label" text="click to continue">
+            <Pane layoutX="381.0" layoutY="610.0" AnchorPane.bottomAnchor="65.20000000000005">
+               <children>
+                      <Label fx:id="welcome" alignment="CENTER" contentDisplay="CENTER" layoutX="179.0" layoutY="56.0" prefHeight="34.0" prefWidth="240.0" style="-fx-font-size: 16;" styleClass="transparent-label" text="click to continue">
                </Label>
-                <Button fx:id="loginButton" layoutX="143.0" layoutY="333.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="42.0" prefWidth="178.0" styleClass="pixel-button" text="Log in" visible="false">
+                      <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLogin" prefHeight="42.0" prefWidth="178.0" styleClass="pixel-button" text="Log in" visible="false">
                 </Button>
-                <Button fx:id="guestButton" layoutX="477.0" layoutY="333.0" mnemonicParsing="false" onAction="#handleGuest" prefHeight="42.0" prefWidth="178.0" styleClass="pixel-button" text="Guest" visible="false">
+                      <Button fx:id="guestButton" layoutX="419.0" mnemonicParsing="false" onAction="#handleGuest" prefHeight="42.0" prefWidth="178.0" styleClass="pixel-button" text="Guest" visible="false">
                 </Button>
+               </children>
+            </Pane>
             </children>
         </AnchorPane>
     </children>

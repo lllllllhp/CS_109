@@ -16,13 +16,14 @@ public class BoxModel extends Rectangle {
     static int boxNumber = 0;
 
     //init box
-    public BoxModel(int typeId, Color color, int row, int col, int width, int height) {
+    public BoxModel(int typeId, Color color, int row, int col, double width, double height) {
         super(width, height);
         setX(col * GameModel.GRID_SIZE);
         setY(row * GameModel.GRID_SIZE);
         setFill(color);
         setStroke(Color.BLACK);
-        setStrokeWidth(1.5);
+        setStrokeWidth(5);
+        setOpacity(0.75);
 
         this.typeId = typeId;
         this.color = color;
