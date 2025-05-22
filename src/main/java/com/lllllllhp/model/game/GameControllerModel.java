@@ -178,6 +178,8 @@ public class GameControllerModel {
         userData.getMapRecord().setKeyMap(gameModel.getKeyMap());
         //记录用时
         userData.getMapRecord().setTime(gameModel.getTime());
+        System.out.println(userData.getMapRecord().getTime());
+
         userData.save();
     }
 

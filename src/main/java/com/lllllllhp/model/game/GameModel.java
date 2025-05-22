@@ -196,14 +196,15 @@ public class GameModel {
     }
 
     public void loadGame() {
+        // 从userData中获取保存的时间记录
+        if (userData.getMapRecord() != null && userData.getMapRecord().getTime() != null) {
+            this.time = userData.getMapRecord().getTime();
+        }
         initView();
         //导入保存的操作
         setMovementStack(userData.getMapRecord().getRecordDeque());
         //重新加载key
         loadKeyMap(userData.getMapRecord().getKeyMap());
-
-        setTime(userData.getMapRecord().getTime());
-        rootPaneController.updateTimer();
     }
 
     public Map<String, Integer> getKeyMap() {

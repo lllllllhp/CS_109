@@ -39,7 +39,7 @@
                   <Label fx:id="rating" layoutX="210.0" layoutY="140.0" prefHeight="70.0" prefWidth="590.0" style="-fx-font-size: 45;" text="rating" />
                </children>
             </Pane>
-            <Label fx:id="warning" alignment="CENTER" layoutX="155.0" layoutY="276.0" prefHeight="72.0" prefWidth="510.0" style="-fx-font-size: 23;" textFill="RED" />
+            <Label fx:id="warning" alignment="CENTER" layoutX="425.0" layoutY="537.0" prefHeight="72.0" prefWidth="510.0" style="-fx-font-size: 28;" textFill="RED" />
             <Label fx:id="airLabel" alignment="CENTER" focusTraversable="false" layoutX="599.0" layoutY="722.0" onMouseClicked="#handleOnAir" prefHeight="42.0" prefWidth="161.0" style="-fx-font-size: 25;" styleClass="transparent-label" text="AIR MODE" AnchorPane.bottomAnchor="0.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
