@@ -27,14 +27,14 @@
                <children>
                   <StackPane prefHeight="210.0" prefWidth="210.0" styleClass="avatar">
                      <children>
-                        <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="avatar">
+                        <ImageView fitHeight="190.0" fitWidth="190.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../image/defaultAvatar.png" />
                            </image>
                         </ImageView>
                      </children>
                   </StackPane>
-                  <Label fx:id="id" layoutX="210.0" prefHeight="70.0" prefWidth="590.0" style="-fx-font-size: 45;" text="id" />
+                  <Label fx:id="id" layoutX="210.0" prefHeight="70.0" prefWidth="590.0" style="-fx-font-size: 45; -fx-font-weight: bold;" text="id" />
                   <Label fx:id="level" layoutX="210.0" layoutY="70.0" prefHeight="70.0" prefWidth="590.0" style="-fx-font-size: 45;" text="level" />
                   <Label fx:id="rating" layoutX="210.0" layoutY="140.0" prefHeight="70.0" prefWidth="590.0" style="-fx-font-size: 45;" text="rating" />
                </children>

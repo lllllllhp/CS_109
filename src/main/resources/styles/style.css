@@ -43,14 +43,14 @@
 }
 
 .profile {
-    -fx-border-color: black;
-    -fx-border-width: 5px;
-    -fx-background-color: rgba(179, 255, 248, 0.85);
+    -fx-border-color: rgb(30, 30, 30);
+    -fx-border-width: 10px;
+    -fx-background-color: rgb(213, 187, 91, 0.95);
 }
 
 .avatar {
-    -fx-border-width: 5px;
-    -fx-border-color: black;
+    -fx-border-width: 10px;
+    -fx-border-color: rgb(30, 30, 30);
 }
 
 .transparent-label {
@@ -67,6 +67,14 @@
 .transparent-textField {
     -fx-background-color: rgba(255, 255, 255, 0.85);
     -fx-background-radius: 3px;
+}
+
+.board {
+    -fx-background-color: rgb(213, 187, 91);
+    -fx-background-radius: 50px;
+    -fx-border-color: rgb(133, 70, 51);
+    -fx-border-width: 25px;
+    -fx-border-radius: 5px;
 }
 
 /* 半透明背景 */

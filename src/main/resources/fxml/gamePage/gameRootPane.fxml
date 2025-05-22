@@ -60,27 +60,28 @@
                         </Button>
                      </children>
                   </Pane>
+                  <Label fx:id="tips" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="580.0" prefHeight="71.0" prefWidth="500.0" style="-fx-font-size: 30;" text="tips" />
                </children>
             </Pane>
          </children>
       </AnchorPane>
-      <Pane fx:id="winPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" visible="false">
+      <Pane fx:id="winPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="789.0" styleClass="board" visible="false">
          <children>
-            <Button fx:id="returnToMain" layoutX="90.0" layoutY="226.0" mnemonicParsing="false" onAction="#returnToMainPage" prefHeight="46.0" prefWidth="122.0" text="Return">
-               <font>
-                  <Font name="Century Gothic" size="20.0" />
-               </font>
-            </Button>
-            <Label fx:id="totalSteps" alignment="CENTER" layoutX="53.0" layoutY="131.0" prefHeight="39.0" prefWidth="195.0" text="Steps:">
-               <font>
-                  <Font name="Century Gothic" size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="85.0" layoutY="45.0" prefHeight="39.0" prefWidth="131.0" text="YOU WIN!!">
-               <font>
-                  <Font name="Century Gothic" size="23.0" />
-               </font>
-            </Label>
+            <Button fx:id="returnToMain" layoutX="440.0" layoutY="512.0" mnemonicParsing="false" onAction="#returnToMainPage" prefHeight="56.0" prefWidth="165.0" styleClass="pixel-button" text="Return" />
+            <Label fx:id="totalSteps" layoutX="395.0" layoutY="175.0" prefHeight="81.0" prefWidth="351.0" style="-fx-font-size: 40;" text="Steps:" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="184.0" layoutY="14.0" prefHeight="138.0" prefWidth="421.0" style="-fx-font-size: 50;" text="YOU WIN!!" />
+            <Label fx:id="totalTime" layoutX="395.0" layoutY="259.0" prefHeight="81.0" prefWidth="351.0" style="-fx-font-size: 35;" text="Time:" />
+            <Button fx:id="reviewGame" layoutX="184.0" layoutY="512.0" mnemonicParsing="false" onAction="#reviewGame" prefHeight="56.0" prefWidth="165.0" styleClass="pixel-button" text="Review" />
+            <StackPane layoutX="59.0" layoutY="175.0" prefHeight="250.0" prefWidth="250.0" styleClass="avatar">
+               <children>
+                  <ImageView fitHeight="230.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/defaultAvatar.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
+            <Label fx:id="userName" alignment="CENTER" layoutX="59.0" layoutY="425.0" prefHeight="56.0" prefWidth="250.0" style="-fx-font-size: 20;" text="name" />
          </children>
       </Pane>
    </children>

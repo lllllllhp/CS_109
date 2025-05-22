@@ -33,11 +33,19 @@ public class GameRootPaneController {
     private Label stepCounter;
     @FXML
     private Label timerLabel;
+    @FXML
+    private Label tips;
     //victory pane
     @FXML
     private Label totalSteps;
     @FXML
+    private Label totalTime;
+    @FXML
+    private Label userName;
+    @FXML
     private Button returnToMain;
+    @FXML
+    private Button reviewGame;
     @FXML
     private Pane winPane;
 
@@ -96,6 +104,7 @@ public class GameRootPaneController {
         winPane.setDisable(true);
         winPane.setVisible(false);
         operatePane.setVisible(true);
+        tips.setText("");
 
         gameModel = new GameModel();
         gameControllerModel = new GameControllerModel();
@@ -179,7 +188,8 @@ public class GameRootPaneController {
 
     public void turnToWinPane() {
         totalSteps.setText(String.format("Total Steps: %d", gameModel.getMapModel().getSteps()));
-
+        totalTime.setText(String.format("Time cost: %s", gameModel.getTime().toString()));
+        userName.setText(userData.getId());
         //保存胜利记录
         gameControllerModel.saveGame();
         userData.getMapRecord().setHadSuccess(true);
@@ -219,6 +229,11 @@ public class GameRootPaneController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    public void reviewGame() {
+
     }
 
     //----------------------------------------------------------------------------------------------------------------

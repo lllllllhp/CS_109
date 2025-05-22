@@ -101,9 +101,9 @@ public class MainPageController {
         //初始化mainPage
         choosePane.setVisible(false);
         mainPane.setVisible(true);
-        id.setText(userData.getId());
-        level.setText(String.valueOf(userData.getLevel()));
-        rating.setText(String.valueOf(userData.getRating()));
+        id.setText(" " + userData.getId());
+        level.setText(String.format(" Lv %s", userData.getLevel()));
+        rating.setText(String.format(" rating: %s", userData.getRating()));
         currentStage.setTitle(userData.getId());
     }
 

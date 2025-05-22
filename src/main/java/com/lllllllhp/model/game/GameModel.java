@@ -116,6 +116,9 @@ public class GameModel {
 
         for (Map.Entry<Integer, BoxModel> entry : boxes.entrySet()) {
             BoxModel box = entry.getValue();
+
+            //添加box图片
+
             gamePane.getChildren().addAll(box);
         }
 
