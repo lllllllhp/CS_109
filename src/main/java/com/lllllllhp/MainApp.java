@@ -1,17 +1,16 @@
 package com.lllllllhp;
 
 import com.lllllllhp.controller.userPage.CoverController;
-import com.lllllllhp.utils.audioPlayer.AudioPlayer;
+import com.lllllllhp.utils.AudioPlayer;
+import com.lllllllhp.utils.ImageLoader;
 import com.lllllllhp.utils.dataUtils.DataUtils;
-import com.lllllllhp.utils.settings.Settings;
+import com.lllllllhp.utils.Settings;
 import com.lllllllhp.utils.socket.NetUtils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -24,6 +23,7 @@ public class MainApp extends Application {
     public void init() {
         AudioPlayer.init();
         Settings.initFont();
+        ImageLoader.initGameImage();
     }
 
     @Override

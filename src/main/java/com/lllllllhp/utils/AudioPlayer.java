@@ -1,4 +1,4 @@
-package com.lllllllhp.utils.audioPlayer;
+package com.lllllllhp.utils;
 
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;

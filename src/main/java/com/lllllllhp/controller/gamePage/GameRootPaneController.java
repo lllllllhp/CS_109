@@ -187,17 +187,19 @@ public class GameRootPaneController {
     }
 
     public void turnToWinPane() {
+        gameModel.getTimeline().stop();
+
         totalSteps.setText(String.format("Total Steps: %d", gameModel.getMapModel().getSteps()));
         totalTime.setText(String.format("Time cost: %s", gameModel.getTime().toString()));
         userName.setText(userData.getId());
+
         //保存胜利记录
         gameControllerModel.saveGame();
         userData.getMapRecord().setHadSuccess(true);
         userData.saveRecord(userData.getMapRecord());
+
         //清除上次游戏记录
         userData.setMapRecord(null);
-        userData.addRating(0.5);
-
         winPane.toFront();
         winPane.setDisable(false);
         pagePane.setDisable(true);
@@ -211,11 +213,17 @@ public class GameRootPaneController {
         returnToMainPage();
     }
 
+    @FXML
+    public void handleReview(){
+        gameControllerModel.review(gameModel.getMapModel().getName());
+    }
     //-----------------------------------------------------------------------------------------------------------------------
     //win pane
     @FXML
     public void returnToMainPage() {
-        gameModel.getTimeline().stop();
+
+        userData.addRating(0.5);
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userPage/mainPage.fxml"));
             Parent root = loader.load();
@@ -229,11 +237,6 @@ public class GameRootPaneController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    @FXML
-    public void reviewGame() {
-
     }
 
     //----------------------------------------------------------------------------------------------------------------
@@ -279,5 +282,9 @@ public class GameRootPaneController {
 
     public Pane getPagePane() {
         return pagePane;
+    }
+
+    public Pane getWinPane() {
+        return winPane;
     }
 }

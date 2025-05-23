@@ -10,7 +10,7 @@ import javafx.scene.Parent;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
-import static com.lllllllhp.utils.settings.Settings.currentStage;
+import static com.lllllllhp.utils.Settings.currentStage;
 
 public class MapInfo extends Message {
     MapRecord mapRecord;

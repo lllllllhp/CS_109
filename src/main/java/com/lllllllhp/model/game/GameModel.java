@@ -2,19 +2,23 @@ package com.lllllllhp.model.game;
 
 import com.lllllllhp.controller.gamePage.GameRootPaneController;
 import com.lllllllhp.data.MapPreset;
+import com.lllllllhp.utils.ImageLoader;
 import com.lllllllhp.utils.socket.NetUtils;
 import com.lllllllhp.utils.socket.messageModel.MapInfo;
 import com.lllllllhp.utils.socket.messageModel.MoveInfo;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.awt.*;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -76,9 +80,12 @@ public class GameModel {
     }//handle mouse click
 
     public void initView() {
+        rootPaneController.getWinPane().setVisible(false);
+        rootPaneController.getPagePane().setDisable(false);
         //初始GRID_SIZE
         GRID_SIZE = rootPaneController.getPagePane().getScene().getHeight() / mapModel.getHeight();
         //clear all
+        setSelectedBox(null);
         gamePane.getChildren().clear();
         //加载步数/时间
         rootPaneController.updateSteps();
@@ -86,16 +93,15 @@ public class GameModel {
         //size
         gamePane.setPrefWidth(GRID_SIZE * mapModel.getWidth());
         gamePane.setPrefHeight(GRID_SIZE * mapModel.getHeight());
-        //边框
+        //边框&&背景
         broader = new Rectangle(0, 0, GRID_SIZE * mapModel.getWidth(), GRID_SIZE * mapModel.getHeight());
-        broader.setFill(Color.TRANSPARENT);
+        broader.setFill(Color.rgb(213, 187, 91));
         broader.setStroke(Color.BLACK);
         broader.setStrokeWidth(5);
         gamePane.getChildren().addAll(broader);
         //目的地提示
         target = new Rectangle(mapModel.getTargetCol() * GRID_SIZE, mapModel.getTargetRow() * GRID_SIZE, 2 * GRID_SIZE, 2 * GRID_SIZE);
-        target.setFill(Color.GREEN);
-        target.setOpacity(0.2);
+        target.setFill(new ImagePattern(ImageLoader.exit));
         target.setDisable(true);
         gamePane.getChildren().addAll(target);
 
@@ -118,6 +124,26 @@ public class GameModel {
             BoxModel box = entry.getValue();
 
             //添加box图片
+            Image boxImage = null;
+            switch (box.getTypeId()) {
+                case 1 -> {
+                    boxImage = ImageLoader.game1_1;
+                }
+                case 2 -> {
+                    boxImage = ImageLoader.game1_2;
+                }
+                case 3 -> {
+                    boxImage = ImageLoader.game2_1;
+                }
+                case 4 -> {
+                    boxImage = ImageLoader.game2_2_left;
+                }
+                case 9 -> {
+
+                }
+            }
+            if (boxImage != null)
+                box.setFill(new ImagePattern(boxImage));
 
             gamePane.getChildren().addAll(box);
         }
@@ -284,6 +310,7 @@ public class GameModel {
 
         if (isSucceed()) {
             timeline.stop();
+            gameControllerModel.saveGame();
             getRootPaneController().turnToWinPane();
             endGame();
         }

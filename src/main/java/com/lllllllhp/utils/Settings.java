@@ -1,4 +1,4 @@
-package com.lllllllhp.utils.settings;
+package com.lllllllhp.utils;
 
 import javafx.scene.text.Font;
 import javafx.stage.Stage;

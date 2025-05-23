@@ -184,6 +184,11 @@ public class GameControllerModel {
     }
 
     public void aiSolve() throws InterruptedException {
+        //取消选中box
+        if (gameModel.getSelectedBox()!=null) {
+            gameModel.getSelectedBox().setSelected(false);
+            gameModel.setSelectedBox(null);
+        }
         //传给观众
         if (NetUtils.hasServer() && NetUtils.server.isRunning()) {
             try {
@@ -193,6 +198,12 @@ public class GameControllerModel {
             }
         }
 
+        Task<Deque<MovementRecord>> task = getTask();
+
+        new Thread(task).start();
+    }//todo: 加载/演示时禁止操作
+
+    private Task<Deque<MovementRecord>> getTask() {
         Task<Deque<MovementRecord>> task = new Task<>() {
             @Override
             protected Deque<MovementRecord> call() {
@@ -210,42 +221,61 @@ public class GameControllerModel {
                 return;
             }
 
-            Timeline timeline = new Timeline();
+            playSolution(solution);
 
-            KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.3), e -> {
-                if (!solution.isEmpty()) {
-                    MovementRecord movementRecord = solution.pollFirst();
-                    if (doMove(mapModel, gameModel.getBoxes().get(movementRecord.getBoxKey()), movementRecord.getRow(), movementRecord.getCol(), movementRecord.getDirection())) {
-                        //设置选中的box，防止异常
-                        gameModel.setSelectedBox(getGameModel().getBoxes().get(movementRecord.getBoxKey()));
-                        gameModel.afterMove(movementRecord.getRow() + movementRecord.getDirection().getRow(), movementRecord.getCol() + movementRecord.getDirection().getCol(), movementRecord.getDirection());
-                    } else {
-                        System.out.println("fail at: " + movementRecord);
-                        timeline.stop();
-                    }
-                    if (gameModel.isSucceed()) {
-                        gameModel.getRootPaneController().turnToWinPane();
-                        gameModel.endGame();
-                    }
-                } else {
-                    timeline.stop();
-                    System.out.println("complete.");
-                }
-            });
-
-            timeline.getKeyFrames().add(keyFrame);
-            timeline.setCycleCount(Timeline.INDEFINITE);
-            System.out.println("play");
-            timeline.play();
         });
 
         task.setOnFailed(event -> {
             Throwable error = task.getException();
             System.out.println(error.toString());
         });
+        return task;
+    }
 
-        new Thread(task).start();
-    }//todo: 加载/演示时禁止操作
+    public void review(String mapName) {
+        //通过地图名得到解决方法
+        //todo：确保地图名字各不同
+        System.out.println("try review");
+        Deque<MovementRecord> solution = userData.getPlayRecords().get(mapName).getRecordDeque();
+        //类似restart
+        for (int i = 0; i < mapModel.getMatrix().length; i++) {
+            mapModel.getMatrix()[i] = Arrays.copyOf(mapModel.getCopyData()[i], mapModel.getCopyData()[i].length);
+        }
+        gameModel.getTimeline().stop();
+        mapModel.setSteps(0);
+        gameModel.initView();
+
+        System.out.println(solution);
+        playSolution(solution);
+        System.out.println("review done");
+    }
+
+    //用于review和ai解决
+    public void playSolution(Deque<MovementRecord> solution) {
+        Timeline timeline = new Timeline();
+
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.3), e -> {
+            if (!solution.isEmpty()) {
+                MovementRecord movementRecord = solution.pollFirst();
+                if (doMove(mapModel, gameModel.getBoxes().get(movementRecord.getBoxKey()), movementRecord.getRow(), movementRecord.getCol(), movementRecord.getDirection())) {
+                    //设置选中的box，防止异常
+                    gameModel.setSelectedBox(getGameModel().getBoxes().get(movementRecord.getBoxKey()));
+                    gameModel.afterMove(movementRecord.getRow() + movementRecord.getDirection().getRow(), movementRecord.getCol() + movementRecord.getDirection().getCol(), movementRecord.getDirection());
+                } else {
+                    System.out.println("fail at: " + movementRecord);
+                    timeline.stop();
+                }
+            } else {
+                timeline.stop();
+                System.out.println("complete.");
+            }
+        });
+
+        timeline.getKeyFrames().add(keyFrame);
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        System.out.println("play");
+        timeline.play();
+    }
 
     //--------------------------------------------------------------------------------
     public GameModel getGameModel() {
