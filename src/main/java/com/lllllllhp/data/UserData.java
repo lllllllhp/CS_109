@@ -2,11 +2,14 @@ package com.lllllllhp.data;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.lllllllhp.model.game.MovementRecord;
 import com.lllllllhp.utils.dataUtils.DataChecker;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,6 +57,18 @@ public class UserData {
     }
 
     public void saveRecord(MapRecord mapRecord) {
+        //原来为倒序，调整为正序
+        Deque<MovementRecord> deque = mapRecord.getRecordDeque();
+
+        Deque<MovementRecord> stack = new ArrayDeque<>();
+        while (!deque.isEmpty()) {
+            stack.push(deque.pollFirst()); // 从头取出放到栈顶
+        }
+        // 再从栈中取出放回 deque
+        while (!stack.isEmpty()) {
+            deque.addLast(stack.pop());
+        }
+
         //保存step最少的
         if (!playRecords.containsKey(mapRecord.getName()))
             playRecords.put(mapRecord.getName(), mapRecord);

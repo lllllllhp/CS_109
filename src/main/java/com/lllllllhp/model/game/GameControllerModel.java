@@ -236,7 +236,14 @@ public class GameControllerModel {
         //通过地图名得到解决方法
         //todo：确保地图名字各不同
         System.out.println("try review");
-        Deque<MovementRecord> solution = userData.getPlayRecords().get(mapName).getRecordDeque();
+        System.out.println("Map name: " + mapName);
+        System.out.println("Play records: " + userData.getPlayRecords());
+        System.out.println("Record for this map: " + userData.getPlayRecords().get(mapName));
+        
+        // 创建一个新的Deque来存储解决方案
+        Deque<MovementRecord> originalSolution = userData.getPlayRecords().get(mapName).getRecordDeque();
+        Deque<MovementRecord> solution = new ArrayDeque<>(originalSolution);
+        
         //类似restart
         for (int i = 0; i < mapModel.getMatrix().length; i++) {
             mapModel.getMatrix()[i] = Arrays.copyOf(mapModel.getCopyData()[i], mapModel.getCopyData()[i].length);
@@ -245,7 +252,7 @@ public class GameControllerModel {
         mapModel.setSteps(0);
         gameModel.initView();
 
-        System.out.println(solution);
+        System.out.println("Solution: " + solution);
         playSolution(solution);
         System.out.println("review done");
     }
