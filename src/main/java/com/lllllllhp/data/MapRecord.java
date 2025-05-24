@@ -59,4 +59,16 @@ public class MapRecord implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "MapRecord{" +
+                "name='" + name + '\'' +
+                ", hadSuccess=" + hadSuccess +
+                ", mapModel=" + mapModel +
+                ", time=" + time +
+                ", recordDeque=" + recordDeque +
+                ", keyMap=" + keyMap +
+                '}';
+    }
 }

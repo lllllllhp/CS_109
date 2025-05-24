@@ -5,10 +5,9 @@ import com.google.gson.GsonBuilder;
 import com.lllllllhp.controller.gamePage.GameRootPaneController;
 import com.lllllllhp.data.MapPre;
 import com.lllllllhp.data.MapRecord;
-import com.lllllllhp.data.UserData;
 import com.lllllllhp.model.game.MapModel;
 import com.lllllllhp.utils.dataUtils.DataUtils;
-import com.lllllllhp.utils.settings.Settings;
+import com.lllllllhp.utils.Settings;
 import com.lllllllhp.utils.socket.NetUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,13 +16,11 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Map;
 import java.util.stream.Stream;
 
 import static com.lllllllhp.utils.dataUtils.DataUtils.userData;
