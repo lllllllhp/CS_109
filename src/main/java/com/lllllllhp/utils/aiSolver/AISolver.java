@@ -81,6 +81,8 @@ public class AISolver extends GameModel {
                 }
             }
         }
+
+
         System.out.println("no solution");
         long endTime = System.currentTimeMillis();
         System.out.println(endTime - startTime);

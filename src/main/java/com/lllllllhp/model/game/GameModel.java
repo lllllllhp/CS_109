@@ -23,12 +23,12 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
 
+import static com.lllllllhp.utils.Settings.currentStage;
 import static com.lllllllhp.utils.dataUtils.DataUtils.userData;
 
 public class GameModel {
     private GameRootPaneController rootPaneController;
     private GameControllerModel gameControllerModel;
-    private Stage currentStage;
 
     private MapModel mapModel;
     private BoxModel selectedBox;
@@ -84,8 +84,8 @@ public class GameModel {
         rootPaneController.getPagePane().setDisable(false);
         //初始GRID_SIZE
         if (mapModel.getHeight() >= mapModel.getWidth())
-            GRID_SIZE = rootPaneController.getGamePane().getScene().getHeight() / mapModel.getHeight();
-        else GRID_SIZE = rootPaneController.getGamePane().getScene().getHeight() / mapModel.getWidth();
+            GRID_SIZE = currentStage.getScene().getHeight() / mapModel.getHeight();
+        else GRID_SIZE = currentStage.getScene().getHeight() / mapModel.getWidth();
         //clear all
         setSelectedBox(null);
         gamePane.getChildren().clear();
@@ -346,10 +346,6 @@ public class GameModel {
 
     public Stage getCurrentStage() {
         return currentStage;
-    }
-
-    public void setCurrentStage(Stage currentStage) {
-        this.currentStage = currentStage;
     }
 
     public Pane getGamePane() {

@@ -2,7 +2,7 @@ package com.lllllllhp.model.game;
 
 import com.lllllllhp.data.MapRecord;
 import com.lllllllhp.utils.aiSolver.AISolver;
-import com.lllllllhp.utils.audioPlayer.AudioPlayer;
+import com.lllllllhp.utils.AudioPlayer;
 import com.lllllllhp.utils.socket.NetUtils;
 import com.lllllllhp.utils.socket.messageModel.Command;
 import javafx.animation.KeyFrame;
@@ -221,6 +221,7 @@ public class GameControllerModel {
 
             if (solution == null || solution.isEmpty()) {
                 System.out.println("无解");
+                gameModel.getRootPaneController().getTips().setText("NO SOLUTION!");
                 return;
             }
 
@@ -268,6 +269,10 @@ public class GameControllerModel {
 
     //用于review和ai解决
     public void playSolution(Deque<MovementRecord> solution) {
+        if (solution == null) {
+            gameModel.getRootPaneController().getTips().setText("NO SOLUTION!");
+            return;
+        }
         Timeline timeline = new Timeline();
 
         KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.3), e -> {

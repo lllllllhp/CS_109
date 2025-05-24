@@ -88,7 +88,6 @@ public class GameRootPaneController {
 
         gameModel.setRootPaneController(this);
         gameModel.setGamePane(gamePane);
-        gameModel.setCurrentStage(currentStage);
         //---------------------------------------------
         gameModel.setMapModel(NetUtils.ClientData.spectatingMap.getMapModel());
         gameControllerModel.setMapModel(NetUtils.ClientData.spectatingMap.getMapModel());
@@ -126,7 +125,6 @@ public class GameRootPaneController {
 
         gameModel.setRootPaneController(this);
         gameModel.setGamePane(gamePane);
-        gameModel.setCurrentStage(currentStage);
     }
 
     @FXML
@@ -305,5 +303,9 @@ public class GameRootPaneController {
 
     public Pane getGamePane() {
         return gamePane;
+    }
+
+    public Label getTips() {
+        return tips;
     }
 }

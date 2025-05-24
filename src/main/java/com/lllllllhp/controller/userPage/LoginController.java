@@ -41,6 +41,7 @@ public class LoginController {
     Button Captcha;
     @FXML
     TextField captchaField;
+
     @FXML
     public void refresh() {
         StringBuilder captcha = new StringBuilder();
@@ -89,41 +90,46 @@ public class LoginController {
         String captchaCode = captchaField.getText().toUpperCase();
         return captchaCode.equals(currentCaptcha.toUpperCase());
     }
+
     //监测账号是否注册
     @FXML
-    public void accountListener(){
-        List<String> subdirectionNames =new ArrayList<>();
+    public void accountListener() {
+        List<String> subdirectoryNames = new ArrayList<>();
         Path dirPath = Paths.get("src/main/resources/User");
-        try (DirectoryStream<Path> stream = Files.newDirectoryStream(dirPath)){
-            for(Path entry : stream){
-                if (Files.isDirectory(entry)){
-                    subdirectionNames.add(entry.getFileName().toString());
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(dirPath)) {
+            for (Path entry : stream) {
+                if (Files.isDirectory(entry)) {
+                    subdirectoryNames.add(entry.getFileName().toString());
                 }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         idField.textProperty().addListener((observableValue, oldvalue, newvalue) -> {
-        if (subdirectionNames.contains(newvalue)){
-            System.out.println("Account is registered.");warning.setText("Account is registered.");
+            if (subdirectoryNames.contains(newvalue)) {
+                System.out.println("Account is registered.");
+                warning.setTextFill(Color.BLACK);
+                warning.setText("Account is registered.");
+            } else {
+                System.out.println("Account is not registered.");
+                warning.setTextFill(Color.RED);
+                warning.setText("Account is not registered");
             }
-        else {
-            System.out.println("Account is not registered.");warning.setText("Account is not registered");
-        }
         });
     }
 
-    
 
     @FXML
     private void handleConfirm(ActionEvent actionEvent) {
         if (idField.getText().isEmpty() || passWordField.getText().isEmpty()) {
+            warning.setTextFill(Color.RED);
             warning.setText("Please enter your id and password.");
             System.out.println("Please enter your id and password.");
             return;
         }
         if (!checkCaptcha()) {
             System.out.println("captcha wrong");
+            warning.setTextFill(Color.RED);
             warning.setText("captcha wrong");
             return;
         }
@@ -160,12 +166,14 @@ public class LoginController {
 
                 //检验hash
                 if (!DataChecker.checkData(temp, path)) {
+                    warning.setTextFill(Color.RED);
                     warning.setText("Data is invalid!");
                     System.out.println("Data is invalid!");
                     return false;
                 }
                 //检验密码
                 if (!temp.getPassWord().equals(passWord)) {
+                    warning.setTextFill(Color.RED);
                     warning.setText("Please check your password.");
                     System.out.println("Wrong Password.");
                     return false;
@@ -179,11 +187,13 @@ public class LoginController {
                 //文件损坏
                 System.out.println("data corrupted.");
                 System.out.println(e.toString());
+                warning.setTextFill(Color.RED);
                 warning.setText("data corrupted.");
                 return false;
             } catch (IOException e) {
                 System.out.println("Reading error.");
                 System.out.println(e.toString());
+                warning.setTextFill(Color.RED);
                 warning.setText("Reading error.");
                 return false;
             }
@@ -232,7 +242,8 @@ public class LoginController {
     public void setCurrentStage(Stage currentStage) {
         this.currentStage = currentStage;
     }
-    public void initialize(){
+
+    public void initialize() {
         accountListener();
     }
 }
