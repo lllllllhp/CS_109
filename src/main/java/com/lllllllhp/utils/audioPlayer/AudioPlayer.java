@@ -39,6 +39,16 @@ public class AudioPlayer {
         }
     }
 
+    public static void playEffect(String filename) {
+        try {
+            AudioClip clip = new AudioClip(AudioPlayer.class.getResource(filename).toExternalForm());
+            clip.play();
+        } catch (Exception e) {
+            System.out.println("播放音效失败: " + filename);
+            e.printStackTrace();
+        }
+    }
+
     public void stopBGM() {
         if (bgmPlayer != null) {
             bgmPlayer.stop();

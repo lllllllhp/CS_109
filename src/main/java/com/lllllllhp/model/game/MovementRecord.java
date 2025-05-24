@@ -2,7 +2,7 @@ package com.lllllllhp.model.game;
 
 import java.io.Serializable;
 
-public class MovementRecord implements Serializable {
+public class   MovementRecord implements Serializable {
     private int stepNum;
     private int boxKey;
     private int col;

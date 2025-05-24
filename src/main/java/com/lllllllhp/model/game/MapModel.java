@@ -13,6 +13,7 @@ public class MapModel implements Serializable {
     private int targetRow;
     private int targetCol;
     private int steps = 0;
+    private Time time;
 
     //直接导入map
     public MapModel(int[][] matrix, int targetCol, int targetRow) {
@@ -35,6 +36,7 @@ public class MapModel implements Serializable {
         this.targetCol = mapPre.getTargetCol();
         this.targetRow = mapPre.getTargetRow();
         this.name = mapPre.getName();
+
     }
     //加载预设map
     public MapModel(MapPreset mapPreset) {

@@ -24,10 +24,6 @@ public class MapRecord implements Serializable {
         return mapModel;
     }
 
-    public void setMapModel(MapModel mapModel) {
-        this.mapModel = mapModel;
-    }
-
     public Deque<MovementRecord> getRecordDeque() {
         return recordDeque;
     }
@@ -50,10 +46,6 @@ public class MapRecord implements Serializable {
 
     public void setTime(Time time) {
         this.time = time;
-    }
-
-    public boolean isHadSuccess() {
-        return hadSuccess;
     }
 
     public void setHadSuccess(boolean hadSuccess) {

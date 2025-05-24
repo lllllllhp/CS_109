@@ -1,5 +1,7 @@
 package com.lllllllhp.data;
 
+import com.lllllllhp.model.game.Time;
+
 import java.util.Arrays;
 
 public class MapPre {

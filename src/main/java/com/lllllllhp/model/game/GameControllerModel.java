@@ -2,6 +2,7 @@ package com.lllllllhp.model.game;
 
 import com.lllllllhp.data.MapRecord;
 import com.lllllllhp.utils.aiSolver.AISolver;
+import com.lllllllhp.utils.audioPlayer.AudioPlayer;
 import com.lllllllhp.utils.socket.NetUtils;
 import com.lllllllhp.utils.socket.messageModel.Command;
 import javafx.animation.KeyFrame;
@@ -100,12 +101,14 @@ public class GameControllerModel {
     static public void moveWithAnimation(BoxModel boxModel, int nextCol, int nextRow, Direction direction) {
         boxModel.setCol(nextCol);
         boxModel.setRow(nextRow);
+        AudioPlayer.playEffect("/audio/transition.wav");
         //创建动画
         TranslateTransition transition = new TranslateTransition(Duration.seconds(0.1), boxModel);
         transition.setByX(direction.getCol() * GRID_SIZE);
         transition.setByY(direction.getRow() * GRID_SIZE);
         boxModel.setMoving(true);
         transition.play();
+
 
         transition.setOnFinished(e ->
                 boxModel.setMoving(false)

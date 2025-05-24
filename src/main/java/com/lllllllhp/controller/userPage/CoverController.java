@@ -75,6 +75,7 @@ public class CoverController {
         welcome.setVisible(false);
     }
 
+
     public Stage getCurrentStage() {
         return currentStage;
     }

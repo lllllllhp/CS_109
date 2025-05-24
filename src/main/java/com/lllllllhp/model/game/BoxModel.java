@@ -7,6 +7,8 @@ public class BoxModel extends Rectangle {
     private Color color;
     private int row;
     private int col;//坐标为物块左上角
+
+
     private boolean isSelected;
     private boolean isMoving;
     //表示box大小种类

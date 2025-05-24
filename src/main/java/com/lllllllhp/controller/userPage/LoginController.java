@@ -17,9 +17,12 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import static com.lllllllhp.utils.dataUtils.DataUtils.userData;
@@ -86,6 +89,31 @@ public class LoginController {
         String captchaCode = captchaField.getText().toUpperCase();
         return captchaCode.equals(currentCaptcha.toUpperCase());
     }
+    //监测账号是否注册
+    @FXML
+    public void accountListener(){
+        List<String> subdirectionNames =new ArrayList<>();
+        Path dirPath = Paths.get("src/main/resources/User");
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(dirPath)){
+            for(Path entry : stream){
+                if (Files.isDirectory(entry)){
+                    subdirectionNames.add(entry.getFileName().toString());
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        idField.textProperty().addListener((observableValue, oldvalue, newvalue) -> {
+        if (subdirectionNames.contains(newvalue)){
+            System.out.println("Account is registered.");warning.setText("Account is registered.");
+            }
+        else {
+            System.out.println("Account is not registered.");warning.setText("Account is not registered");
+        }
+        });
+    }
+
+    
 
     @FXML
     private void handleConfirm(ActionEvent actionEvent) {
@@ -203,5 +231,8 @@ public class LoginController {
 
     public void setCurrentStage(Stage currentStage) {
         this.currentStage = currentStage;
+    }
+    public void initialize(){
+        accountListener();
     }
 }

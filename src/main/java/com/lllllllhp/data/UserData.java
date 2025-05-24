@@ -33,15 +33,6 @@ public class UserData {
         System.out.println("Saved.");
     }
 
-    public UserData(String id, String passWord, int level, MapRecord mapRecord, double rating) {
-        isMember = true;
-        this.id = id;
-        this.passWord = passWord;
-        this.level = level;
-        this.mapRecord = mapRecord;
-        this.rating = rating;
-    }
-
     public UserData(String id, String passWord) {
         isMember = true;
         this.id = id;
