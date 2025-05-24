@@ -257,6 +257,12 @@ public class GameControllerModel {
         System.out.println("review done");
     }
 
+    public void reviewSavedGame() {
+        Deque<MovementRecord> solution = userData.getPlayRecords().get(gameModel.getMapModel().getName()).getRecordDeque();
+
+        playSolution(solution);
+    }
+
     //用于review和ai解决
     public void playSolution(Deque<MovementRecord> solution) {
         Timeline timeline = new Timeline();

@@ -83,7 +83,9 @@ public class GameModel {
         rootPaneController.getWinPane().setVisible(false);
         rootPaneController.getPagePane().setDisable(false);
         //初始GRID_SIZE
-        GRID_SIZE = rootPaneController.getPagePane().getScene().getHeight() / mapModel.getHeight();
+        if (mapModel.getHeight() >= mapModel.getWidth())
+            GRID_SIZE = rootPaneController.getGamePane().getScene().getHeight() / mapModel.getHeight();
+        else GRID_SIZE = rootPaneController.getGamePane().getScene().getHeight() / mapModel.getWidth();
         //clear all
         setSelectedBox(null);
         gamePane.getChildren().clear();
@@ -102,6 +104,8 @@ public class GameModel {
         //目的地提示
         target = new Rectangle(mapModel.getTargetCol() * GRID_SIZE, mapModel.getTargetRow() * GRID_SIZE, 2 * GRID_SIZE, 2 * GRID_SIZE);
         target.setFill(new ImagePattern(ImageLoader.exit));
+        target.setStroke(Color.rgb(0, 0, 0, 0.7));
+        target.setStrokeWidth(5);
         target.setDisable(true);
         gamePane.getChildren().addAll(target);
 

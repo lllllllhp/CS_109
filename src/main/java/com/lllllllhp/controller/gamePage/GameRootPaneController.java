@@ -75,7 +75,7 @@ public class GameRootPaneController {
         winPane.setDisable(true);
         winPane.setVisible(false);
         operatePane.setVisible(false);
-        gameModel = new GameModel(){
+        gameModel = new GameModel() {
             //无法选择box
             @Override
             public void selectBox(MouseEvent mouseEvent) {
@@ -214,8 +214,12 @@ public class GameRootPaneController {
     }
 
     @FXML
-    public void handleReview(){
-        gameControllerModel.review(gameModel.getMapModel().getName());
+    public void reviewSavedGame() {
+        if (!userData.getPlayRecords().containsKey(gameModel.getMapModel().getName())){
+            tips.setText("No success record!");
+            return;
+        }
+        gameControllerModel.reviewSavedGame();
     }
     //-----------------------------------------------------------------------------------------------------------------------
     //win pane
@@ -237,6 +241,11 @@ public class GameRootPaneController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    public void handleReview() {
+        gameControllerModel.review(gameModel.getMapModel().getName());
     }
 
     //----------------------------------------------------------------------------------------------------------------
@@ -286,5 +295,9 @@ public class GameRootPaneController {
 
     public Pane getWinPane() {
         return winPane;
+    }
+
+    public Pane getGamePane() {
+        return gamePane;
     }
 }

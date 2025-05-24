@@ -14,7 +14,7 @@
 
 <StackPane prefHeight="765.0" prefWidth="1360.0" stylesheets="@../../styles/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lllllllhp.controller.userPage.MainPageController">
    <children>
-      <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="1360.0">
+      <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="1360.0" visible="false">
          <children>
             <ImageView fitHeight="765.0" fitWidth="1360.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -56,16 +56,16 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="choosePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="1360.0" visible="false" StackPane.alignment="CENTER">
+      <AnchorPane fx:id="choosePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="1360.0" StackPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="765.0" fitWidth="1360.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../image/gameBackground.png" />
                </image>
             </ImageView>
-            <ScrollPane hbarPolicy="NEVER" layoutX="600.0" prefHeight="765.0" prefWidth="300.0" styleClass="transparent-container" AnchorPane.rightAnchor="0.0">
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="600.0" prefHeight="765.0" prefWidth="300.0" styleClass="transparent-container" AnchorPane.rightAnchor="0.0">
                <content>
-                  <VBox fx:id="mapContainer" prefHeight="765.0" prefWidth="300.0" styleClass="transparent-container" />
+                  <VBox fx:id="mapContainer" styleClass="transparent-container" />
                </content>
             </ScrollPane>
             <Button alignment="CENTER" focusTraversable="false" layoutX="449.0" layoutY="644.0" mnemonicParsing="false" onAction="#handleConfirm" prefHeight="51.0" prefWidth="177.0" styleClass="pixel-button" text="confirm" AnchorPane.bottomAnchor="65.60000000000002" AnchorPane.leftAnchor="449.0" />
