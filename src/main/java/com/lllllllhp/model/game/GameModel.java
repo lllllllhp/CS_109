@@ -114,7 +114,7 @@ public class GameModel {
             for (int j = 0; j < mapModel.getWidth(); j++) {
                 if (mapModel.getId(i, j) == 9) {
                     Rectangle obstacle = new Rectangle(j * GRID_SIZE, i * GRID_SIZE, GRID_SIZE, GRID_SIZE);
-                    obstacle.setFill(Color.gray(0.5));
+                    obstacle.setFill(new ImagePattern(ImageLoader.obstacle));
                     obstacle.setStroke(Color.BLACK);
                     obstacle.setStrokeWidth(5);
                     gamePane.getChildren().add(obstacle);
@@ -141,9 +141,6 @@ public class GameModel {
                 }
                 case 4 -> {
                     boxImage = ImageLoader.game2_2_left;
-                }
-                case 9 -> {
-
                 }
             }
             if (boxImage != null)

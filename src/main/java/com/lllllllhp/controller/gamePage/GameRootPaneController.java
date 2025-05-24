@@ -100,6 +100,18 @@ public class GameRootPaneController {
     }
 
     public void initPane() {
+        //键盘监听
+        currentStage.getScene().addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
+            KeyCode code = keyEvent.getCode();
+            switch (code) {
+                case UP, W -> gameModel.doMoveUp();
+                case DOWN, S -> gameModel.doMoveDown();
+                case LEFT, A -> gameModel.doMoveLeft();
+                case RIGHT, D -> gameModel.doMoveRight();
+            }
+        });
+
+
         pagePane.setDisable(false);
         winPane.setDisable(true);
         winPane.setVisible(false);
@@ -119,13 +131,7 @@ public class GameRootPaneController {
 
     @FXML
     public void handleKeyPress(KeyEvent keyEvent) {
-        KeyCode code = keyEvent.getCode();
-        switch (code) {
-            case UP, W -> gameModel.doMoveUp();
-            case DOWN, S -> gameModel.doMoveDown();
-            case LEFT, A -> gameModel.doMoveLeft();
-            case RIGHT, D -> gameModel.doMoveRight();
-        }
+        //init中实现，防止上下左右被吞
     }
 
     @FXML
