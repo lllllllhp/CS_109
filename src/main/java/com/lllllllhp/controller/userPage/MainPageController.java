@@ -195,7 +195,7 @@ public class MainPageController {
         Label mapLabel = new Label(mapPre.getName());
         mapLabel.setPrefWidth(300);
         mapLabel.setPrefHeight(80);
-        mapLabel.setStyle("-fx-font-size: 30px");
+        mapLabel.setStyle("-fx-font-size: 30px; -fx-cursor: hand");
         mapLabel.setFont(Settings.pixelFont);
         //设置监听
         mapLabel.setOnMouseClicked(event -> {
