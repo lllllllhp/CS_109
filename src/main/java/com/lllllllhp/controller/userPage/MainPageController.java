@@ -239,6 +239,14 @@ public class MainPageController {
         mainPane.setVisible(true);
     }
 
+    @FXML
+    public void handleRandom() {
+        MapModel randomMap = MapModel.getRandomMap();
+        loadGamePage();
+        gameRootPaneController.setChooseMap(randomMap);
+        gameRootPaneController.initNewGamePage();
+    }
+
     //------------------------------------------------------------------------------------
     public void setCurrentStage(Stage currentStage) {
         this.currentStage = currentStage;

@@ -68,7 +68,8 @@
                   <VBox fx:id="mapContainer" styleClass="transparent-container" />
                </content>
             </ScrollPane>
-            <Button alignment="CENTER" focusTraversable="false" layoutX="449.0" layoutY="644.0" mnemonicParsing="false" onAction="#handleConfirm" prefHeight="51.0" prefWidth="177.0" styleClass="pixel-button" text="confirm" AnchorPane.bottomAnchor="65.60000000000002" AnchorPane.leftAnchor="449.0" />
+            <Button alignment="CENTER" focusTraversable="false" layoutX="702.0" layoutY="644.0" mnemonicParsing="false" onAction="#handleConfirm" prefHeight="51.0" prefWidth="177.0" styleClass="pixel-button" text="confirm" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="702.0" />
+            <Button alignment="CENTER" focusTraversable="false" layoutX="198.0" layoutY="644.0" mnemonicParsing="false" onAction="#handleRandom" prefHeight="51.0" prefWidth="177.0" styleClass="pixel-button" text="random" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="198.0" />
             <Label fx:id="tips" alignment="CENTER" layoutX="286.0" layoutY="550.0" prefHeight="72.0" prefWidth="504.0" style="-fx-font-size: 30;" text="Label" AnchorPane.bottomAnchor="143.60000000000002" AnchorPane.leftAnchor="286.0" />
             <Button focusTraversable="false" layoutY="737.0" mnemonicParsing="false" onAction="#returnOnMapChoose" prefHeight="23.0" prefWidth="62.0" styleClass="pixel-smallButton" text="return" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
             <Pane layoutX="167.0" layoutY="95.0" prefHeight="476.0" prefWidth="777.0">
