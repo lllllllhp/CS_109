@@ -36,11 +36,6 @@
             <artifactId>gson</artifactId>
             <version>2.10.1</version>
         </dependency>
-        <dependency>
-            <groupId>com.aparapi</groupId>
-            <artifactId>aparapi</artifactId>
-            <version>3.0.0</version>
-        </dependency>
     </dependencies>
 
     <build>

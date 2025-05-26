@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -23,6 +24,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+import static com.lllllllhp.controller.userPage.MainPageController.isTimeLimit;
+import static com.lllllllhp.controller.userPage.MainPageController.limitTime;
 import static com.lllllllhp.utils.Settings.currentStage;
 import static com.lllllllhp.utils.dataUtils.DataUtils.userData;
 
@@ -40,6 +43,8 @@ public class GameRootPaneController {
     private Label timerLabel;
     @FXML
     private Label tips;
+    @FXML
+    Label timeLeft;
     //victory pane
     @FXML
     private Label totalSteps;
@@ -211,8 +216,27 @@ public class GameRootPaneController {
     }
 
     public void updateTimer() {
-        timerLabel.setText(String.format("Time: %s", gameModel.getTime().toString()));
+        if (!isTimeLimit) {
+            timerLabel.setText(String.format("Time: %s", gameModel.getTime().toString()));
+            timerLabel.setVisible(true);
+            timeLeft.setVisible(false);
+        }
+        else {
+            timerLabel.setVisible(false);
+            timeLeft.setVisible(true);
+            timeLeft.setText(String.format("         Time Left：%s", getRemainingTimeString(limitTime)));
+        }
     }
+
+    public String getRemainingTimeString(int totalSeconds) {
+        int elapsed = gameModel.getTime().getTotal();
+        int remaining = totalSeconds - elapsed;
+        if (remaining < 0) remaining = 0;
+        int min = remaining / 60;
+        int sec = remaining % 60;
+        return String.format("%02d:%02d", min, sec);
+    }
+
 
     public void turnToWinPane() {
         gameModel.getTimeline().stop();

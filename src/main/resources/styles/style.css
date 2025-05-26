@@ -102,3 +102,56 @@
     -fx-background-color: transparent;
     -fx-border-color: transparent;
 }
+/*限时模式*/
+#timeLimit {
+    -fx-background-color: rgb(189, 183, 70);
+    -fx-text-fill: #ca4b4b;
+    -fx-font-size: 24px;
+    -fx-font-family: "Zpix";
+    -fx-padding: 8 16;
+    -fx-border-color: #042900;
+    -fx-border-width: 4px;
+    -fx-background-radius: 0;
+}
+
+#timeLimit:hover {
+    -fx-background-color: #a6a03d; /* hover 时略暗 */
+    -fx-cursor: hand;
+}
+
+#timeLimit:pressed {
+    -fx-background-color: #8a8433; /* 点击瞬间更暗 */
+}
+
+#timeLimit:selected {
+    -fx-background-color: #706c23; /* 选中后一直保持暗色 */
+}
+#timeLimitPane{
+    -fx-background-color: linear-gradient(
+            from 0% 100% to 100% 0%,
+            rgba(212, 247, 212, 0.2) 0%,
+            rgba(169, 228, 169, 0.2) 100%
+    );
+
+}
+.timeLimitButton{
+    -fx-background-color: linear-gradient(
+            from 0% 100% to 100% 0%,
+            rgba(212, 247, 212, 0.2) 0%,
+            rgba(169, 228, 169, 0.2) 100%);
+}
+.timeLimitButton:selected {
+    -fx-background-color: linear-gradient(
+            from 0% 100% to 100% 0%,
+            rgba(120, 200, 120, 0.4) 0%,
+            rgba(90, 170, 90, 0.4) 100%
+    );
+}
+.timeLimitButton:pressed {
+    -fx-background-color: linear-gradient(
+            from 0% 100% to 100% 0%,
+            rgba(70, 140, 70, 0.6) 0%,
+            rgba(50, 110, 50, 0.6) 100%
+    );
+}
+

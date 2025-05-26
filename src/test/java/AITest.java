@@ -28,15 +28,7 @@ public class AITest {
         MapModel mapModel = new MapModel(mapPre);
 
 
-
-        /*System.out.println("GPU:--------------------------------------------------------------------");
-        AISolver aiSolver3 = new AISolver(mapModel);
-        Deque<MovementRecord> solution3 = aiSolver3.gpuAStarSolver();
-        System.out.println("尝试次数：");
-        System.out.println(AISolver.tryNum);*/
-
-
-        /*System.out.println("a*:--------------------------------------------------------------------");
+        System.out.println("a*:--------------------------------------------------------------------");
         AISolver aiSolver = new AISolver(mapModel);
         Deque<MovementRecord> solution1 = aiSolver.aStarSolver();
         System.out.println("尝试次数：");
@@ -45,8 +37,9 @@ public class AITest {
         System.out.println("bfs:--------------------------------------------------------------------");
         AISolver aiSolver2 = new AISolver(mapModel);
         Deque<MovementRecord> solution2 = aiSolver2.bfsSolver();
+
         System.out.println("尝试次数：");
-        System.out.println(AISolver.tryNum);*/
+        System.out.println(AISolver.tryNum);
 
     }
 }

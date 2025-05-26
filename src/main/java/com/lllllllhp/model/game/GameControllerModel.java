@@ -1,8 +1,8 @@
 package com.lllllllhp.model.game;
 
 import com.lllllllhp.data.MapRecord;
-import com.lllllllhp.utils.aiSolver.AISolver;
 import com.lllllllhp.utils.AudioPlayer;
+import com.lllllllhp.utils.aiSolver.AISolver;
 import com.lllllllhp.utils.socket.NetUtils;
 import com.lllllllhp.utils.socket.messageModel.Command;
 import javafx.animation.KeyFrame;
@@ -188,7 +188,7 @@ public class GameControllerModel {
 
     public void aiSolve() throws InterruptedException {
         //取消选中box
-        if (gameModel.getSelectedBox() != null) {
+        if (gameModel.getSelectedBox()!=null) {
             gameModel.getSelectedBox().setSelected(false);
             gameModel.setSelectedBox(null);
         }
@@ -221,7 +221,6 @@ public class GameControllerModel {
 
             if (solution == null || solution.isEmpty()) {
                 System.out.println("无解");
-                gameModel.getRootPaneController().getTips().setText("NO SOLUTION!");
                 return;
             }
 
@@ -243,11 +242,11 @@ public class GameControllerModel {
         System.out.println("Map name: " + mapName);
         System.out.println("Play records: " + userData.getPlayRecords());
         System.out.println("Record for this map: " + userData.getPlayRecords().get(mapName));
-
+        
         // 创建一个新的Deque来存储解决方案
         Deque<MovementRecord> originalSolution = userData.getPlayRecords().get(mapName).getRecordDeque();
         Deque<MovementRecord> solution = new ArrayDeque<>(originalSolution);
-
+        
         //类似restart
         for (int i = 0; i < mapModel.getMatrix().length; i++) {
             mapModel.getMatrix()[i] = Arrays.copyOf(mapModel.getCopyData()[i], mapModel.getCopyData()[i].length);
@@ -269,10 +268,6 @@ public class GameControllerModel {
 
     //用于review和ai解决
     public void playSolution(Deque<MovementRecord> solution) {
-        if (solution == null) {
-            gameModel.getRootPaneController().getTips().setText("NO SOLUTION!");
-            return;
-        }
         Timeline timeline = new Timeline();
 
         KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.3), e -> {

@@ -21,10 +21,6 @@ public class Time implements Serializable {
         this(0, 0, second);
     }
 
-    static public Time copyTime(Time time) {
-        return new Time(time.hour, time.minute, time.second);
-    }
-
     public void addSeconds(int add) {
         second += add;
         while (true) {
@@ -41,21 +37,6 @@ public class Time implements Serializable {
         }
     }
 
-    public void minusSeconds(int minus) {
-        second -= minus;
-        while (true) {
-            if (second < 0) {
-                minute--;
-                second += 60;
-            } else break;
-        }
-        while (true) {
-            if (minute < 0) {
-                hour--;
-                minute += 60;
-            } else break;
-        }
-    }
 
     //------------------------------------------------------
     public int getTotal() {
