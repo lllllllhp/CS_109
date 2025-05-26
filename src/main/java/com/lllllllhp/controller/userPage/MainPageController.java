@@ -6,13 +6,16 @@ import com.lllllllhp.controller.gamePage.GameRootPaneController;
 import com.lllllllhp.data.MapPre;
 import com.lllllllhp.data.MapRecord;
 import com.lllllllhp.model.game.MapModel;
+import com.lllllllhp.model.game.Time;
 import com.lllllllhp.utils.dataUtils.DataUtils;
 import com.lllllllhp.utils.Settings;
 import com.lllllllhp.utils.socket.NetUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -54,6 +57,18 @@ public class MainPageController {
     Label stepCost;
     @FXML
     Label timeCost;
+    @FXML
+    Pane timeLimitPane;
+    @FXML
+    ToggleButton two;
+    @FXML
+    ToggleButton five;
+    @FXML
+    ToggleButton ten;
+    @FXML
+    ToggleButton twenty;
+
+
     private Label currentLabel;
     private MapPre currentMap;
 
@@ -238,6 +253,60 @@ public class MainPageController {
         choosePane.setVisible(false);
         mainPane.setVisible(true);
     }
+
+    @FXML
+    ToggleButton timeLimit;
+
+    public static Boolean isTimeLimit = false;
+
+    @FXML
+    public void handleToggleTimeLimit() {
+        if (timeLimit.isSelected()) {
+            System.out.println("Time limit ON");
+            isTimeLimit = true;
+            timeLimit.setVisible(true);
+            timeLimitPane.setVisible(true);
+            two.setVisible(true);
+            five.setVisible(true);
+            ten.setVisible(true);
+            twenty.setVisible(true);
+
+        } else {
+            System.out.println("Time limit OFF");
+            timeLimitPane.setVisible(false);
+            two.setVisible(false);
+            five.setVisible(false);
+            ten.setVisible(false);
+            twenty.setVisible(false);
+        }
+    }
+
+    public static int limitTime;
+
+    @FXML
+    public void handleConfirm1(){
+        limitTime=120;
+    }
+
+    @FXML
+    public void handleConfirm2(){
+        limitTime=300;
+    }
+
+    @FXML
+    public void handleConfirm3(){
+        limitTime=600;
+    }
+
+    @FXML
+    public void handleConfirm4(){
+        limitTime=1200;
+    }
+
+
+
+
+
 
     //------------------------------------------------------------------------------------
     public void setCurrentStage(Stage currentStage) {

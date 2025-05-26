@@ -84,8 +84,8 @@ public class GameModel {
         rootPaneController.getPagePane().setDisable(false);
         //初始GRID_SIZE
         if (mapModel.getHeight() >= mapModel.getWidth())
-            GRID_SIZE = rootPaneController.getGamePane().getScene().getHeight() / mapModel.getHeight();
-        else GRID_SIZE = rootPaneController.getGamePane().getScene().getHeight() / mapModel.getWidth();
+            GRID_SIZE = currentStage.getScene().getHeight() / mapModel.getHeight();
+        else GRID_SIZE = currentStage.getScene().getHeight() / mapModel.getWidth();
         //clear all
         setSelectedBox(null);
         gamePane.getChildren().clear();

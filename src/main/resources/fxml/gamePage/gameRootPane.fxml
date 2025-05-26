@@ -23,7 +23,16 @@
                <children>
                   <Pane prefHeight="200.0" prefWidth="500.0" styleClass="transparent-container">
                      <children>
-                        <Label fx:id="timerLabel" alignment="CENTER" focusTraversable="false" layoutY="3.0" prefHeight="100.0" prefWidth="500.0" style="-fx-font-size: 40;" text="Time: " />
+                        <Label fx:id="timeLeft" focusTraversable="false" prefHeight="100.0" prefWidth="500.0" text="         Time Left：" visible="false">
+                           <font>
+                              <Font size="40.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="timerLabel" alignment="CENTER" focusTraversable="false" layoutY="3.0" prefHeight="100.0" prefWidth="500.0" style="-fx-font-size: 40;" text="Time: ">
+                           <font>
+                              <Font size="40.0" />
+                           </font>
+                        </Label>
                         <Label fx:id="stepCounter" alignment="CENTER" focusTraversable="false" layoutY="100.0" prefHeight="100.0" prefWidth="500.0" style="-fx-font-size: 40;" text="Steps: " />
                      </children>
                   </Pane>

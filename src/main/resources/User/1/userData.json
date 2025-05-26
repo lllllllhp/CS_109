@@ -5,164 +5,141 @@
   "level": 1,
   "rating": 7.0,
   "mapRecord": {
-    "name": "map1",
+    "name": "map3",
     "hadSuccess": false,
     "mapModel": {
-      "name": "map1",
+      "name": "map3",
       "matrix": [
         [
-          0,
-          0,
+          4,
+          4,
+          1,
           0,
           1
         ],
         [
-          1,
           4,
           4,
-          0
-        ],
-        [
-          3,
-          4,
-          4,
-          0
-        ],
-        [
           3,
           1,
+          1
+        ],
+        [
+          0,
+          9,
+          3,
           1,
-          0
+          1
         ],
         [
           0,
           1,
+          1,
+          1,
+          0
+        ],
+        [
           2,
-          2
+          2,
+          1,
+          0,
+          3
+        ],
+        [
+          2,
+          2,
+          1,
+          0,
+          3
+        ],
+        [
+          2,
+          2,
+          1,
+          0,
+          0
         ]
       ],
       "copyMatrix": [
         [
-          0,
-          0,
+          4,
+          4,
+          1,
           0,
           1
         ],
         [
-          1,
           4,
           4,
-          0
-        ],
-        [
           3,
-          4,
-          4,
+          1,
           1
         ],
         [
+          0,
+          9,
           3,
           1,
-          0,
-          0
+          1
         ],
         [
           0,
           1,
+          1,
+          1,
+          0
+        ],
+        [
           2,
-          2
+          2,
+          1,
+          0,
+          3
+        ],
+        [
+          2,
+          2,
+          1,
+          0,
+          3
+        ],
+        [
+          2,
+          2,
+          1,
+          0,
+          0
         ]
       ],
-      "targetRow": 3,
+      "targetRow": 5,
       "targetCol": 1,
-      "steps": 10
+      "steps": 0
     },
     "time": {
       "hour": 0,
       "minute": 0,
-      "second": 14
+      "second": 31
     },
-    "recordDeque": [
-      {
-        "stepNum": 10,
-        "boxKey": 5,
-        "col": 3,
-        "row": 3,
-        "direction": "LEFT"
-      },
-      {
-        "stepNum": 9,
-        "boxKey": 5,
-        "col": 3,
-        "row": 2,
-        "direction": "DOWN"
-      },
-      {
-        "stepNum": 8,
-        "boxKey": 5,
-        "col": 3,
-        "row": 1,
-        "direction": "DOWN"
-      },
-      {
-        "stepNum": 7,
-        "boxKey": 5,
-        "col": 3,
-        "row": 2,
-        "direction": "UP"
-      },
-      {
-        "stepNum": 6,
-        "boxKey": 5,
-        "col": 3,
-        "row": 3,
-        "direction": "UP"
-      },
-      {
-        "stepNum": 5,
-        "boxKey": 5,
-        "col": 2,
-        "row": 3,
-        "direction": "RIGHT"
-      },
-      {
-        "stepNum": 4,
-        "boxKey": 5,
-        "col": 3,
-        "row": 3,
-        "direction": "LEFT"
-      },
-      {
-        "stepNum": 3,
-        "boxKey": 5,
-        "col": 3,
-        "row": 2,
-        "direction": "DOWN"
-      },
-      {
-        "stepNum": 2,
-        "boxKey": 5,
-        "col": 3,
-        "row": 1,
-        "direction": "DOWN"
-      },
-      {
-        "stepNum": 1,
-        "boxKey": 5,
-        "col": 3,
-        "row": 2,
-        "direction": "UP"
-      }
-    ],
+    "recordDeque": [],
     "keyMap": {
-      "11": 3,
-      "03": 1,
-      "41": 7,
-      "20": 4,
-      "31": 6,
-      "42": 8,
-      "10": 2,
-      "32": 5
+      "00": 1,
+      "33": 11,
+      "44": 14,
+      "12": 4,
+      "23": 7,
+      "02": 2,
+      "13": 5,
+      "24": 8,
+      "14": 6,
+      "04": 3,
+      "60": 17,
+      "50": 15,
+      "40": 12,
+      "62": 18,
+      "52": 16,
+      "31": 9,
+      "42": 13,
+      "32": 10
     }
   },
   "playRecords": {
