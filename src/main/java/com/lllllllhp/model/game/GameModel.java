@@ -23,12 +23,12 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
 
+import static com.lllllllhp.utils.Settings.currentStage;
 import static com.lllllllhp.utils.dataUtils.DataUtils.userData;
 
 public class GameModel {
     private GameRootPaneController rootPaneController;
     private GameControllerModel gameControllerModel;
-    private Stage currentStage;
 
     private MapModel mapModel;
     private BoxModel selectedBox;
@@ -346,10 +346,6 @@ public class GameModel {
 
     public Stage getCurrentStage() {
         return currentStage;
-    }
-
-    public void setCurrentStage(Stage currentStage) {
-        this.currentStage = currentStage;
     }
 
     public Pane getGamePane() {

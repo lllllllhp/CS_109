@@ -3,108 +3,7 @@
   "id": "lllllllhp",
   "passWord": "lmkpp8888",
   "level": 1,
-  "rating": 1.5,
-  "mapRecord": {
-    "name": "obstacle2",
-    "hadSuccess": false,
-    "mapModel": {
-      "name": "obstacle2",
-      "matrix": [
-        [
-          4,
-          4,
-          4,
-          4,
-          0
-        ],
-        [
-          4,
-          4,
-          4,
-          4,
-          0
-        ],
-        [
-          9,
-          9,
-          9,
-          0,
-          0
-        ],
-        [
-          9,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          9,
-          0,
-          0,
-          0,
-          0
-        ]
-      ],
-      "copyMatrix": [
-        [
-          4,
-          4,
-          0,
-          0,
-          0
-        ],
-        [
-          4,
-          4,
-          0,
-          0,
-          0
-        ],
-        [
-          9,
-          9,
-          9,
-          0,
-          0
-        ],
-        [
-          9,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          9,
-          0,
-          0,
-          0,
-          0
-        ]
-      ],
-      "targetRow": 3,
-      "targetCol": 1,
-      "steps": 1
-    },
-    "time": {
-      "hour": 0,
-      "minute": 0,
-      "second": 56
-    },
-    "recordDeque": [
-      {
-        "stepNum": 1,
-        "boxKey": 1,
-        "col": 1,
-        "row": 0,
-        "direction": "RIGHT"
-      }
-    ],
-    "keyMap": {
-      "02": 1
-    }
-  },
+  "rating": 2.5,
   "playRecords": {
     "map1": {
       "name": "map1",
@@ -407,6 +306,546 @@
       "recordDeque": [],
       "keyMap": {
         "31": 1
+      }
+    },
+    "www": {
+      "name": "www",
+      "hadSuccess": true,
+      "mapModel": {
+        "name": "www",
+        "matrix": [
+          [
+            2,
+            2,
+            1,
+            1,
+            0,
+            4,
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "copyMatrix": [
+          [
+            4,
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            4,
+            4,
+            0,
+            2,
+            2,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "targetRow": 3,
+        "targetCol": 7,
+        "steps": 35
+      },
+      "time": {
+        "hour": 0,
+        "minute": 0,
+        "second": 6
+      },
+      "recordDeque": [
+        {
+          "stepNum": 35,
+          "boxKey": 1,
+          "col": 4,
+          "row": 0,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 34,
+          "boxKey": 1,
+          "col": 4,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 33,
+          "boxKey": 1,
+          "col": 4,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 32,
+          "boxKey": 1,
+          "col": 5,
+          "row": 2,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 31,
+          "boxKey": 1,
+          "col": 6,
+          "row": 2,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 30,
+          "boxKey": 1,
+          "col": 5,
+          "row": 2,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 29,
+          "boxKey": 1,
+          "col": 5,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 28,
+          "boxKey": 1,
+          "col": 6,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 27,
+          "boxKey": 1,
+          "col": 7,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 24,
+          "boxKey": 1,
+          "col": 6,
+          "row": 3,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 23,
+          "boxKey": 1,
+          "col": 5,
+          "row": 3,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 22,
+          "boxKey": 1,
+          "col": 4,
+          "row": 3,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 21,
+          "boxKey": 1,
+          "col": 3,
+          "row": 3,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 20,
+          "boxKey": 1,
+          "col": 3,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 19,
+          "boxKey": 1,
+          "col": 3,
+          "row": 1,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 18,
+          "boxKey": 1,
+          "col": 2,
+          "row": 1,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 17,
+          "boxKey": 1,
+          "col": 1,
+          "row": 1,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 16,
+          "boxKey": 3,
+          "col": 4,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 15,
+          "boxKey": 3,
+          "col": 4,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 14,
+          "boxKey": 3,
+          "col": 5,
+          "row": 1,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 13,
+          "boxKey": 3,
+          "col": 6,
+          "row": 1,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 12,
+          "boxKey": 4,
+          "col": 3,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 11,
+          "boxKey": 4,
+          "col": 4,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 10,
+          "boxKey": 4,
+          "col": 5,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 9,
+          "boxKey": 4,
+          "col": 5,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 8,
+          "boxKey": 4,
+          "col": 5,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 7,
+          "boxKey": 2,
+          "col": 1,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 6,
+          "boxKey": 2,
+          "col": 2,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 5,
+          "boxKey": 2,
+          "col": 3,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 4,
+          "boxKey": 2,
+          "col": 3,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 3,
+          "boxKey": 5,
+          "col": 1,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 2,
+          "boxKey": 1,
+          "col": 1,
+          "row": 0,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 1,
+          "boxKey": 1,
+          "col": 0,
+          "row": 0,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 25,
+          "boxKey": 1,
+          "col": 7,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 26,
+          "boxKey": 1,
+          "col": 6,
+          "row": 3,
+          "direction": "RIGHT"
+        }
+      ],
+      "keyMap": {
+        "00": 2,
+        "02": 4,
+        "03": 3,
+        "37": 1,
+        "30": 5
+      }
+    },
+    "map2": {
+      "name": "map2",
+      "hadSuccess": true,
+      "mapModel": {
+        "name": "map2",
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            4,
+            0
+          ],
+          [
+            0,
+            4,
+            4,
+            0
+          ]
+        ],
+        "copyMatrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            4,
+            4,
+            0
+          ],
+          [
+            1,
+            4,
+            4,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "targetRow": 3,
+        "targetCol": 1,
+        "steps": 10
+      },
+      "time": {
+        "hour": 0,
+        "minute": 0,
+        "second": 2
+      },
+      "recordDeque": [
+        {
+          "stepNum": 8,
+          "boxKey": 3,
+          "col": 0,
+          "row": 3,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 7,
+          "boxKey": 3,
+          "col": 1,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 4,
+          "boxKey": 3,
+          "col": 2,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 3,
+          "boxKey": 3,
+          "col": 2,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 2,
+          "boxKey": 3,
+          "col": 2,
+          "row": 1,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 1,
+          "boxKey": 3,
+          "col": 1,
+          "row": 1,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 5,
+          "boxKey": 3,
+          "col": 1,
+          "row": 3,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 6,
+          "boxKey": 3,
+          "col": 2,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 9,
+          "boxKey": 3,
+          "col": 1,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 10,
+          "boxKey": 3,
+          "col": 0,
+          "row": 3,
+          "direction": "RIGHT"
+        }
+      ],
+      "keyMap": {
+        "00": 1,
+        "31": 3,
+        "20": 4,
+        "10": 2
       }
     }
   }

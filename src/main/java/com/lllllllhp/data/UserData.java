@@ -48,6 +48,8 @@ public class UserData {
     }
 
     public void saveRecord(MapRecord mapRecord) {
+        //不保存随机地图
+        if ("random_".equals(mapRecord.getName())) return;
         //原来为倒序，调整为正序
         Deque<MovementRecord> deque = mapRecord.getRecordDeque();
 
