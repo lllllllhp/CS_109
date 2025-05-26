@@ -19,7 +19,7 @@
       <AnchorPane fx:id="pagePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPress" onMouseClicked="#handleMouseClick" prefHeight="765.0" prefWidth="1360.0">
          <children>
             <Pane fx:id="gamePane" focusTraversable="true" prefHeight="765.0" prefWidth="765.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <Pane fx:id="operatePane" layoutX="918.0" layoutY="8.0" prefHeight="765.0" prefWidth="500.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane layoutX="918.0" layoutY="8.0" prefHeight="765.0" prefWidth="500.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Pane prefHeight="200.0" prefWidth="500.0" styleClass="transparent-container">
                      <children>
@@ -27,38 +27,42 @@
                         <Label fx:id="stepCounter" alignment="CENTER" focusTraversable="false" layoutY="100.0" prefHeight="100.0" prefWidth="500.0" style="-fx-font-size: 40;" text="Steps: " />
                      </children>
                   </Pane>
-                  <Pane layoutX="135.0" layoutY="665.0" prefHeight="61.0" prefWidth="230.0">
+                  <Pane fx:id="operatePane" layoutX="127.0" layoutY="262.0" visible="false">
                      <children>
-                        <Button fx:id="downButton" alignment="CENTER" focusTraversable="false" layoutX="80.0" layoutY="33.0" mnemonicParsing="false" onAction="#downButton" prefHeight="29.0" prefWidth="71.0" styleClass="pixel-smallButton" text="DOWN" />
-                        <Button fx:id="upButton" alignment="CENTER" focusTraversable="false" layoutX="80.0" mnemonicParsing="false" onAction="#upButton" prefHeight="29.0" prefWidth="71.0" styleClass="pixel-smallButton" text="UP" />
-                        <Button fx:id="leftButton" alignment="CENTER" focusTraversable="false" layoutY="33.0" mnemonicParsing="false" onAction="#leftButton" prefHeight="29.0" prefWidth="71.0" styleClass="pixel-smallButton" text="LEFT" />
-                        <Button fx:id="rightButton" alignment="CENTER" focusTraversable="false" layoutX="159.0" layoutY="33.0" mnemonicParsing="false" onAction="#rightButton" prefHeight="29.0" prefWidth="71.0" styleClass="pixel-smallButton" text="RIGHT" />
-                     </children>
-                  </Pane>
-                  <Pane layoutX="127.0" layoutY="262.0">
-                     <children>
-                        <Button focusTraversable="false" mnemonicParsing="false" onAction="#handleUndo" prefHeight="49.0" prefWidth="121.0" styleClass="pixel-midButton" text="Undo" />
-                        <Button focusTraversable="false" layoutY="142.0" mnemonicParsing="false" onAction="#handleSave" prefHeight="49.0" prefWidth="121.0" styleClass="pixel-midButton" text="Save">
-                           <font>
-                              <Font name="Century Gothic" size="20.0" />
-                           </font>
-                        </Button>
-                        <Button focusTraversable="false" layoutX="126.0" layoutY="142.0" mnemonicParsing="false" onAction="#handleReturn" prefHeight="49.0" prefWidth="121.0" styleClass="pixel-midButton" text="return">
-                           <font>
-                              <Font name="Century Gothic" size="20.0" />
-                           </font>
-                        </Button>
-                        <Button focusTraversable="false" layoutX="126.0" layoutY="71.0" mnemonicParsing="false" onAction="#handleSolve" prefHeight="49.0" prefWidth="121.0" styleClass="pixel-midButton" text="solve">
-                           <font>
-                              <Font name="Century Gothic" size="20.0" />
-                           </font>
-                        </Button>
-                        <Button layoutY="71.0" mnemonicParsing="false" onAction="#reviewSavedGame" prefHeight="49.0" prefWidth="121.0" styleClass="pixel-midButton" text="review" />
-                        <Button focusTraversable="false" layoutX="126.0" mnemonicParsing="false" onAction="#handleRestart" prefHeight="49.0" prefWidth="121.0" styleClass="pixel-midButton" text="Restart">
-                           <font>
-                              <Font name="Century Gothic" size="20.0" />
-                           </font>
-                        </Button>
+                        <Pane layoutX="8.0" layoutY="403.0" prefHeight="61.0" prefWidth="230.0">
+                           <children>
+                              <Button fx:id="downButton" alignment="CENTER" focusTraversable="false" layoutX="80.0" layoutY="33.0" mnemonicParsing="false" onAction="#downButton" prefHeight="29.0" prefWidth="71.0" styleClass="pixel-smallButton" text="DOWN" />
+                              <Button fx:id="upButton" alignment="CENTER" focusTraversable="false" layoutX="80.0" mnemonicParsing="false" onAction="#upButton" prefHeight="29.0" prefWidth="71.0" styleClass="pixel-smallButton" text="UP" />
+                              <Button fx:id="leftButton" alignment="CENTER" focusTraversable="false" layoutY="33.0" mnemonicParsing="false" onAction="#leftButton" prefHeight="29.0" prefWidth="71.0" styleClass="pixel-smallButton" text="LEFT" />
+                              <Button fx:id="rightButton" alignment="CENTER" focusTraversable="false" layoutX="159.0" layoutY="33.0" mnemonicParsing="false" onAction="#rightButton" prefHeight="29.0" prefWidth="71.0" styleClass="pixel-smallButton" text="RIGHT" />
+                           </children>
+                        </Pane>
+                        <Pane>
+                           <children>
+                              <Button focusTraversable="false" mnemonicParsing="false" onAction="#handleUndo" prefHeight="49.0" prefWidth="121.0" styleClass="pixel-midButton" text="Undo" />
+                              <Button focusTraversable="false" layoutY="142.0" mnemonicParsing="false" onAction="#handleSave" prefHeight="49.0" prefWidth="121.0" styleClass="pixel-midButton" text="Save">
+                                 <font>
+                                    <Font name="Century Gothic" size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button focusTraversable="false" layoutX="126.0" layoutY="142.0" mnemonicParsing="false" onAction="#handleReturn" prefHeight="49.0" prefWidth="121.0" styleClass="pixel-midButton" text="return">
+                                 <font>
+                                    <Font name="Century Gothic" size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button focusTraversable="false" layoutX="126.0" layoutY="71.0" mnemonicParsing="false" onAction="#handleSolve" prefHeight="49.0" prefWidth="121.0" styleClass="pixel-midButton" text="solve">
+                                 <font>
+                                    <Font name="Century Gothic" size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutY="71.0" mnemonicParsing="false" onAction="#reviewSavedGame" prefHeight="49.0" prefWidth="121.0" styleClass="pixel-midButton" text="review" />
+                              <Button focusTraversable="false" layoutX="126.0" mnemonicParsing="false" onAction="#handleRestart" prefHeight="49.0" prefWidth="121.0" styleClass="pixel-midButton" text="Restart">
+                                 <font>
+                                    <Font name="Century Gothic" size="20.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
                      </children>
                   </Pane>
                   <Label fx:id="tips" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="580.0" prefHeight="71.0" prefWidth="500.0" style="-fx-font-size: 30;" text="tips" textFill="RED" />

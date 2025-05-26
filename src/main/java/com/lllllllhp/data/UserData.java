@@ -43,13 +43,13 @@ public class UserData {
         level = 1;
     }//初始化，注册新用户
 
-    public void addRating(double addRating) {
-        this.rating += addRating;
-    }
-
     public void saveRecord(MapRecord mapRecord) {
-        //不保存随机地图
-        if ("random_".equals(mapRecord.getName())) return;
+        //保存随机地图，共用一个，加rating
+        if ("random_".equals(mapRecord.getName())) {
+            rating += 0.5;
+            playRecords.put("random_", mapRecord);
+            return;
+        }
         //原来为倒序，调整为正序
         Deque<MovementRecord> deque = mapRecord.getRecordDeque();
 
@@ -63,9 +63,9 @@ public class UserData {
         }
 
         //保存step最少的
-        if (!playRecords.containsKey(mapRecord.getName()))
+        if (!playRecords.containsKey(mapRecord.getName())) {
             playRecords.put(mapRecord.getName(), mapRecord);
-        else if (playRecords.get(mapRecord.getName()).getRecordDeque().size() > mapRecord.getRecordDeque().size()) {
+        } else if (playRecords.get(mapRecord.getName()).getRecordDeque().size() > mapRecord.getRecordDeque().size()) {
             playRecords.put(mapRecord.getName(), mapRecord);
         } else if (playRecords.get(mapRecord.getName()).getRecordDeque().size() == mapRecord.getRecordDeque().size()
                 && playRecords.get(mapRecord.getName()).getTime().getTotal() >= mapRecord.getTime().getTotal()) {

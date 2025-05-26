@@ -1,5 +1,6 @@
 package com.lllllllhp.utils.socket;
 
+import com.lllllllhp.controller.userPage.MainPageController;
 import com.lllllllhp.utils.dataUtils.DataUtils;
 import com.lllllllhp.utils.socket.messageModel.Chat;
 import com.lllllllhp.utils.socket.messageModel.Message;
@@ -81,7 +82,13 @@ public class SocketClient {
     public void closeClient() {
         try {
             connected = false;
+
+            in.close();
+            out.close();
+            scanner.close();
             client.close();
+
+            MainPageController.toMainPage();
         } catch (IOException e) {
             System.out.println(e.toString());
             throw new RuntimeException(e);

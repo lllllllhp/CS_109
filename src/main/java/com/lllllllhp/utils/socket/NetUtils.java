@@ -4,12 +4,25 @@ import com.lllllllhp.data.MapRecord;
 import com.lllllllhp.model.game.GameControllerModel;
 import com.lllllllhp.model.game.GameModel;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class NetUtils {
-    final static int PORT = 8886;
-    final static String IP = "localhost";
+    public final static int PORT = 8886;
+    public final static String IP ;
+    static {
+        String ip1;
+        try {
+            ip1 = InetAddress.getLocalHost().getHostAddress();
+        } catch (UnknownHostException e) {
+            ip1 = "localhost";
+            System.out.println(e.toString());
+        }
+        IP = ip1;
+    }
+
     public static SocketServer server;
     public static SocketClient client;
     static ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -34,9 +47,9 @@ public class NetUtils {
         server = null;
     }
 
-    public static void startClient() {
+    public static void startClient(String ip, int port) {
         executor.submit(() -> {
-            NetUtils.client = new SocketClient(IP, PORT);
+            NetUtils.client = new SocketClient(ip, port);
             client.startClient();
         });
     }

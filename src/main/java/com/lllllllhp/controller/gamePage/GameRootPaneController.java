@@ -5,7 +5,9 @@ import com.lllllllhp.model.game.GameControllerModel;
 import com.lllllllhp.model.game.GameModel;
 import com.lllllllhp.model.game.MapModel;
 
+import com.lllllllhp.model.game.Time;
 import com.lllllllhp.utils.socket.NetUtils;
+import com.lllllllhp.utils.socket.messageModel.Command;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,9 +17,11 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import static com.lllllllhp.utils.Settings.currentStage;
 import static com.lllllllhp.utils.dataUtils.DataUtils.userData;
@@ -71,17 +75,33 @@ public class GameRootPaneController {
     public void initSpectatingPage() {
         if (!NetUtils.hasClient() || !NetUtils.client.isConnected()) return;
         //-------------------------------
+        tips.setTextFill(Color.BLACK);
+        tips.setText(String.format("You are watching: %s", NetUtils.IP));
         pagePane.setDisable(false);
         winPane.setDisable(true);
         winPane.setVisible(false);
         operatePane.setVisible(false);
-        gameModel = new GameModel() {
+        if (gameModel == null) gameModel = new GameModel() {
             //无法选择box
             @Override
             public void selectBox(MouseEvent mouseEvent) {
             }
+
+            //无法成功
+            @Override
+            public void checkIsSucceed() {
+                if (getMainBox().getCol() == getMapModel().getTargetCol() && getMainBox().getRow() == getMapModel().getTargetRow()) {
+                    getTimeline().stop();
+                    //
+                    tips.setTextFill(Color.BLACK);
+                    tips.setText("Player win the game.");
+                    gamePane.getChildren().clear();
+                }
+            }
         };
-        gameControllerModel = new GameControllerModel();
+        gameModel.setTime(new Time(0));
+        updateTimer();
+        if (gameControllerModel == null) gameControllerModel = new GameControllerModel();
 
         gameModel.setGameController(gameControllerModel);
         gameControllerModel.setGameModel(gameModel);
@@ -220,11 +240,19 @@ public class GameRootPaneController {
         //退出时保存
         if (gameControllerModel != null) gameControllerModel.saveGame();
         returnToMainPage();
+
+        if (NetUtils.hasServer() && NetUtils.server.isRunning()) {
+            try {
+                NetUtils.server.broadcast(new Command(Command.CommandType.RETURN, userName.getId(), LocalDateTime.now()));
+            } catch (IOException e) {
+                System.out.println(e.toString());
+            }
+        }
     }
 
     @FXML
     public void reviewSavedGame() {
-        if (!userData.getPlayRecords().containsKey(gameModel.getMapModel().getName())) {
+        if ("random_".equals(gameModel.getMapModel().getName()) || !userData.getPlayRecords().containsKey(gameModel.getMapModel().getName())) {
             tips.setText("No success record!");
             return;
         }

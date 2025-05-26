@@ -309,16 +309,16 @@ public class GameModel {
             }
         }
 
-        if (isSucceed()) {
+        checkIsSucceed();
+    }
+
+    public void checkIsSucceed() {
+        if (mainBox.getCol() == mapModel.getTargetCol() && mainBox.getRow() == mapModel.getTargetRow()) {
             timeline.stop();
             gameControllerModel.saveGame();
             getRootPaneController().turnToWinPane();
             endGame();
         }
-    }
-
-    public boolean isSucceed() {
-        return mainBox.getCol() == mapModel.getTargetCol() && mainBox.getRow() == mapModel.getTargetRow();
     }
 
     public void endGame() {

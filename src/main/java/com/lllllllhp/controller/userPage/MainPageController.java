@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -23,6 +24,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Stream;
 
+import static com.lllllllhp.utils.Settings.currentStage;
 import static com.lllllllhp.utils.dataUtils.DataUtils.userData;
 
 public class MainPageController {
@@ -45,6 +47,12 @@ public class MainPageController {
     Label warning;
     @FXML
     Label airLabel;
+    @FXML
+    Pane socketPane;
+    @FXML
+    Label ip;
+    @FXML
+    Label port;
     //choosePane
     @FXML
     Label tips;
@@ -85,8 +93,7 @@ public class MainPageController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/gamePage/gameRootPane.fxml"));
             Parent root = loader.load();
-            GameRootPaneController gameRootPaneController = loader.getController();
-            this.gameRootPaneController = gameRootPaneController;
+            this.gameRootPaneController = loader.getController();
 
             currentStage.getScene().setRoot(root);
             currentStage.setTitle("Game");
@@ -101,6 +108,15 @@ public class MainPageController {
         timeCost.setText("");
         stepCost.setText("");
         //初始化mainPage
+        if (NetUtils.hasServer()) {
+            airLabel.setTextFill(Color.GREEN);
+            socketPane.setVisible(true);
+        } else {
+            airLabel.setTextFill(Color.BLACK);
+            socketPane.setVisible(false);
+        }
+
+        clientPane.setVisible(false);
         choosePane.setVisible(false);
         mainPane.setVisible(true);
         id.setText(" " + userData.getId());
@@ -121,11 +137,23 @@ public class MainPageController {
         if (!NetUtils.hasClient() && !NetUtils.hasServer()) {
             airLabel.setTextFill(Color.GREEN);
             NetUtils.startServer();
+            ip.setText(" IP: " + NetUtils.IP);
+            port.setText(" PORT: " + NetUtils.PORT);
+            socketPane.setVisible(true);
         } else if (NetUtils.hasServer()) {
             airLabel.setTextFill(Color.BLACK);
             NetUtils.endServer();
+            socketPane.setVisible(false);
         }
     }
+
+    //客户端连接
+    @FXML
+    Pane clientPane;
+    @FXML
+    TextField ipField;
+    @FXML
+    TextField portField;
 
     @FXML
     public void handleSpectate() {
@@ -133,7 +161,37 @@ public class MainPageController {
             System.out.println("You're on air now!");
             warning.setText("You're on air now!");
         } else if (!NetUtils.hasClient()) {
-            NetUtils.startClient();
+            clientPane.setVisible(true);
+        }
+    }
+
+    @FXML
+    public void cancelConnect() {
+        clientPane.setVisible(false);
+    }
+
+    @FXML
+    public void handleConnect() {
+        String ip = ipField.getText();
+        int port = Integer.parseInt(portField.getText());
+        NetUtils.startClient(ip, port);
+        clientPane.setVisible(false);
+
+        warning.setTextFill(Color.BLACK);
+        warning.setText(String.format("Connect to %s !", ip));
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/gamePage/gameRootPane.fxml"));
+            Parent root = loader.load();
+            this.gameRootPaneController = loader.getController();
+
+            gameRootPaneController.getTips().setTextFill(Color.BLACK);
+            gameRootPaneController.getTips().setText("Waiting for Player...");
+
+            currentStage.getScene().setRoot(root);
+            currentStage.setTitle("Game");
+        } catch (IOException e) {
+            System.out.println(e.toString());
         }
     }
 
@@ -263,5 +321,21 @@ public class MainPageController {
 
     public void setCurrentMap(MapPre currentMap) {
         this.currentMap = currentMap;
+    }
+
+    public static void toMainPage() {
+        try {
+            FXMLLoader loader = new FXMLLoader(MainPageController.class.getResource("/fxml/userPage/mainPage.fxml"));
+            Parent root = loader.load();
+            MainPageController mainPageController = loader.getController();
+            mainPageController.setCurrentStage(Settings.currentStage);
+
+            mainPageController.initMainPage();
+
+            Settings.currentStage.getScene().setRoot(root);
+            Settings.currentStage.setTitle(userData.getId());
+        } catch (IOException e) {
+            System.out.println("error\n" + e.toString());
+        }
     }
 }

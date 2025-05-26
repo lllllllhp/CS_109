@@ -5,6 +5,6 @@ import java.io.IOException;
 
 public class ClientTest {
     public static void main(String[] args) {
-        NetUtils.startClient();
+        NetUtils.startClient(NetUtils.IP, NetUtils.PORT);
     }
 }

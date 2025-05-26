@@ -25,10 +25,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static com.lllllllhp.utils.Settings.currentStage;
 import static com.lllllllhp.utils.dataUtils.DataUtils.userData;
 
 public class LoginController {
-    private Stage currentStage;
     String currentCaptcha;
 
     @FXML
@@ -135,19 +135,7 @@ public class LoginController {
         }
         if (!check()) return;
 
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userPage/mainPage.fxml"));
-            Parent root = loader.load();
-            MainPageController mainPageController = loader.getController();
-            mainPageController.setCurrentStage(currentStage);
-
-            mainPageController.initMainPage();
-
-            currentStage.getScene().setRoot(root);
-            currentStage.setTitle(userData.getId());
-        } catch (IOException e) {
-            System.out.println("error\n" + e.toString());
-        }
+        MainPageController.toMainPage();
     }
 
     public boolean check() {
@@ -237,10 +225,6 @@ public class LoginController {
     //--------------------------------------------------------------------------------------
     public Stage getCurrentStage() {
         return currentStage;
-    }
-
-    public void setCurrentStage(Stage currentStage) {
-        this.currentStage = currentStage;
     }
 
     public void initialize() {

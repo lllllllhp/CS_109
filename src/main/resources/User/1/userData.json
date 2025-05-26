@@ -3,143 +3,95 @@
   "id": "1",
   "passWord": "1",
   "level": 1,
-  "rating": 7.0,
+  "rating": 7.5,
   "mapRecord": {
-    "name": "map3",
+    "name": "map1",
     "hadSuccess": false,
     "mapModel": {
-      "name": "map3",
+      "name": "map1",
       "matrix": [
         [
-          4,
-          4,
-          1,
+          0,
+          0,
           0,
           1
         ],
         [
+          1,
           4,
           4,
-          3,
-          1,
-          1
-        ],
-        [
-          0,
-          9,
-          3,
-          1,
-          1
-        ],
-        [
-          0,
-          1,
-          1,
-          1,
           0
         ],
         [
-          2,
-          2,
-          1,
-          0,
-          3
+          3,
+          4,
+          4,
+          1
         ],
         [
-          2,
-          2,
-          1,
-          0,
-          3
-        ],
-        [
-          2,
-          2,
+          3,
           1,
           0,
           0
+        ],
+        [
+          0,
+          1,
+          2,
+          2
         ]
       ],
       "copyMatrix": [
         [
-          4,
-          4,
-          1,
+          0,
+          0,
           0,
           1
         ],
         [
+          1,
           4,
           4,
-          3,
-          1,
-          1
-        ],
-        [
-          0,
-          9,
-          3,
-          1,
-          1
-        ],
-        [
-          0,
-          1,
-          1,
-          1,
           0
         ],
         [
-          2,
-          2,
-          1,
-          0,
-          3
+          3,
+          4,
+          4,
+          1
         ],
         [
-          2,
-          2,
-          1,
-          0,
-          3
-        ],
-        [
-          2,
-          2,
+          3,
           1,
           0,
           0
+        ],
+        [
+          0,
+          1,
+          2,
+          2
         ]
       ],
-      "targetRow": 5,
+      "targetRow": 3,
       "targetCol": 1,
       "steps": 0
     },
     "time": {
       "hour": 0,
       "minute": 0,
-      "second": 31
+      "second": 1
     },
     "recordDeque": [],
     "keyMap": {
-      "00": 1,
-      "33": 11,
-      "44": 14,
-      "12": 4,
-      "23": 7,
-      "02": 2,
-      "13": 5,
-      "24": 8,
-      "14": 6,
-      "04": 3,
-      "60": 17,
-      "50": 15,
-      "40": 12,
-      "62": 18,
-      "52": 16,
-      "31": 9,
-      "42": 13,
-      "32": 10
+      "11": 3,
+      "23": 5,
+      "03": 1,
+      "41": 7,
+      "20": 4,
+      "31": 6,
+      "42": 8,
+      "10": 2
     }
   },
   "playRecords": {
@@ -857,6 +809,237 @@
         "40": 7,
         "31": 3,
         "20": 8
+      }
+    },
+    "random_": {
+      "name": "random_",
+      "hadSuccess": true,
+      "mapModel": {
+        "name": "random_",
+        "matrix": [
+          [
+            1,
+            2,
+            2,
+            1
+          ],
+          [
+            4,
+            4,
+            0,
+            1
+          ],
+          [
+            4,
+            4,
+            0,
+            1
+          ],
+          [
+            3,
+            3,
+            3,
+            3
+          ],
+          [
+            3,
+            3,
+            3,
+            3
+          ]
+        ],
+        "copyMatrix": [
+          [
+            2,
+            2,
+            0,
+            1
+          ],
+          [
+            1,
+            3,
+            4,
+            4
+          ],
+          [
+            3,
+            3,
+            4,
+            4
+          ],
+          [
+            3,
+            3,
+            3,
+            1
+          ],
+          [
+            0,
+            3,
+            3,
+            1
+          ]
+        ],
+        "targetRow": 1,
+        "targetCol": 0,
+        "steps": 19,
+        "time": {
+          "hour": 0,
+          "minute": 0,
+          "second": 0
+        }
+      },
+      "time": {
+        "hour": 0,
+        "minute": 0,
+        "second": 13
+      },
+      "recordDeque": [
+        {
+          "stepNum": 19,
+          "boxKey": 5,
+          "col": 1,
+          "row": 1,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 18,
+          "boxKey": 4,
+          "col": 0,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 17,
+          "boxKey": 4,
+          "col": 0,
+          "row": 1,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 16,
+          "boxKey": 6,
+          "col": 0,
+          "row": 3,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 15,
+          "boxKey": 7,
+          "col": 1,
+          "row": 3,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 14,
+          "boxKey": 8,
+          "col": 2,
+          "row": 3,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 13,
+          "boxKey": 10,
+          "col": 3,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 12,
+          "boxKey": 9,
+          "col": 3,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 11,
+          "boxKey": 10,
+          "col": 3,
+          "row": 4,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 10,
+          "boxKey": 9,
+          "col": 3,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 9,
+          "boxKey": 5,
+          "col": 2,
+          "row": 1,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 8,
+          "boxKey": 4,
+          "col": 1,
+          "row": 1,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 7,
+          "boxKey": 3,
+          "col": 0,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 6,
+          "boxKey": 3,
+          "col": 0,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 5,
+          "boxKey": 1,
+          "col": 0,
+          "row": 0,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 4,
+          "boxKey": 3,
+          "col": 0,
+          "row": 1,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 3,
+          "boxKey": 6,
+          "col": 0,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 2,
+          "boxKey": 6,
+          "col": 0,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 1,
+          "boxKey": 6,
+          "col": 0,
+          "row": 2,
+          "direction": "DOWN"
+        }
+      ],
+      "keyMap": {
+        "00": 3,
+        "33": 8,
+        "01": 1,
+        "23": 10,
+        "13": 9,
+        "03": 2,
+        "30": 4,
+        "31": 6,
+        "10": 5,
+        "32": 7
       }
     }
   }

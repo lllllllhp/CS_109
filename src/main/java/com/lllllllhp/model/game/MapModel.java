@@ -260,4 +260,8 @@ public class MapModel implements Serializable {
             System.out.println(Arrays.toString(matrix[i]));
         }
     }
+
+    public Time getTime() {
+        return time;
+    }
 }

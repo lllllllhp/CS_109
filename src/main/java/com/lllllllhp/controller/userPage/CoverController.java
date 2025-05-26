@@ -35,7 +35,6 @@ public class CoverController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userPage/login.fxml"));
             Parent root = loader.load();
             LoginController loginController = loader.getController();
-            loginController.setCurrentStage(currentStage);
             //直接生成验证码
             loginController.refresh();
 
@@ -51,21 +50,10 @@ public class CoverController {
         UserData guest = new UserData("Guest_", "0");
         guest.setMember(false);
 
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userPage/mainPage.fxml"));
-            Parent root = loader.load();
-            MainPageController mainPageController = loader.getController();
-            mainPageController.setCurrentStage(currentStage);
-            DataUtils.setUserData(guest);
-            DataUtils.isMember = false;
+        DataUtils.setUserData(guest);
+        DataUtils.isMember = false;
 
-            mainPageController.initMainPage();
-
-            currentStage.getScene().setRoot(root);
-            currentStage.setTitle(guest.getId());
-        } catch (IOException e) {
-            System.out.println("error\n" + e.toString());
-        }
+        MainPageController.toMainPage();
     }//直接进入main page
 
     @FXML
