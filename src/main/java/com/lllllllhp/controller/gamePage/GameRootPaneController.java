@@ -58,6 +58,15 @@ public class GameRootPaneController {
     private Button reviewGame;
     @FXML
     private Pane winPane;
+    @FXML
+    Pane losePane;
+    @FXML
+    Label totalSteps1;
+    @FXML
+    Label totalTime1;
+    @FXML
+    Label userName1;
+
 
     private GameControllerModel gameControllerModel;
     private GameModel gameModel;
@@ -226,6 +235,13 @@ public class GameRootPaneController {
             timeLeft.setVisible(true);
             timeLeft.setText(String.format("         Time Left：%s", getRemainingTimeString(limitTime)));
         }
+        if(gameModel.getTime().getTotal()>limitTime){
+            gameModel.getTimeline().stop();
+            losePane.setVisible(true);
+            totalSteps1.setText(String.format("Total Steps: %d", gameModel.getMapModel().getSteps()));
+            totalTime1.setText(String.format("Time cost: %s", gameModel.getTime().toString()));
+            userName1.setText(userData.getId());
+        }
     }
 
     public String getRemainingTimeString(int totalSeconds) {
@@ -258,6 +274,7 @@ public class GameRootPaneController {
         winPane.setVisible(true);
     }
 
+
     @FXML
     public void handleReturn() {
         gameModel.getTimeline().stop();
@@ -288,7 +305,6 @@ public class GameRootPaneController {
     @FXML
     public void returnToMainPage() {
         gameModel.getTimeline().stop();
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userPage/mainPage.fxml"));
             Parent root = loader.load();

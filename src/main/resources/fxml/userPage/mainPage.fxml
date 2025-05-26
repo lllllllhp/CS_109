@@ -63,7 +63,7 @@
                   <Label fx:id="port" layoutY="56.0" prefHeight="56.0" prefWidth="300.0" style="-fx-font-size: 20;" text="PORT: " />
                </children>
             </Pane>
-            <Pane fx:id="clientPane" layoutX="354.0" layoutY="200.0" prefHeight="364.0" prefWidth="650.0" styleClass="board">
+            <Pane fx:id="clientPane" layoutX="354.0" layoutY="200.0" prefHeight="364.0" prefWidth="650.0" styleClass="board" visible="false">
                <children>
                   <Label alignment="CENTER_RIGHT" layoutX="85.0" layoutY="77.0" prefHeight="70.0" prefWidth="127.0" style="-fx-font-size: 40;" styleClass="transparent-label" text="IP" />
                   <Label alignment="CENTER_RIGHT" layoutX="85.0" layoutY="171.0" prefHeight="70.0" prefWidth="127.0" style="-fx-font-size: 36;" styleClass="transparent-label" text="PORT" />
@@ -76,7 +76,7 @@
             </Pane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="choosePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="1360.0" visible="false" StackPane.alignment="CENTER">
+      <AnchorPane fx:id="choosePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="1360.0" StackPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="765.0" fitWidth="1360.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -97,12 +97,14 @@
                   <Label fx:id="mapName" focusTraversable="false" prefHeight="158.0" prefWidth="778.0" style="-fx-font-size: 70;" text="mapName" />
                   <Label fx:id="timeCost" focusTraversable="false" layoutX="167.0" layoutY="282.0" prefHeight="89.0" prefWidth="444.0" style="-fx-font-size: 40;" text="timeCost" />
                   <Label fx:id="stepCost" focusTraversable="false" layoutX="167.0" layoutY="193.0" prefHeight="89.0" prefWidth="444.0" style="-fx-font-size: 40;" text="stepCost" />
-                  <Pane id="timeLimitPane" fx:id="timeLimitPane" layoutX="8.0" prefHeight="417.0" prefWidth="688.0" visible="false">
+                  <Pane id="timeLimitPane" fx:id="timeLimitPane" layoutX="61.0" layoutY="14.0" prefHeight="417.0" prefWidth="617.0" visible="false">
                      <children>
                         <ToggleButton fx:id="two" alignment="CENTER" focusTraversable="false" layoutX="46.0" layoutY="56.0" mnemonicParsing="false" onAction="#handleConfirm1" prefHeight="51.0" prefWidth="177.0" styleClass="timeLimitButton" text="2minute" />
                         <ToggleButton fx:id="five" alignment="CENTER" focusTraversable="false" layoutX="46.0" layoutY="182.0" mnemonicParsing="false" onAction="#handleConfirm2" prefHeight="51.0" prefWidth="177.0" styleClass="timeLimitButton" text="5minutes" />
-                        <ToggleButton fx:id="ten" alignment="CENTER" focusTraversable="false" layoutX="472.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleConfirm3" prefHeight="51.0" prefWidth="177.0" styleClass="timeLimitButton" text="10minutes" />
-                        <ToggleButton fx:id="twenty" alignment="CENTER" focusTraversable="false" layoutX="472.0" layoutY="56.0" mnemonicParsing="false" onAction="#handleConfirm4" prefHeight="51.0" prefWidth="177.0" styleClass="timeLimitButton" text="20minutes" visible="false" />
+                        <ToggleButton fx:id="ten" alignment="CENTER" focusTraversable="false" layoutX="384.0" layoutY="182.0" mnemonicParsing="false" onAction="#handleConfirm3" prefHeight="51.0" prefWidth="177.0" styleClass="timeLimitButton" text="10minutes" />
+                        <ToggleButton fx:id="twenty" alignment="CENTER" focusTraversable="false" layoutX="384.0" layoutY="56.0" mnemonicParsing="false" onAction="#handleConfirm4" prefHeight="51.0" prefWidth="177.0" styleClass="timeLimitButton" text="20minutes" />
+                        <ToggleButton fx:id="custom" layoutX="46.0" layoutY="306.0" mnemonicParsing="false" onAction="#confirmCustom" prefHeight="51.0" prefWidth="177.0" styleClass="timeLimitButton" text="custom" />
+                        <TextField id="customTime" fx:id="customTime" layoutX="257.0" layoutY="306.0" prefHeight="51.0" prefWidth="291.0" />
                      </children>
                   </Pane>
                </children>

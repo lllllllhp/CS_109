@@ -76,6 +76,12 @@ public class MainPageController {
     ToggleButton ten;
     @FXML
     ToggleButton twenty;
+    @FXML
+    ToggleButton custom;
+    @FXML
+    TextField customTime;
+    @FXML
+    ToggleButton timeLimit;
 
 
     private Label currentLabel;
@@ -123,6 +129,7 @@ public class MainPageController {
         mapName.setText("");
         timeCost.setText("");
         stepCost.setText("");
+        timeLimit.setSelected(isTimeLimit);
         //初始化mainPage
         if (NetUtils.hasServer()) {
             airLabel.setTextFill(Color.GREEN);
@@ -328,7 +335,23 @@ public class MainPageController {
         } else {
             warning.setText("请选择地图");
         }
+        updateLimitTimeFromCustomTime();
     }
+
+    private void updateLimitTimeFromCustomTime() {
+        String text = customTime.getText();
+        if (text != null && !text.isBlank()) {
+            try {
+                limitTime = Integer.parseInt(text) * 60;
+                System.out.println("limitTime set from custom input: " + limitTime);
+            } catch (NumberFormatException ex) {
+                System.out.println("Invalid input for customTime: " + text);
+                // 可以弹窗提示用户输入格式错误
+            }
+        }
+    }
+
+
 
     @FXML
     public void returnOnMapChoose() {
@@ -336,8 +359,6 @@ public class MainPageController {
         mainPane.setVisible(true);
     }
 
-    @FXML
-    ToggleButton timeLimit;
 
     public static Boolean isTimeLimit = false;
 
@@ -352,6 +373,7 @@ public class MainPageController {
             five.setVisible(true);
             ten.setVisible(true);
             twenty.setVisible(true);
+            custom.setVisible(true);
 
         } else {
             System.out.println("Time limit OFF");
@@ -360,8 +382,21 @@ public class MainPageController {
             five.setVisible(false);
             ten.setVisible(false);
             twenty.setVisible(false);
+            custom.setVisible(false);
+            customTime.setVisible(false);
+            isTimeLimit=false;
         }
     }
+
+    @FXML
+    public void confirmCustom(){
+        if(custom.isSelected()){
+            customTime.setVisible(true);
+            customTime.setPromptText("Please enter the time(in minutes):");
+        }
+    }
+
+
 
     @FXML
     public void handleRandom() {
@@ -392,6 +427,9 @@ public class MainPageController {
     public void handleConfirm4() {
         limitTime = 1200;
     }
+
+
+
 
 
     //------------------------------------------------------------------------------------

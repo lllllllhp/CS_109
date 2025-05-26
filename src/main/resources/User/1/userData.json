@@ -3,18 +3,18 @@
   "id": "1",
   "passWord": "1",
   "level": 1,
-  "rating": 7.5,
+  "rating": 8.0,
   "mapRecord": {
-    "name": "map1",
+    "name": "map2",
     "hadSuccess": false,
     "mapModel": {
-      "name": "map1",
+      "name": "map2",
       "matrix": [
         [
+          1,
           0,
           0,
-          0,
-          1
+          0
         ],
         [
           1,
@@ -23,30 +23,30 @@
           0
         ],
         [
-          3,
+          1,
           4,
           4,
-          1
+          0
         ],
         [
-          3,
-          1,
+          0,
+          0,
           0,
           0
         ],
         [
           0,
-          1,
-          2,
-          2
+          0,
+          0,
+          0
         ]
       ],
       "copyMatrix": [
         [
+          1,
           0,
           0,
-          0,
-          1
+          0
         ],
         [
           1,
@@ -55,22 +55,22 @@
           0
         ],
         [
-          3,
+          1,
           4,
           4,
-          1
+          0
         ],
         [
-          3,
-          1,
+          0,
+          0,
           0,
           0
         ],
         [
           0,
-          1,
-          2,
-          2
+          0,
+          0,
+          0
         ]
       ],
       "targetRow": 3,
@@ -84,13 +84,9 @@
     },
     "recordDeque": [],
     "keyMap": {
+      "00": 1,
       "11": 3,
-      "23": 5,
-      "03": 1,
-      "41": 7,
       "20": 4,
-      "31": 6,
-      "42": 8,
       "10": 2
     }
   },
@@ -474,17 +470,17 @@
       },
       "recordDeque": [
         {
-          "stepNum": 2,
-          "boxKey": 3,
-          "col": 1,
-          "row": 2,
-          "direction": "DOWN"
-        },
-        {
           "stepNum": 1,
           "boxKey": 3,
           "col": 1,
           "row": 1,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 2,
+          "boxKey": 3,
+          "col": 1,
+          "row": 2,
           "direction": "DOWN"
         }
       ],
@@ -818,71 +814,71 @@
         "name": "random_",
         "matrix": [
           [
+            3,
+            3,
             1,
-            2,
-            2,
-            1
-          ],
-          [
-            4,
-            4,
-            0,
-            1
-          ],
-          [
-            4,
-            4,
-            0,
-            1
-          ],
-          [
-            3,
-            3,
-            3,
             3
           ],
           [
             3,
             3,
-            3,
+            1,
             3
+          ],
+          [
+            0,
+            0,
+            1,
+            3
+          ],
+          [
+            4,
+            4,
+            1,
+            3
+          ],
+          [
+            4,
+            4,
+            2,
+            2
           ]
         ],
         "copyMatrix": [
           [
-            2,
-            2,
             0,
+            4,
+            4,
             1
           ],
           [
             1,
-            3,
             4,
-            4
+            4,
+            3
           ],
           [
             3,
             3,
-            4,
-            4
+            1,
+            3
           ],
           [
             3,
             3,
-            3,
-            1
+            1,
+            3
           ],
           [
             0,
-            3,
-            3,
-            1
+            2,
+            2,
+            3
           ]
         ],
-        "targetRow": 1,
+        "targetRow": 3,
         "targetCol": 0,
-        "steps": 19,
+        "steps": 48,
         "time": {
           "hour": 0,
           "minute": 0,
@@ -892,154 +888,1162 @@
       "time": {
         "hour": 0,
         "minute": 0,
-        "second": 13
+        "second": 15
       },
       "recordDeque": [
         {
-          "stepNum": 19,
-          "boxKey": 5,
+          "stepNum": 48,
+          "boxKey": 1,
+          "col": 0,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 47,
+          "boxKey": 10,
           "col": 1,
+          "row": 4,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 46,
+          "boxKey": 9,
+          "col": 3,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 45,
+          "boxKey": 4,
+          "col": 3,
           "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 44,
+          "boxKey": 3,
+          "col": 3,
+          "row": 0,
           "direction": "LEFT"
         },
         {
-          "stepNum": 18,
-          "boxKey": 4,
-          "col": 0,
-          "row": 2,
-          "direction": "DOWN"
-        },
-        {
-          "stepNum": 17,
-          "boxKey": 4,
-          "col": 0,
-          "row": 1,
-          "direction": "DOWN"
-        },
-        {
-          "stepNum": 16,
-          "boxKey": 6,
-          "col": 0,
-          "row": 3,
-          "direction": "RIGHT"
-        },
-        {
-          "stepNum": 15,
+          "stepNum": 43,
           "boxKey": 7,
-          "col": 1,
-          "row": 3,
+          "col": 2,
+          "row": 0,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 42,
+          "boxKey": 10,
+          "col": 0,
+          "row": 4,
           "direction": "RIGHT"
         },
         {
-          "stepNum": 14,
+          "stepNum": 41,
           "boxKey": 8,
           "col": 2,
-          "row": 3,
-          "direction": "RIGHT"
-        },
-        {
-          "stepNum": 13,
-          "boxKey": 10,
-          "col": 3,
-          "row": 3,
-          "direction": "UP"
-        },
-        {
-          "stepNum": 12,
-          "boxKey": 9,
-          "col": 3,
-          "row": 2,
-          "direction": "UP"
-        },
-        {
-          "stepNum": 11,
-          "boxKey": 10,
-          "col": 3,
           "row": 4,
           "direction": "UP"
         },
         {
-          "stepNum": 10,
-          "boxKey": 9,
-          "col": 3,
-          "row": 3,
-          "direction": "UP"
-        },
-        {
-          "stepNum": 9,
-          "boxKey": 5,
+          "stepNum": 40,
+          "boxKey": 2,
           "col": 2,
           "row": 1,
-          "direction": "LEFT"
+          "direction": "DOWN"
         },
         {
-          "stepNum": 8,
-          "boxKey": 4,
+          "stepNum": 39,
+          "boxKey": 1,
           "col": 1,
-          "row": 1,
+          "row": 2,
           "direction": "LEFT"
         },
         {
-          "stepNum": 7,
-          "boxKey": 3,
+          "stepNum": 38,
+          "boxKey": 6,
           "col": 0,
           "row": 1,
           "direction": "UP"
         },
         {
-          "stepNum": 6,
-          "boxKey": 3,
+          "stepNum": 37,
+          "boxKey": 6,
           "col": 0,
           "row": 2,
           "direction": "UP"
         },
         {
-          "stepNum": 5,
-          "boxKey": 1,
+          "stepNum": 36,
+          "boxKey": 5,
           "col": 0,
           "row": 0,
           "direction": "RIGHT"
         },
         {
-          "stepNum": 4,
-          "boxKey": 3,
-          "col": 0,
+          "stepNum": 35,
+          "boxKey": 2,
+          "col": 1,
+          "row": 1,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 34,
+          "boxKey": 2,
+          "col": 1,
+          "row": 0,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 33,
+          "boxKey": 1,
+          "col": 1,
           "row": 1,
           "direction": "DOWN"
         },
         {
-          "stepNum": 3,
-          "boxKey": 6,
-          "col": 0,
-          "row": 2,
+          "stepNum": 32,
+          "boxKey": 8,
+          "col": 2,
+          "row": 3,
           "direction": "DOWN"
         },
         {
-          "stepNum": 2,
+          "stepNum": 31,
+          "boxKey": 10,
+          "col": 1,
+          "row": 4,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 30,
           "boxKey": 6,
           "col": 0,
           "row": 3,
           "direction": "UP"
         },
         {
-          "stepNum": 1,
+          "stepNum": 29,
+          "boxKey": 5,
+          "col": 0,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 28,
+          "boxKey": 2,
+          "col": 0,
+          "row": 0,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 27,
+          "boxKey": 7,
+          "col": 1,
+          "row": 0,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 26,
+          "boxKey": 3,
+          "col": 2,
+          "row": 0,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 25,
+          "boxKey": 4,
+          "col": 3,
+          "row": 0,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 24,
+          "boxKey": 9,
+          "col": 3,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 23,
+          "boxKey": 10,
+          "col": 2,
+          "row": 4,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 22,
           "boxKey": 6,
+          "col": 1,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 21,
+          "boxKey": 5,
+          "col": 0,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 20,
+          "boxKey": 5,
+          "col": 0,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 19,
+          "boxKey": 1,
+          "col": 0,
+          "row": 1,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 18,
+          "boxKey": 3,
+          "col": 2,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 17,
+          "boxKey": 3,
+          "col": 2,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 16,
+          "boxKey": 7,
+          "col": 2,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 15,
+          "boxKey": 7,
+          "col": 2,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 14,
+          "boxKey": 2,
+          "col": 1,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 13,
+          "boxKey": 2,
+          "col": 2,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 12,
+          "boxKey": 1,
+          "col": 0,
+          "row": 0,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 11,
+          "boxKey": 3,
+          "col": 1,
+          "row": 2,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 10,
+          "boxKey": 3,
+          "col": 0,
+          "row": 2,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 9,
+          "boxKey": 7,
+          "col": 2,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 8,
+          "boxKey": 6,
+          "col": 1,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 7,
+          "boxKey": 10,
+          "col": 1,
+          "row": 4,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 6,
+          "boxKey": 9,
+          "col": 3,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 5,
+          "boxKey": 4,
+          "col": 3,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 4,
+          "boxKey": 2,
+          "col": 3,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 3,
+          "boxKey": 1,
+          "col": 1,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 2,
+          "boxKey": 3,
+          "col": 0,
+          "row": 1,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 1,
+          "boxKey": 5,
           "col": 0,
           "row": 2,
           "direction": "DOWN"
         }
       ],
       "keyMap": {
-        "00": 3,
-        "33": 8,
-        "01": 1,
-        "23": 10,
-        "13": 9,
-        "03": 2,
-        "30": 4,
-        "31": 6,
-        "10": 5,
-        "32": 7
+        "22": 2,
+        "00": 6,
+        "01": 5,
+        "12": 7,
+        "23": 9,
+        "02": 3,
+        "03": 4,
+        "30": 1,
+        "42": 10,
+        "32": 8
+      }
+    },
+    "map4": {
+      "name": "map4",
+      "hadSuccess": true,
+      "mapModel": {
+        "name": "map4",
+        "matrix": [
+          [
+            1,
+            3,
+            1,
+            3,
+            1
+          ],
+          [
+            3,
+            3,
+            1,
+            3,
+            3
+          ],
+          [
+            3,
+            1,
+            2,
+            2,
+            3
+          ],
+          [
+            3,
+            4,
+            4,
+            0,
+            1
+          ],
+          [
+            3,
+            4,
+            4,
+            0,
+            1
+          ]
+        ],
+        "copyMatrix": [
+          [
+            1,
+            1,
+            3,
+            4,
+            4
+          ],
+          [
+            3,
+            3,
+            3,
+            4,
+            4
+          ],
+          [
+            3,
+            3,
+            2,
+            2,
+            1
+          ],
+          [
+            0,
+            3,
+            1,
+            1,
+            3
+          ],
+          [
+            1,
+            3,
+            0,
+            1,
+            3
+          ]
+        ],
+        "targetRow": 3,
+        "targetCol": 1,
+        "steps": 60
+      },
+      "time": {
+        "hour": 0,
+        "minute": 0,
+        "second": 30
+      },
+      "recordDeque": [
+        {
+          "stepNum": 1,
+          "boxKey": 5,
+          "col": 0,
+          "row": 1,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 2,
+          "boxKey": 1,
+          "col": 0,
+          "row": 0,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 3,
+          "boxKey": 2,
+          "col": 1,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 4,
+          "boxKey": 6,
+          "col": 1,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 5,
+          "boxKey": 9,
+          "col": 1,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 6,
+          "boxKey": 13,
+          "col": 0,
+          "row": 4,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 7,
+          "boxKey": 13,
+          "col": 1,
+          "row": 4,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 8,
+          "boxKey": 9,
+          "col": 1,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 9,
+          "boxKey": 7,
+          "col": 2,
+          "row": 2,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 10,
+          "boxKey": 5,
+          "col": 0,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 11,
+          "boxKey": 7,
+          "col": 1,
+          "row": 2,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 12,
+          "boxKey": 3,
+          "col": 2,
+          "row": 0,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 13,
+          "boxKey": 11,
+          "col": 3,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 14,
+          "boxKey": 10,
+          "col": 2,
+          "row": 3,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 15,
+          "boxKey": 3,
+          "col": 2,
+          "row": 1,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 16,
+          "boxKey": 4,
+          "col": 3,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 17,
+          "boxKey": 8,
+          "col": 4,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 18,
+          "boxKey": 11,
+          "col": 3,
+          "row": 2,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 19,
+          "boxKey": 8,
+          "col": 4,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 20,
+          "boxKey": 11,
+          "col": 4,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 21,
+          "boxKey": 12,
+          "col": 4,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 22,
+          "boxKey": 14,
+          "col": 3,
+          "row": 4,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 23,
+          "boxKey": 10,
+          "col": 3,
+          "row": 3,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 24,
+          "boxKey": 3,
+          "col": 2,
+          "row": 2,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 25,
+          "boxKey": 13,
+          "col": 2,
+          "row": 4,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 26,
+          "boxKey": 10,
+          "col": 3,
+          "row": 4,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 27,
+          "boxKey": 3,
+          "col": 3,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 28,
+          "boxKey": 4,
+          "col": 2,
+          "row": 0,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 29,
+          "boxKey": 8,
+          "col": 4,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 30,
+          "boxKey": 8,
+          "col": 3,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 31,
+          "boxKey": 11,
+          "col": 4,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 32,
+          "boxKey": 11,
+          "col": 4,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 33,
+          "boxKey": 12,
+          "col": 4,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 34,
+          "boxKey": 12,
+          "col": 4,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 35,
+          "boxKey": 14,
+          "col": 4,
+          "row": 4,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 36,
+          "boxKey": 14,
+          "col": 4,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 37,
+          "boxKey": 3,
+          "col": 3,
+          "row": 3,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 38,
+          "boxKey": 13,
+          "col": 2,
+          "row": 3,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 39,
+          "boxKey": 13,
+          "col": 3,
+          "row": 3,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 40,
+          "boxKey": 4,
+          "col": 2,
+          "row": 1,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 41,
+          "boxKey": 11,
+          "col": 3,
+          "row": 0,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 42,
+          "boxKey": 11,
+          "col": 3,
+          "row": 1,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 43,
+          "boxKey": 12,
+          "col": 4,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 44,
+          "boxKey": 14,
+          "col": 4,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 45,
+          "boxKey": 14,
+          "col": 4,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 46,
+          "boxKey": 3,
+          "col": 4,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 47,
+          "boxKey": 13,
+          "col": 3,
+          "row": 4,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 48,
+          "boxKey": 10,
+          "col": 2,
+          "row": 4,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 49,
+          "boxKey": 3,
+          "col": 4,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 50,
+          "boxKey": 13,
+          "col": 4,
+          "row": 4,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 51,
+          "boxKey": 10,
+          "col": 3,
+          "row": 4,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 52,
+          "boxKey": 4,
+          "col": 2,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 53,
+          "boxKey": 7,
+          "col": 0,
+          "row": 2,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 54,
+          "boxKey": 1,
+          "col": 0,
+          "row": 1,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 55,
+          "boxKey": 7,
+          "col": 1,
+          "row": 2,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 56,
+          "boxKey": 1,
+          "col": 0,
+          "row": 2,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 57,
+          "boxKey": 5,
+          "col": 0,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 58,
+          "boxKey": 5,
+          "col": 0,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 59,
+          "boxKey": 9,
+          "col": 1,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 60,
+          "boxKey": 4,
+          "col": 2,
+          "row": 3,
+          "direction": "LEFT"
+        }
+      ],
+      "keyMap": {
+        "00": 2,
+        "22": 7,
+        "44": 10,
+        "01": 6,
+        "12": 11,
+        "34": 13,
+        "02": 8,
+        "14": 3,
+        "03": 12,
+        "04": 14,
+        "30": 9,
+        "31": 4,
+        "21": 1,
+        "10": 5
+      }
+    },
+    "hello world!": {
+      "name": "hello world!",
+      "hadSuccess": true,
+      "mapModel": {
+        "name": "hello world!",
+        "matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            4,
+            4
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            4,
+            4
+          ]
+        ],
+        "copyMatrix": [
+          [
+            4,
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            4,
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "targetRow": 7,
+        "targetCol": 7,
+        "steps": 14
+      },
+      "time": {
+        "hour": 0,
+        "minute": 0,
+        "second": 9
+      },
+      "recordDeque": [
+        {
+          "stepNum": 7,
+          "boxKey": 1,
+          "col": 2,
+          "row": 4,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 8,
+          "boxKey": 1,
+          "col": 3,
+          "row": 4,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 9,
+          "boxKey": 1,
+          "col": 4,
+          "row": 4,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 10,
+          "boxKey": 1,
+          "col": 5,
+          "row": 4,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 11,
+          "boxKey": 1,
+          "col": 6,
+          "row": 4,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 12,
+          "boxKey": 1,
+          "col": 7,
+          "row": 4,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 13,
+          "boxKey": 1,
+          "col": 7,
+          "row": 5,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 14,
+          "boxKey": 1,
+          "col": 7,
+          "row": 6,
+          "direction": "DOWN"
+        }
+      ],
+      "keyMap": {
+        "77": 1
       }
     }
   }
