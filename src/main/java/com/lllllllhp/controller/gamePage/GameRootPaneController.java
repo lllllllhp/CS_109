@@ -9,6 +9,7 @@ import com.lllllllhp.utils.socket.NetUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -18,8 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static com.lllllllhp.controller.userPage.MainPageController.isTimeLimit;
-import static com.lllllllhp.controller.userPage.MainPageController.limitTime;
+import static com.lllllllhp.utils.Settings.currentStage;
 import static com.lllllllhp.utils.dataUtils.DataUtils.userData;
 
 public class GameRootPaneController {
@@ -44,12 +44,13 @@ public class GameRootPaneController {
     @FXML
     private Label userName;
     @FXML
-    private Pane winPane;
+    private Button returnToMain;
     @FXML
-    private Label timeLeft;
+    private Button reviewGame;
+    @FXML
+    private Pane winPane;
 
     private GameControllerModel gameControllerModel;
-    private Stage currentStage;
     private GameModel gameModel;
     private MapModel chooseMap;
 
@@ -87,7 +88,6 @@ public class GameRootPaneController {
 
         gameModel.setRootPaneController(this);
         gameModel.setGamePane(gamePane);
-        gameModel.setCurrentStage(currentStage);
         //---------------------------------------------
         gameModel.setMapModel(NetUtils.ClientData.spectatingMap.getMapModel());
         gameControllerModel.setMapModel(NetUtils.ClientData.spectatingMap.getMapModel());
@@ -125,7 +125,6 @@ public class GameRootPaneController {
 
         gameModel.setRootPaneController(this);
         gameModel.setGamePane(gamePane);
-        gameModel.setCurrentStage(currentStage);
     }
 
     @FXML
@@ -150,6 +149,10 @@ public class GameRootPaneController {
 
     @FXML
     public void handleSave() {
+        if ("Guest_".equals(userData.getId())) {
+            tips.setText("You can't save game.");
+            return;
+        }
         gameControllerModel.saveGame();
     }
 
@@ -188,27 +191,8 @@ public class GameRootPaneController {
     }
 
     public void updateTimer() {
-        if (!isTimeLimit) {
-            timerLabel.setText(String.format("Time: %s", gameModel.getTime().toString()));
-            timerLabel.setVisible(true);
-            timeLeft.setVisible(false);
-        }
-        else {
-            timerLabel.setVisible(false);
-            timeLeft.setVisible(true);
-            timeLeft.setText(String.format("         Time Left：%s", getRemainingTimeString(limitTime)));
-        }
+        timerLabel.setText(String.format("Time: %s", gameModel.getTime().toString()));
     }
-
-    public String getRemainingTimeString(int totalSeconds) {
-        int elapsed = gameModel.getTime().getTotal();
-        int remaining = totalSeconds - elapsed;
-        if (remaining < 0) remaining = 0;
-        int min = remaining / 60;
-        int sec = remaining % 60;
-        return String.format("%02d:%02d", min, sec);
-    }
-
 
     public void turnToWinPane() {
         gameModel.getTimeline().stop();
@@ -232,6 +216,7 @@ public class GameRootPaneController {
 
     @FXML
     public void handleReturn() {
+        gameModel.getTimeline().stop();
         //退出时保存
         if (gameControllerModel != null) gameControllerModel.saveGame();
         returnToMainPage();
@@ -239,18 +224,18 @@ public class GameRootPaneController {
 
     @FXML
     public void reviewSavedGame() {
-        if (!userData.getPlayRecords().containsKey(gameModel.getMapModel().getName())){
+        if (!userData.getPlayRecords().containsKey(gameModel.getMapModel().getName())) {
             tips.setText("No success record!");
             return;
         }
         gameControllerModel.reviewSavedGame();
     }
+
     //-----------------------------------------------------------------------------------------------------------------------
     //win pane
     @FXML
     public void returnToMainPage() {
-
-        userData.addRating(0.5);
+        gameModel.getTimeline().stop();
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userPage/mainPage.fxml"));
@@ -274,8 +259,32 @@ public class GameRootPaneController {
 
     //----------------------------------------------------------------------------------------------------------------
 
-    public void setCurrentStage(Stage currentStage) {
-        this.currentStage = currentStage;
+    public Label getStepCounter() {
+        return stepCounter;
+    }
+
+    public void setStepCounter(Label stepCounter) {
+        this.stepCounter = stepCounter;
+    }
+
+    public GameControllerModel getGameController() {
+        return gameControllerModel;
+    }
+
+    public void setGameController(GameControllerModel gameControllerModel) {
+        this.gameControllerModel = gameControllerModel;
+    }
+
+    public Label getTotalSteps() {
+        return totalSteps;
+    }
+
+    public void setTotalSteps(Label totalSteps) {
+        this.totalSteps = totalSteps;
+    }
+
+    public MapModel getChooseMap() {
+        return chooseMap;
     }
 
     public void setChooseMap(MapModel chooseMap) {
@@ -290,4 +299,11 @@ public class GameRootPaneController {
         return winPane;
     }
 
+    public Pane getGamePane() {
+        return gamePane;
+    }
+
+    public Label getTips() {
+        return tips;
+    }
 }

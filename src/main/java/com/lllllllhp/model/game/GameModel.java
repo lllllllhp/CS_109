@@ -326,6 +326,7 @@ public class GameModel {
     }//todo
 
     public void startTimer() {
+        timeline.stop();
         timeline.getKeyFrames().clear();
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), actionEvent -> {
             time.addSeconds(1);
