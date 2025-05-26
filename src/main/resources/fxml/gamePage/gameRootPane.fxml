@@ -75,6 +75,7 @@
                      </children>
                   </Pane>
                   <Label fx:id="tips" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="580.0" prefHeight="71.0" prefWidth="500.0" style="-fx-font-size: 30;" text="tips" textFill="RED" />
+                  <Button fx:id="exitSpectating" layoutX="401.0" layoutY="737.0" mnemonicParsing="false" onAction="#exitSpectating" styleClass="pixel-smallButton" text="exit watching" />
                </children>
             </Pane>
          </children>

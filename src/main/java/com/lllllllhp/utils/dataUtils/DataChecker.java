@@ -54,7 +54,6 @@ public class DataChecker {
         Path hashPath = dataPath.getParent().resolve("hash");
         try {
             Files.writeString(hashPath, hashCode);
-            System.out.println("create hash: " + hashCode);
         } catch (IOException e) {
             System.out.println("create hash fail");
             System.out.println(e.toString());

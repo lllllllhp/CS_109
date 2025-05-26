@@ -139,6 +139,9 @@ public class MainPageController {
             socketPane.setVisible(false);
         }
 
+        //初始化是否限时
+        updateLimitShower();
+
         clientPane.setVisible(false);
         choosePane.setVisible(false);
         mainPane.setVisible(true);
@@ -212,8 +215,7 @@ public class MainPageController {
             return;
         }
 
-        if (!NetUtils.hasClient() || !NetUtils.client.isConnected()) {
-            socketWarning.setText("Please check IP and PORT.");
+        if (!NetUtils.hasClient()) {
             return;
         }
         clientPane.setVisible(false);
@@ -352,7 +354,6 @@ public class MainPageController {
     }
 
 
-
     @FXML
     public void returnOnMapChoose() {
         choosePane.setVisible(false);
@@ -361,6 +362,18 @@ public class MainPageController {
 
 
     public static Boolean isTimeLimit = false;
+    @FXML
+    Label limitShower;
+    public void updateLimitShower() {
+        //初始化是否限时
+        if (isTimeLimit) {
+            limitShower.setTextFill(Color.GREEN);
+            limitShower.setText("ON");
+        }else {
+            limitShower.setTextFill(Color.BLACK);
+            limitShower.setText("OFF");
+        }
+    }
 
     @FXML
     public void handleToggleTimeLimit() {
@@ -384,18 +397,18 @@ public class MainPageController {
             twenty.setVisible(false);
             custom.setVisible(false);
             customTime.setVisible(false);
-            isTimeLimit=false;
+            isTimeLimit = false;
         }
+        updateLimitShower();
     }
 
     @FXML
-    public void confirmCustom(){
-        if(custom.isSelected()){
+    public void confirmCustom() {
+        if (custom.isSelected()) {
             customTime.setVisible(true);
             customTime.setPromptText("Please enter the time(in minutes):");
         }
     }
-
 
 
     @FXML
@@ -427,9 +440,6 @@ public class MainPageController {
     public void handleConfirm4() {
         limitTime = 1200;
     }
-
-
-
 
 
     //------------------------------------------------------------------------------------

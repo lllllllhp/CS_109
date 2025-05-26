@@ -330,6 +330,7 @@ public class GameModel {
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), actionEvent -> {
             time.addSeconds(1);
             rootPaneController.updateTimer();
+            gameControllerModel.saveGame();
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();

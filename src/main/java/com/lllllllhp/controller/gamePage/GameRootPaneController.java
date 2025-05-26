@@ -38,6 +38,8 @@ public class GameRootPaneController {
     @FXML
     private Pane operatePane;
     @FXML
+    Button exitSpectating;
+    @FXML
     private Label stepCounter;
     @FXML
     private Label timerLabel;
@@ -95,6 +97,7 @@ public class GameRootPaneController {
         winPane.setDisable(true);
         winPane.setVisible(false);
         operatePane.setVisible(false);
+        exitSpectating.setVisible(true);
         if (gameModel == null) gameModel = new GameModel() {
             //无法选择box
             @Override
@@ -132,6 +135,12 @@ public class GameRootPaneController {
         gameModel.loadGame();
     }
 
+    @FXML
+    public void exitSpectating() {
+        NetUtils.endClient();
+        MainPageController.toMainPage();
+    }
+
     public void initPane() {
         //键盘监听
         currentStage.getScene().addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
@@ -144,7 +153,7 @@ public class GameRootPaneController {
             }
         });
 
-
+        exitSpectating.setVisible(false);
         pagePane.setDisable(false);
         winPane.setDisable(true);
         winPane.setVisible(false);
@@ -229,13 +238,12 @@ public class GameRootPaneController {
             timerLabel.setText(String.format("Time: %s", gameModel.getTime().toString()));
             timerLabel.setVisible(true);
             timeLeft.setVisible(false);
-        }
-        else {
+        } else {
             timerLabel.setVisible(false);
             timeLeft.setVisible(true);
             timeLeft.setText(String.format("         Time Left：%s", getRemainingTimeString(limitTime)));
         }
-        if(gameModel.getTime().getTotal()>limitTime){
+        if (isTimeLimit && gameModel.getTime().getTotal() > limitTime) {
             gameModel.getTimeline().stop();
             losePane.setVisible(true);
             totalSteps1.setText(String.format("Total Steps: %d", gameModel.getMapModel().getSteps()));

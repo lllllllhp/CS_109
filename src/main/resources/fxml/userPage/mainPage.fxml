@@ -89,7 +89,6 @@
                </content>
             </ScrollPane>
             <ToggleButton id="timeLimit" fx:id="timeLimit" layoutX="754.0" layoutY="643.0" mnemonicParsing="false" onAction="#handleToggleTimeLimit" prefHeight="56.0" prefWidth="190.0" text="time-limited" />
-            <Button alignment="CENTER" focusTraversable="false" layoutX="443.0" layoutY="643.0" mnemonicParsing="false" onAction="#handleConfirm" prefHeight="56.0" prefWidth="190.0" styleClass="pixel-button" text="confirm" AnchorPane.bottomAnchor="66.33333333333337" AnchorPane.leftAnchor="443.0" />
             <Label fx:id="tips" alignment="CENTER" layoutX="286.0" layoutY="550.0" prefHeight="72.0" prefWidth="504.0" style="-fx-font-size: 30;" text="Label" AnchorPane.bottomAnchor="143.60000000000002" AnchorPane.leftAnchor="286.0" />
             <Button focusTraversable="false" layoutY="737.0" mnemonicParsing="false" onAction="#returnOnMapChoose" prefHeight="23.0" prefWidth="62.0" styleClass="pixel-smallButton" text="return" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
             <Pane layoutX="167.0" layoutY="95.0" prefHeight="476.0" prefWidth="777.0">
@@ -110,6 +109,8 @@
                </children>
             </Pane>
             <Button alignment="CENTER" focusTraversable="false" layoutX="118.0" layoutY="643.0" mnemonicParsing="false" onAction="#handleRandom" prefHeight="56.0" prefWidth="190.0" styleClass="pixel-button" text="random" />
+            <Button alignment="CENTER" focusTraversable="false" layoutX="443.0" layoutY="643.0" mnemonicParsing="false" onAction="#handleConfirm" prefHeight="56.0" prefWidth="190.0" styleClass="pixel-button" text="confirm" AnchorPane.bottomAnchor="66.33333333333337" AnchorPane.leftAnchor="443.0" />
+            <Label fx:id="limitShower" alignment="CENTER" layoutX="754.0" layoutY="699.0" prefHeight="56.0" prefWidth="190.0" style="-fx-font-size: 30;" text="Label" />
          </children>
       </AnchorPane>
    </children>
