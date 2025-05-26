@@ -32,7 +32,7 @@ public class SocketClient {
         this.PORT = PORT;
     }
 
-    public void startClient() {
+    public void startClient() throws RuntimeException {
         try {
             Socket client = new Socket(SERVER_IP, PORT);
             this.client = client;
@@ -55,10 +55,10 @@ public class SocketClient {
                 out.flush();
             }
         } catch (BindException e) {
-            System.out.println("PORT is occupied");
+            throw new RuntimeException("PORT is occupied");
         } catch (IOException e) {
-            System.out.println("connect fail");
             System.out.println(e.toString());
+            throw new RuntimeException("Please check IP and PORT.");
         }
     }
 

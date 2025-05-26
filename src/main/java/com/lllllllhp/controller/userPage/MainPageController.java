@@ -23,6 +23,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.BindException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Stream;
@@ -75,7 +76,6 @@ public class MainPageController {
     ToggleButton ten;
     @FXML
     ToggleButton twenty;
-
 
 
     private Label currentLabel;
@@ -170,6 +170,8 @@ public class MainPageController {
     TextField ipField;
     @FXML
     TextField portField;
+    @FXML
+    Label socketWarning;
 
     @FXML
     public void handleSpectate() {
@@ -178,6 +180,7 @@ public class MainPageController {
             warning.setText("You're on air now!");
         } else if (!NetUtils.hasClient()) {
             clientPane.setVisible(true);
+            socketWarning.setText("");
         }
     }
 
@@ -188,9 +191,24 @@ public class MainPageController {
 
     @FXML
     public void handleConnect() {
-        String ip = ipField.getText();
-        int port = Integer.parseInt(portField.getText());
-        NetUtils.startClient(ip, port);
+        try {
+            String ip = ipField.getText();
+            int port = Integer.parseInt(portField.getText());
+            NetUtils.startClient(ip, port);
+        } catch (NumberFormatException e) {
+            socketWarning.setText("Please check IP and PORT.");
+            System.out.println(e.toString());
+            return;
+        } catch (RuntimeException e) {
+            socketWarning.setText(e.getMessage());
+            System.out.println(e.toString());
+            return;
+        }
+
+        if (!NetUtils.hasClient() || !NetUtils.client.isConnected()) {
+            socketWarning.setText("Please check IP and PORT.");
+            return;
+        }
         clientPane.setVisible(false);
 
         warning.setTextFill(Color.BLACK);

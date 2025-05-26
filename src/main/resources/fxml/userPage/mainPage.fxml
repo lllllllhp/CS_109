@@ -71,11 +71,12 @@
                   <TextField fx:id="portField" layoutX="239.0" layoutY="171.0" prefHeight="70.0" prefWidth="317.0" styleClass="transparent-textField" />
                   <Button layoutX="367.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleConnect" prefHeight="56.0" prefWidth="162.0" styleClass="pixel-midButton" text="connect" />
                   <Button layoutX="123.0" layoutY="274.0" mnemonicParsing="false" onAction="#cancelConnect" prefHeight="56.0" prefWidth="162.0" styleClass="pixel-midButton" text="cancel" />
+                  <Label fx:id="socketWarning" alignment="CENTER" layoutX="187.0" layoutY="26.0" prefHeight="51.0" prefWidth="277.0" style="-fx-font-size: 20;" text="Label" textFill="RED" />
                </children>
             </Pane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="choosePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="1360.0" StackPane.alignment="CENTER">
+      <AnchorPane fx:id="choosePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="1360.0" visible="false" StackPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="765.0" fitWidth="1360.0" pickOnBounds="true" preserveRatio="true">
                <image>

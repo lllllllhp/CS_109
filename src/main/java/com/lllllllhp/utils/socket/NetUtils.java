@@ -4,6 +4,7 @@ import com.lllllllhp.data.MapRecord;
 import com.lllllllhp.model.game.GameControllerModel;
 import com.lllllllhp.model.game.GameModel;
 
+import java.net.BindException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.concurrent.ExecutorService;
@@ -47,10 +48,15 @@ public class NetUtils {
         server = null;
     }
 
-    public static void startClient(String ip, int port) {
+    public static void startClient(String ip, int port) throws RuntimeException{
         executor.submit(() -> {
             NetUtils.client = new SocketClient(ip, port);
-            client.startClient();
+            try {
+                client.startClient();
+            } catch (RuntimeException e) {
+                client = null;
+                throw new RuntimeException(e);
+            }
         });
     }
 
