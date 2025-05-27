@@ -42,6 +42,8 @@ public class LoginController {
     @FXML
     TextField captchaField;
 
+    boolean isRegistered;
+
     @FXML
     public void refresh() {
         StringBuilder captcha = new StringBuilder();
@@ -110,10 +112,12 @@ public class LoginController {
                 System.out.println("Account is registered.");
                 warning.setTextFill(Color.BLACK);
                 warning.setText("Account is registered.");
+                isRegistered = true;
             } else {
                 System.out.println("Account is not registered.");
                 warning.setTextFill(Color.RED);
                 warning.setText("Account is not registered");
+                isRegistered = false;
             }
         });
     }
@@ -166,6 +170,8 @@ public class LoginController {
                     System.out.println("Wrong Password.");
                     return false;
                 }
+                if (!isRegistered) return false;
+
                 //传入数据
                 DataUtils.setUserData(temp);
 
@@ -187,23 +193,27 @@ public class LoginController {
             }
         } else {
             //未注册用户，注册新账户
-            try {
-                path = path.resolve("userData.json");
-                Files.createDirectories(path.getParent());
-                UserData temp = new UserData(id, passWord);
-                String newData = gson.toJson(temp);
-                Files.writeString(path, newData);
-                //传入数据
-                DataUtils.setUserData(temp);
+            return createUser(path, passWord, id);
+        }
+    }
 
-                System.out.println("Welcome newcomer.");
-                return true;
-            } catch (IOException e) {
-                warning.setText("Creating new account fails.");
-                System.out.println("Creating new account fails.");
-                System.out.println(e.toString());
-                return false;
-            }
+    public static boolean createUser(Path path, String passWord, String id) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try {
+            path = path.resolve("userData.json");
+            Files.createDirectories(path.getParent());
+            UserData temp = new UserData(id, passWord);
+            String newData = gson.toJson(temp);
+            Files.writeString(path, newData);
+            //传入数据
+            DataUtils.setUserData(temp);
+
+            System.out.println("Welcome newcomer.");
+            return true;
+        } catch (IOException e) {
+            System.out.println("Creating new account fails.");
+            System.out.println(e.toString());
+            return false;
         }
     }
 
