@@ -154,14 +154,10 @@ public class RegisterController {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         try {
-
-
-
             if (isRegistered) {
                 warning.setText("User has been registered");
                 return false;
             }
-
             //传入数据
             createUser(path, passWord, id);
             return true;
