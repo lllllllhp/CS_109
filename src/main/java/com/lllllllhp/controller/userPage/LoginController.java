@@ -41,6 +41,8 @@ public class LoginController {
     Button Captcha;
     @FXML
     TextField captchaField;
+    @FXML
+    TextField confirmPassWord;
 
     boolean isRegistered;
 
@@ -142,60 +144,63 @@ public class LoginController {
         MainPageController.toMainPage();
     }
 
+
     public boolean check() {
         String id = idField.getText();
         String passWord = passWordField.getText();
-        Path path = Paths.get("src/main/resources/User", id);
+        String confirmPassword = (confirmPassWord != null) ? confirmPassWord.getText() : "";
+        Path userPath = Paths.get("src/main/resources/User", id);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        if (Files.exists(path) && Files.isDirectory(path)) {
-            //已注册用户，检查密码
-            path = path.resolve("userData.json");
+        if (isRegistered) {
+            // 登录流程
+            Path dataFile = userPath.resolve("userData.json");
 
             try {
-                String inputData = Files.readString(path);
+                String inputData = Files.readString(dataFile);
                 UserData temp = gson.fromJson(inputData, UserData.class);
 
-                //检验hash
-                if (!DataChecker.checkData(temp, path)) {
+                if (!DataChecker.checkData(temp, dataFile)) {
                     warning.setTextFill(Color.RED);
                     warning.setText("Data is invalid!");
-                    System.out.println("Data is invalid!");
                     return false;
                 }
-                //检验密码
+
                 if (!temp.getPassWord().equals(passWord)) {
                     warning.setTextFill(Color.RED);
-                    warning.setText("Please check your password.");
-                    System.out.println("Wrong Password.");
+                    warning.setText("Wrong password.");
                     return false;
                 }
-                if (!isRegistered) return false;
 
-                //传入数据
                 DataUtils.setUserData(temp);
-
-                System.out.println("data is valid");
                 return true;
             } catch (JsonSyntaxException e) {
-                //文件损坏
-                System.out.println("data corrupted.");
-                System.out.println(e.toString());
                 warning.setTextFill(Color.RED);
-                warning.setText("data corrupted.");
+                warning.setText("Data corrupted.");
                 return false;
             } catch (IOException e) {
-                System.out.println("Reading error.");
-                System.out.println(e.toString());
                 warning.setTextFill(Color.RED);
                 warning.setText("Reading error.");
                 return false;
             }
         } else {
-            //未注册用户，注册新账户
-            return createUser(path, passWord, id);
+            // 注册流程
+            if (passWord.isEmpty() || confirmPassword.isEmpty()) {
+                warning.setTextFill(Color.RED);
+                warning.setText("Please enter and confirm your password.");
+                return false;
+            }
+
+            if (!passWord.equals(confirmPassword)) {
+                warning.setTextFill(Color.RED);
+                warning.setText("Passwords do not match.");
+                return false;
+            }
+
+            return createUser(userPath, passWord, id);
         }
     }
+
 
     public static boolean createUser(Path path, String passWord, String id) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
