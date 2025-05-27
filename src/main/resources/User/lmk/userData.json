@@ -3,6 +3,1671 @@
   "id": "lmk",
   "passWord": "0",
   "level": 1,
-  "rating": 0.0,
-  "playRecords": {}
+  "rating": 0.75,
+  "playRecords": {
+    "easy_1": {
+      "name": "easy_1",
+      "hadSuccess": true,
+      "mapModel": {
+        "name": "easy_1",
+        "matrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            4,
+            4,
+            0,
+            0
+          ],
+          [
+            4,
+            4,
+            0,
+            0
+          ]
+        ],
+        "copyMatrix": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            4,
+            4,
+            0
+          ],
+          [
+            1,
+            4,
+            4,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "targetRow": 3,
+        "targetCol": 1,
+        "steps": 47
+      },
+      "time": {
+        "hour": 0,
+        "minute": 0,
+        "second": 9
+      },
+      "recordDeque": [
+        {
+          "stepNum": 47,
+          "boxKey": 3,
+          "col": 1,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 14,
+          "boxKey": 3,
+          "col": 0,
+          "row": 3,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 13,
+          "boxKey": 3,
+          "col": 1,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 10,
+          "boxKey": 3,
+          "col": 2,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 9,
+          "boxKey": 3,
+          "col": 2,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 8,
+          "boxKey": 3,
+          "col": 2,
+          "row": 1,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 7,
+          "boxKey": 3,
+          "col": 2,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 6,
+          "boxKey": 3,
+          "col": 2,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 5,
+          "boxKey": 3,
+          "col": 2,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 4,
+          "boxKey": 3,
+          "col": 1,
+          "row": 2,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 3,
+          "boxKey": 3,
+          "col": 1,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 11,
+          "boxKey": 3,
+          "col": 1,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 12,
+          "boxKey": 3,
+          "col": 0,
+          "row": 3,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 15,
+          "boxKey": 3,
+          "col": 1,
+          "row": 3,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 16,
+          "boxKey": 3,
+          "col": 2,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 17,
+          "boxKey": 3,
+          "col": 2,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 18,
+          "boxKey": 3,
+          "col": 2,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 19,
+          "boxKey": 3,
+          "col": 2,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 20,
+          "boxKey": 3,
+          "col": 1,
+          "row": 0,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 21,
+          "boxKey": 3,
+          "col": 2,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 22,
+          "boxKey": 3,
+          "col": 1,
+          "row": 0,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 23,
+          "boxKey": 3,
+          "col": 2,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 24,
+          "boxKey": 3,
+          "col": 1,
+          "row": 0,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 25,
+          "boxKey": 3,
+          "col": 2,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 26,
+          "boxKey": 3,
+          "col": 1,
+          "row": 0,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 27,
+          "boxKey": 3,
+          "col": 1,
+          "row": 1,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 28,
+          "boxKey": 3,
+          "col": 1,
+          "row": 2,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 29,
+          "boxKey": 3,
+          "col": 2,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 30,
+          "boxKey": 3,
+          "col": 2,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 31,
+          "boxKey": 3,
+          "col": 2,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 32,
+          "boxKey": 3,
+          "col": 1,
+          "row": 0,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 33,
+          "boxKey": 3,
+          "col": 2,
+          "row": 0,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 34,
+          "boxKey": 3,
+          "col": 2,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 35,
+          "boxKey": 3,
+          "col": 2,
+          "row": 0,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 36,
+          "boxKey": 3,
+          "col": 2,
+          "row": 1,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 37,
+          "boxKey": 3,
+          "col": 2,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 38,
+          "boxKey": 3,
+          "col": 2,
+          "row": 1,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 39,
+          "boxKey": 3,
+          "col": 1,
+          "row": 1,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 40,
+          "boxKey": 3,
+          "col": 2,
+          "row": 1,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 41,
+          "boxKey": 3,
+          "col": 1,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 42,
+          "boxKey": 3,
+          "col": 1,
+          "row": 0,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 43,
+          "boxKey": 3,
+          "col": 2,
+          "row": 0,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 44,
+          "boxKey": 3,
+          "col": 2,
+          "row": 1,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 45,
+          "boxKey": 3,
+          "col": 2,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 46,
+          "boxKey": 3,
+          "col": 2,
+          "row": 3,
+          "direction": "LEFT"
+        }
+      ],
+      "keyMap": {
+        "00": 1,
+        "31": 3,
+        "20": 4,
+        "10": 2
+      }
+    },
+    "master_7_5": {
+      "name": "master_7_5",
+      "hadSuccess": true,
+      "mapModel": {
+        "name": "master_7_5",
+        "matrix": [
+          [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            3
+          ],
+          [
+            1,
+            9,
+            1,
+            1,
+            3
+          ],
+          [
+            3,
+            0,
+            0,
+            2,
+            2
+          ],
+          [
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            4,
+            4,
+            0,
+            2,
+            2
+          ],
+          [
+            4,
+            4,
+            0,
+            2,
+            2
+          ]
+        ],
+        "copyMatrix": [
+          [
+            4,
+            4,
+            1,
+            0,
+            1
+          ],
+          [
+            4,
+            4,
+            3,
+            1,
+            1
+          ],
+          [
+            0,
+            9,
+            3,
+            1,
+            1
+          ],
+          [
+            0,
+            1,
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            2,
+            1,
+            0,
+            3
+          ],
+          [
+            2,
+            2,
+            1,
+            0,
+            3
+          ],
+          [
+            2,
+            2,
+            1,
+            0,
+            0
+          ]
+        ],
+        "targetRow": 5,
+        "targetCol": 1,
+        "steps": 139
+      },
+      "time": {
+        "hour": 0,
+        "minute": 1,
+        "second": 6
+      },
+      "recordDeque": [
+        {
+          "stepNum": 139,
+          "boxKey": 1,
+          "col": 1,
+          "row": 5,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 1,
+          "boxKey": 14,
+          "col": 4,
+          "row": 4,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 2,
+          "boxKey": 13,
+          "col": 2,
+          "row": 4,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 3,
+          "boxKey": 13,
+          "col": 3,
+          "row": 4,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 4,
+          "boxKey": 13,
+          "col": 3,
+          "row": 5,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 5,
+          "boxKey": 16,
+          "col": 2,
+          "row": 5,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 6,
+          "boxKey": 16,
+          "col": 3,
+          "row": 5,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 7,
+          "boxKey": 16,
+          "col": 3,
+          "row": 6,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 8,
+          "boxKey": 18,
+          "col": 2,
+          "row": 6,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 9,
+          "boxKey": 18,
+          "col": 3,
+          "row": 6,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 10,
+          "boxKey": 18,
+          "col": 3,
+          "row": 5,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 11,
+          "boxKey": 15,
+          "col": 0,
+          "row": 5,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 12,
+          "boxKey": 15,
+          "col": 1,
+          "row": 5,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 13,
+          "boxKey": 15,
+          "col": 2,
+          "row": 5,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 14,
+          "boxKey": 12,
+          "col": 0,
+          "row": 4,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 15,
+          "boxKey": 12,
+          "col": 1,
+          "row": 4,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 16,
+          "boxKey": 9,
+          "col": 1,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 17,
+          "boxKey": 9,
+          "col": 0,
+          "row": 3,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 18,
+          "boxKey": 9,
+          "col": 0,
+          "row": 4,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 19,
+          "boxKey": 10,
+          "col": 2,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 20,
+          "boxKey": 10,
+          "col": 1,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 21,
+          "boxKey": 10,
+          "col": 0,
+          "row": 3,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 22,
+          "boxKey": 11,
+          "col": 3,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 23,
+          "boxKey": 11,
+          "col": 2,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 24,
+          "boxKey": 11,
+          "col": 1,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 25,
+          "boxKey": 11,
+          "col": 0,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 26,
+          "boxKey": 18,
+          "col": 3,
+          "row": 4,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 27,
+          "boxKey": 18,
+          "col": 2,
+          "row": 4,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 28,
+          "boxKey": 18,
+          "col": 1,
+          "row": 4,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 29,
+          "boxKey": 18,
+          "col": 1,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 30,
+          "boxKey": 7,
+          "col": 3,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 31,
+          "boxKey": 7,
+          "col": 3,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 32,
+          "boxKey": 7,
+          "col": 2,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 33,
+          "boxKey": 4,
+          "col": 2,
+          "row": 1,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 34,
+          "boxKey": 4,
+          "col": 2,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 35,
+          "boxKey": 4,
+          "col": 2,
+          "row": 3,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 36,
+          "boxKey": 4,
+          "col": 3,
+          "row": 3,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 37,
+          "boxKey": 2,
+          "col": 2,
+          "row": 0,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 38,
+          "boxKey": 2,
+          "col": 2,
+          "row": 1,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 39,
+          "boxKey": 2,
+          "col": 2,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 40,
+          "boxKey": 2,
+          "col": 2,
+          "row": 3,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 41,
+          "boxKey": 2,
+          "col": 2,
+          "row": 4,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 42,
+          "boxKey": 5,
+          "col": 3,
+          "row": 1,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 43,
+          "boxKey": 5,
+          "col": 3,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 44,
+          "boxKey": 5,
+          "col": 3,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 45,
+          "boxKey": 5,
+          "col": 2,
+          "row": 3,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 46,
+          "boxKey": 1,
+          "col": 0,
+          "row": 0,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 47,
+          "boxKey": 1,
+          "col": 1,
+          "row": 0,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 48,
+          "boxKey": 1,
+          "col": 2,
+          "row": 0,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 49,
+          "boxKey": 1,
+          "col": 2,
+          "row": 1,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 50,
+          "boxKey": 11,
+          "col": 0,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 51,
+          "boxKey": 11,
+          "col": 0,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 52,
+          "boxKey": 18,
+          "col": 0,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 53,
+          "boxKey": 18,
+          "col": 0,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 54,
+          "boxKey": 18,
+          "col": 0,
+          "row": 1,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 55,
+          "boxKey": 18,
+          "col": 1,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 56,
+          "boxKey": 10,
+          "col": 0,
+          "row": 4,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 57,
+          "boxKey": 10,
+          "col": 0,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 58,
+          "boxKey": 10,
+          "col": 0,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 59,
+          "boxKey": 10,
+          "col": 0,
+          "row": 1,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 60,
+          "boxKey": 10,
+          "col": 1,
+          "row": 1,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 61,
+          "boxKey": 10,
+          "col": 2,
+          "row": 1,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 62,
+          "boxKey": 10,
+          "col": 3,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 63,
+          "boxKey": 10,
+          "col": 3,
+          "row": 0,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 64,
+          "boxKey": 7,
+          "col": 1,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 65,
+          "boxKey": 7,
+          "col": 0,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 66,
+          "boxKey": 7,
+          "col": 0,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 67,
+          "boxKey": 7,
+          "col": 0,
+          "row": 1,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 68,
+          "boxKey": 7,
+          "col": 1,
+          "row": 1,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 69,
+          "boxKey": 7,
+          "col": 2,
+          "row": 1,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 70,
+          "boxKey": 7,
+          "col": 3,
+          "row": 1,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 71,
+          "boxKey": 2,
+          "col": 1,
+          "row": 4,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 72,
+          "boxKey": 2,
+          "col": 0,
+          "row": 4,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 73,
+          "boxKey": 2,
+          "col": 0,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 74,
+          "boxKey": 2,
+          "col": 0,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 75,
+          "boxKey": 9,
+          "col": 0,
+          "row": 5,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 76,
+          "boxKey": 9,
+          "col": 0,
+          "row": 4,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 77,
+          "boxKey": 9,
+          "col": 0,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 78,
+          "boxKey": 2,
+          "col": 0,
+          "row": 1,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 79,
+          "boxKey": 2,
+          "col": 1,
+          "row": 1,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 80,
+          "boxKey": 9,
+          "col": 0,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 81,
+          "boxKey": 2,
+          "col": 2,
+          "row": 1,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 82,
+          "boxKey": 6,
+          "col": 4,
+          "row": 1,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 83,
+          "boxKey": 8,
+          "col": 4,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 84,
+          "boxKey": 6,
+          "col": 3,
+          "row": 1,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 85,
+          "boxKey": 8,
+          "col": 4,
+          "row": 1,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 86,
+          "boxKey": 14,
+          "col": 4,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 87,
+          "boxKey": 14,
+          "col": 4,
+          "row": 2,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 88,
+          "boxKey": 12,
+          "col": 1,
+          "row": 5,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 89,
+          "boxKey": 5,
+          "col": 2,
+          "row": 4,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 90,
+          "boxKey": 5,
+          "col": 1,
+          "row": 4,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 91,
+          "boxKey": 5,
+          "col": 0,
+          "row": 4,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 92,
+          "boxKey": 5,
+          "col": 0,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 93,
+          "boxKey": 12,
+          "col": 0,
+          "row": 5,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 94,
+          "boxKey": 12,
+          "col": 0,
+          "row": 4,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 95,
+          "boxKey": 4,
+          "col": 3,
+          "row": 4,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 96,
+          "boxKey": 4,
+          "col": 2,
+          "row": 4,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 97,
+          "boxKey": 4,
+          "col": 1,
+          "row": 4,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 98,
+          "boxKey": 15,
+          "col": 2,
+          "row": 6,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 99,
+          "boxKey": 15,
+          "col": 2,
+          "row": 5,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 100,
+          "boxKey": 15,
+          "col": 2,
+          "row": 4,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 101,
+          "boxKey": 13,
+          "col": 4,
+          "row": 5,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 102,
+          "boxKey": 13,
+          "col": 3,
+          "row": 5,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 103,
+          "boxKey": 13,
+          "col": 2,
+          "row": 5,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 104,
+          "boxKey": 13,
+          "col": 1,
+          "row": 5,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 105,
+          "boxKey": 15,
+          "col": 3,
+          "row": 4,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 106,
+          "boxKey": 1,
+          "col": 2,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 107,
+          "boxKey": 1,
+          "col": 2,
+          "row": 3,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 108,
+          "boxKey": 13,
+          "col": 1,
+          "row": 4,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 109,
+          "boxKey": 13,
+          "col": 2,
+          "row": 4,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 110,
+          "boxKey": 13,
+          "col": 2,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 111,
+          "boxKey": 16,
+          "col": 4,
+          "row": 6,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 112,
+          "boxKey": 16,
+          "col": 3,
+          "row": 6,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 113,
+          "boxKey": 16,
+          "col": 2,
+          "row": 6,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 114,
+          "boxKey": 16,
+          "col": 2,
+          "row": 5,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 115,
+          "boxKey": 16,
+          "col": 2,
+          "row": 4,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 116,
+          "boxKey": 13,
+          "col": 2,
+          "row": 2,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 117,
+          "boxKey": 16,
+          "col": 2,
+          "row": 3,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 118,
+          "boxKey": 15,
+          "col": 3,
+          "row": 5,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 119,
+          "boxKey": 17,
+          "col": 0,
+          "row": 6,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 120,
+          "boxKey": 17,
+          "col": 1,
+          "row": 6,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 121,
+          "boxKey": 17,
+          "col": 1,
+          "row": 5,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 122,
+          "boxKey": 17,
+          "col": 2,
+          "row": 5,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 123,
+          "boxKey": 12,
+          "col": 0,
+          "row": 3,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 124,
+          "boxKey": 12,
+          "col": 1,
+          "row": 3,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 125,
+          "boxKey": 12,
+          "col": 1,
+          "row": 4,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 126,
+          "boxKey": 4,
+          "col": 0,
+          "row": 4,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 127,
+          "boxKey": 12,
+          "col": 1,
+          "row": 5,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 128,
+          "boxKey": 12,
+          "col": 0,
+          "row": 5,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 129,
+          "boxKey": 12,
+          "col": 1,
+          "row": 5,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 130,
+          "boxKey": 1,
+          "col": 3,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 131,
+          "boxKey": 1,
+          "col": 2,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 132,
+          "boxKey": 17,
+          "col": 3,
+          "row": 5,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 133,
+          "boxKey": 17,
+          "col": 3,
+          "row": 4,
+          "direction": "UP"
+        },
+        {
+          "stepNum": 134,
+          "boxKey": 12,
+          "col": 0,
+          "row": 5,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 135,
+          "boxKey": 12,
+          "col": 1,
+          "row": 5,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 136,
+          "boxKey": 12,
+          "col": 2,
+          "row": 5,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 137,
+          "boxKey": 1,
+          "col": 1,
+          "row": 3,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 138,
+          "boxKey": 1,
+          "col": 1,
+          "row": 4,
+          "direction": "DOWN"
+        }
+      ],
+      "keyMap": {
+        "11": 2,
+        "00": 11,
+        "22": 16,
+        "33": 17,
+        "12": 6,
+        "23": 13,
+        "01": 18,
+        "13": 8,
+        "02": 10,
+        "03": 7,
+        "14": 14,
+        "04": 3,
+        "51": 1,
+        "30": 4,
+        "63": 15,
+        "20": 5,
+        "53": 12,
+        "10": 9
+      }
+    },
+    "obstacle2": {
+      "name": "obstacle2",
+      "hadSuccess": true,
+      "mapModel": {
+        "name": "obstacle2",
+        "matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            9,
+            9,
+            9,
+            0,
+            0
+          ],
+          [
+            9,
+            4,
+            4,
+            0,
+            0
+          ],
+          [
+            9,
+            4,
+            4,
+            0,
+            0
+          ]
+        ],
+        "copyMatrix": [
+          [
+            4,
+            4,
+            0,
+            0,
+            0
+          ],
+          [
+            4,
+            4,
+            0,
+            0,
+            0
+          ],
+          [
+            9,
+            9,
+            9,
+            0,
+            0
+          ],
+          [
+            9,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            9,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "targetRow": 3,
+        "targetCol": 1,
+        "steps": 8
+      },
+      "time": {
+        "hour": 0,
+        "minute": 0,
+        "second": 2
+      },
+      "recordDeque": [
+        {
+          "stepNum": 1,
+          "boxKey": 1,
+          "col": 0,
+          "row": 0,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 2,
+          "boxKey": 1,
+          "col": 1,
+          "row": 0,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 3,
+          "boxKey": 1,
+          "col": 2,
+          "row": 0,
+          "direction": "RIGHT"
+        },
+        {
+          "stepNum": 4,
+          "boxKey": 1,
+          "col": 3,
+          "row": 0,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 5,
+          "boxKey": 1,
+          "col": 3,
+          "row": 1,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 6,
+          "boxKey": 1,
+          "col": 3,
+          "row": 2,
+          "direction": "DOWN"
+        },
+        {
+          "stepNum": 7,
+          "boxKey": 1,
+          "col": 3,
+          "row": 3,
+          "direction": "LEFT"
+        },
+        {
+          "stepNum": 8,
+          "boxKey": 1,
+          "col": 2,
+          "row": 3,
+          "direction": "LEFT"
+        }
+      ],
+      "keyMap": {
+        "31": 1
+      }
+    }
+  }
 }
