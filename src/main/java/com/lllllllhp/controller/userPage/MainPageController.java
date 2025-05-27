@@ -13,10 +13,7 @@ import com.lllllllhp.utils.socket.NetUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -82,6 +79,8 @@ public class MainPageController {
     TextField customTime;
     @FXML
     ToggleButton timeLimit;
+    @FXML
+    ToggleGroup group1;
 
 
     private Label currentLabel;
@@ -440,6 +439,10 @@ public class MainPageController {
     public void handleConfirm4() {
         limitTime = 1200;
     }
+
+
+
+
 
 
     //------------------------------------------------------------------------------------

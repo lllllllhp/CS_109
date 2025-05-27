@@ -128,86 +128,88 @@
 }
 #timeLimitPane {
     -fx-background-color: linear-gradient(
-            from 0% 100% to 100% 0%,
-            rgba(250, 245, 230, 0.6) 0%,  /* 浅米白渐变，透光感 */
-            rgba(240, 235, 220, 0.6) 100%
+            from 0% 0% to 0% 100%,
+            rgba(240, 255, 240, 0.6) 0%,  /* 顶部浅绿透光 */
+            rgba(250, 245, 230, 0.6) 50%,  /* 中间柔米白 */
+            rgba(240, 255, 240, 0.6) 100%  /* 底部浅绿呼应 */
     );
-    -fx-background-radius: 10px;  /* 圆润边角 */
-    -fx-border-color: rgba(200, 190, 180, 0.8);  /* 浅棕边框，呼应树木纹理 */
-    -fx-border-radius: 10px;
-    -fx-border-width: 2px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 8, 0.2, 2, 3);  /* 淡阴影突出层次 */
+    -fx-background-radius: 15px;  /* 更圆润的边角 */
+    -fx-border-color: rgba(160, 190, 160, 0.8);  /* 浅绿边框，贴近自然 */
+    -fx-border-radius: 15px;
+    -fx-border-width: 3px;  /* 稍粗边框增强质感 */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.3, 2, 4);  /* 更明显的阴影层次 */
 }
 
 .timeLimitButton {
     -fx-background-color: linear-gradient(
             from 0% 100% to 100% 0%,
-            rgba(255, 250, 240, 0.7) 0%,  /* 明亮米白，按钮更通透 */
-            rgba(245, 240, 230, 0.7) 100%
+            rgba(230, 255, 230, 0.7) 0%,  /* 底部清新浅绿 */
+            rgba(255, 250, 240, 0.7) 100%  /* 顶部柔和米白 */
     );
-    -fx-background-radius: 8px;
-    -fx-border-color: rgba(180, 170, 160, 0.6);  /* 浅灰棕边框 */
-    -fx-border-radius: 8px;
-    -fx-border-width: 1px;
-    -fx-text-fill: #6d5a2d;  /* 深棕文字，与背景树木棕色呼应 */
+    -fx-background-radius: 10px;  /* 按钮圆角更自然 */
+    -fx-border-color: rgba(140, 170, 140, 0.6);  /* 浅绿灰边框 */
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;  /* 边框稍粗 */
+    -fx-text-fill: #5d4a2d;  /* 深棕文字，与树木纹理呼应 */
     -fx-font-weight: bold;
-    -fx-font-size: 14px;
-    -fx-padding: 12px 24px;  /* 更饱满的按钮尺寸 */
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0.2, 1, 2);  /* 轻微投影 */
+    -fx-font-size: 16px;  /* 字号稍大，提升可读性 */
+    -fx-padding: 15px 30px;  /* 按钮更饱满 */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 6, 0.3, 1, 3);  /* 增强投影 */
 }
 
 .timeLimitButton:hover {
     -fx-background-color: linear-gradient(
             from 0% 100% to 100% 0%,
-            rgba(240, 235, 225, 0.8) 0%,  /* hover时稍暗，模拟按压前的反馈 */
-            rgba(235, 230, 220, 0.8) 100%
+            rgba(220, 245, 220, 0.8) 0%,  /* hover时浅绿加深 */
+            rgba(245, 240, 230, 0.8) 100%
     );
-    -fx-border-color: rgba(160, 150, 140, 0.8);  /* 边框加深 */
-    -fx-cursor: hand;  /* 手型指针增强交互 */
+    -fx-border-color: rgba(120, 150, 120, 0.8);  /* 边框加深 */
+    -fx-cursor: hand;
 }
 
 .timeLimitButton:selected {
     -fx-background-color: linear-gradient(
             from 0% 100% to 100% 0%,
-            rgba(220, 215, 205, 0.9) 0%,  /* 选中时浅灰米白，突出状态 */
-            rgba(210, 205, 195, 0.9) 100%
+            rgba(190, 225, 190, 0.9) 0%,  /* 选中时浅灰绿，突出状态 */
+            rgba(220, 215, 205, 0.9) 100%
     );
     -fx-text-fill: #4d3a1d;  /* 更深棕色文字 */
-    -fx-border-color: rgba(140, 130, 120, 0.9);  /* 边框更深 */
-    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 6, 0.3, 1, 2);  /* 内阴影增强选中感 */
+    -fx-border-color: rgba(100, 130, 100, 0.9);  /* 边框更深 */
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.25), 8, 0.4, 1, 4);  /* 强内阴影突出选中 */
 }
 
 .timeLimitButton:pressed {
     -fx-background-color: linear-gradient(
             from 0% 100% to 100% 0%,
-            rgba(200, 195, 185, 0.9) 0%,  /* 按下时深灰米白，模拟按压 */
-            rgba(190, 185, 175, 0.9) 100%
+            rgba(200, 235, 200, 0.9) 0%,  /* 按下时深绿米白 */
+            rgba(235, 230, 220, 0.9) 100%
     );
     -fx-text-fill: #3d2a1d;  /* 极深棕色文字 */
-    -fx-border-color: rgba(120, 110, 100, 0.9);  /* 边框最深 */
-    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.3), 7, 0.4, 1, 3);  /* 强内阴影 */
+    -fx-border-color: rgba(80, 110, 80, 0.9);  /* 边框最深 */
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 1, 5);  /* 强烈内阴影模拟按压 */
 }
+
 #customTime {
     -fx-background-color: linear-gradient(
             from 0% 100% to 100% 0%,
-            rgba(255, 250, 240, 0.6) 0%,  /* 柔米白底色 */
-            rgba(245, 240, 230, 0.6) 100%
+            rgba(230, 255, 230, 0.6) 0%,  /* 底部浅绿透光 */
+            rgba(255, 250, 240, 0.6) 100%  /* 顶部柔米白 */
     );
-    -fx-background-radius: 8px;
-    -fx-border-color: rgba(200, 190, 180, 0.8);  /* 与 Pane 边框一致 */
-    -fx-border-radius: 8px;
-    -fx-border-width: 1.5px;
-    -fx-prompt-text-fill: #aaa;  /* 灰色提示文字 */
-    -fx-text-fill: #6d5a2d;       /* 深棕色主文字，呼应按钮 */
-    -fx-font-size: 14px;
-    -fx-font-style: italic;       /* 提示文字斜体 */
-    -fx-padding: 6px 10px;        /* 内边距 */
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 4, 0.2, 1, 2);  /* 轻阴影 */
+    -fx-background-radius: 10px;
+    -fx-border-color: rgba(180, 200, 180, 0.8);  /* 浅绿边框 */
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-prompt-text-fill: #999;  /* 浅灰提示文字更柔和 */
+    -fx-text-fill: #5d4a2d;
+    -fx-font-size: 16px;
+    -fx-font-style: italic;
+    -fx-padding: 8px 15px;  /* 输入框更舒适 */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0.2, 1, 2);
 }
 
 #customTime:focused {
-    -fx-border-color: rgba(160, 150, 140, 0.9);  /* 聚焦时边框加深 */
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 6, 0.3, 1, 2);
+    -fx-border-color: rgba(160, 180, 160, 0.9);  /* 聚焦时边框深绿 */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 8, 0.3, 1, 3);  /* 增强聚焦效果 */
 }
 
 
