@@ -15,7 +15,7 @@ import java.util.Map;
 public class AITest {
     public static void main(String[] args) {
         Path mapFolder = Path.of("src/main/resources/maps");
-        mapFolder = mapFolder.resolve("5_5.json");
+        mapFolder = mapFolder.resolve("hard_5_5_map2.json");
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String mapS;
         try {
@@ -34,12 +34,12 @@ public class AITest {
         System.out.println("尝试次数：");
         System.out.println(AISolver.tryNum);
 
-        System.out.println("bfs:--------------------------------------------------------------------");
+        /*System.out.println("bfs:--------------------------------------------------------------------");
         AISolver aiSolver2 = new AISolver(mapModel);
         Deque<MovementRecord> solution2 = aiSolver2.bfsSolver();
 
         System.out.println("尝试次数：");
-        System.out.println(AISolver.tryNum);
+        System.out.println(AISolver.tryNum);*/
 
     }
 }

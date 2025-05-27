@@ -23,6 +23,9 @@ public class UserData {
     private Map<String, MapRecord> playRecords = new HashMap<>();
 
     public void save() {
+        //计算等级
+        calculateLevel();
+
         Path dataPath = Path.of("src/main/resources/User", id, "userData.json");
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String userData = gson.toJson(this);
@@ -65,12 +68,18 @@ public class UserData {
         //保存step最少的
         if (!playRecords.containsKey(mapRecord.getName())) {
             playRecords.put(mapRecord.getName(), mapRecord);
+            //其余地图加少量rating，一张加一次
+            rating += 0.25;
         } else if (playRecords.get(mapRecord.getName()).getRecordDeque().size() > mapRecord.getRecordDeque().size()) {
             playRecords.put(mapRecord.getName(), mapRecord);
         } else if (playRecords.get(mapRecord.getName()).getRecordDeque().size() == mapRecord.getRecordDeque().size()
                 && playRecords.get(mapRecord.getName()).getTime().getTotal() >= mapRecord.getTime().getTotal()) {
             playRecords.put(mapRecord.getName(), mapRecord);
         }
+    }
+
+    public void calculateLevel() {
+        this.level = (int) (Math.sqrt(rating) + 1);
     }
 
     //------------------------------------------------------------

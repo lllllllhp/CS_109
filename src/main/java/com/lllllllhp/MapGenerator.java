@@ -10,20 +10,20 @@ import java.nio.file.Path;
 
 public class MapGenerator {
     public static void main(String[] args) {
-        String name = "www";
+        String name = "hard_5_5_map2";
         String fileName = name + ".json";
 
         Path path = Path.of("src/main/resources/maps", fileName);
         Gson gson = new GsonBuilder().create();
 
         int[][] map = new int[][]{
-                {4, 4, 0, 0, 0, 0, 0, 0, 0},
-                {4, 4, 0, 2, 2, 0, 1, 0, 0},
-                {0, 0, 0, 0, 0, 1, 0, 0, 0},
-                {0, 3, 0, 0, 0, 0, 0, 0, 0},
-                {0, 3, 0, 0, 0, 0, 0, 0, 0},
+                {4, 4, 3, 1, 1},
+                {4, 4, 3, 2, 2},
+                {1, 0, 1, 1, 0},
+                {2, 2, 3, 3, 3},
+                {9, 1, 3, 3, 3},
         };
-        int targetCol = 7;
+        int targetCol = 3;
         int targetRow = 3;
 
         MapPre mapPre = new MapPre(name, map, targetCol, targetRow);
