@@ -27,6 +27,8 @@ public class CoverController {
     @FXML
     Button guestButton;
     @FXML
+    Button registerButton;
+    @FXML
     Label welcome;
 
     @FXML
@@ -45,6 +47,11 @@ public class CoverController {
         }
     }
 
+    @FXML
+    public void handleRegister() {
+        handleLogin();
+    }
+
     public void handleGuest() {
         //临时账号，用于临时保存进度
         UserData guest = new UserData("Guest_", "0");
@@ -60,6 +67,7 @@ public class CoverController {
     private void handleContinue(MouseEvent mouseEvent) {
         loginButton.setVisible(true);
         guestButton.setVisible(true);
+        registerButton.setVisible(true);
         welcome.setVisible(false);
     }
 

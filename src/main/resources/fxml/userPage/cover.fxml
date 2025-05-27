@@ -23,10 +23,11 @@
                <children>
                       <Label fx:id="welcome" alignment="CENTER" contentDisplay="CENTER" layoutX="179.0" layoutY="56.0" prefHeight="34.0" prefWidth="240.0" style="-fx-font-size: 16;" styleClass="transparent-label" text="click to continue">
                </Label>
-                      <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLogin" prefHeight="42.0" prefWidth="178.0" styleClass="pixel-button" text="Log in" visible="false">
+                      <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleRegister" prefHeight="42.0" prefWidth="178.0" styleClass="pixel-button" text="register" visible="false">
                 </Button>
                       <Button fx:id="guestButton" layoutX="419.0" mnemonicParsing="false" onAction="#handleGuest" prefHeight="42.0" prefWidth="178.0" styleClass="pixel-button" text="Guest" visible="false">
                 </Button>
+                  <Button fx:id="loginButton" layoutX="210.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="42.0" prefWidth="178.0" styleClass="pixel-button" text="Log in" visible="false" />
                </children>
             </Pane>
             </children>
