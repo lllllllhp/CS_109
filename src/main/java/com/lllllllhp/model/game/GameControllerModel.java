@@ -5,6 +5,7 @@ import com.lllllllhp.utils.AudioPlayer;
 import com.lllllllhp.utils.aiSolver.AISolver;
 import com.lllllllhp.utils.socket.NetUtils;
 import com.lllllllhp.utils.socket.messageModel.Command;
+import com.lllllllhp.utils.socket.messageModel.MoveInfo;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
@@ -122,7 +123,7 @@ public class GameControllerModel {
         }
 
         MovementRecord movementRecord = gameModel.getMovementStack().peek();
-        Direction undoDirection;
+        Direction undoDirection = null;
         if (movementRecord != null) {
             //判断undo方向
             if (movementRecord.getDirection().equals(Direction.UP)) {
@@ -141,15 +142,18 @@ public class GameControllerModel {
                 gameModel.getRootPaneController().updateSteps();
                 System.out.println("Undo succeed.");
             } else System.out.println("Undo error.");
-        }
 
-        if (NetUtils.hasServer() && NetUtils.server.isRunning()) {
-            try {
-                NetUtils.server.broadcast(new Command(Command.CommandType.UNDO, userData.getId(), LocalDateTime.now()));
-            } catch (IOException e) {
-                System.out.println(e.toString());
+            if (NetUtils.hasServer() && NetUtils.server.isRunning()) {
+                try {
+                    NetUtils.server.broadcast(new MoveInfo(new MovementRecord(movementRecord.getStepNum(), movementRecord.getBoxKey(),movementRecord.getRow() - undoDirection.getRow(), movementRecord.getCol() - undoDirection.getCol(), undoDirection), userData.getId(), LocalDateTime.now()));
+                    NetUtils.server.broadcast(new Command(Command.CommandType.UNDO, userData.getId(), LocalDateTime.now()));
+                } catch (IOException e) {
+                    System.out.println(e.toString());
+                }
             }
         }
+
+
     }
 
     public void restart() {

@@ -47,18 +47,17 @@ public class CoverController {
         }
     }
 
-
     @FXML
     public void handleRegister() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userPage/register.fxml"));
             Parent root = loader.load();
-            LoginController loginController = loader.getController();
+            RegisterController registerController = loader.getController();
             //直接生成验证码
-            loginController.refresh();
+            registerController.refresh();
 
             currentStage.getScene().setRoot(root);
-            currentStage.setTitle("Login");
+            currentStage.setTitle("Register");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

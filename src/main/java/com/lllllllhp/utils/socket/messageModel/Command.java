@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import javafx.scene.paint.Color;
 
 import java.time.LocalDateTime;
+
 import static com.lllllllhp.utils.socket.NetUtils.ClientData.*;
 
 public class Command extends Message {
@@ -25,7 +26,10 @@ public class Command extends Message {
         Platform.runLater(() -> {
             switch (commandType) {
                 case RESTART -> clientGameCon.restart();
-                case UNDO -> clientGameCon.undo();
+                case UNDO -> {
+                    clientGame.getMapModel().setSteps(clientGame.getMapModel().getSteps() - 2);
+                    clientGame.getRootPaneController().updateSteps();
+                }
                 case AI_SOLVE -> {
                     clientGame.getRootPaneController().getTips().setTextFill(Color.BLACK);
                     clientGame.getRootPaneController().getTips().setText("he use ai...");

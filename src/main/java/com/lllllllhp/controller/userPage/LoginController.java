@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.Random;
 
 import static com.lllllllhp.utils.Settings.currentStage;
-import static com.lllllllhp.utils.dataUtils.DataUtils.userData;
 
 public class LoginController {
     String currentCaptcha;
@@ -41,8 +40,6 @@ public class LoginController {
     Button Captcha;
     @FXML
     TextField captchaField;
-    @FXML
-    TextField confirmPassWord;
 
     boolean isRegistered;
 
@@ -144,65 +141,66 @@ public class LoginController {
         MainPageController.toMainPage();
     }
 
-
     public boolean check() {
         String id = idField.getText();
         String passWord = passWordField.getText();
-        String confirmPassword = (confirmPassWord != null) ? confirmPassWord.getText() : "";
-        Path userPath = Paths.get("src/main/resources/User", id);
+        Path path = Paths.get("src/main/resources/User", id);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        if (isRegistered) {
-            // 登录流程
-            Path dataFile = userPath.resolve("userData.json");
+        if (Files.exists(path) && Files.isDirectory(path)) {
+            //已注册用户，检查密码
+            path = path.resolve("userData.json");
 
             try {
-                String inputData = Files.readString(dataFile);
+                String inputData = Files.readString(path);
                 UserData temp = gson.fromJson(inputData, UserData.class);
 
-                if (!DataChecker.checkData(temp, dataFile)) {
+                //检验hash
+                if (!DataChecker.checkData(temp, path)) {
                     warning.setTextFill(Color.RED);
-                    warning.setText("Data is invalid!");
+                    warning.setText("Data is invalid! Create new account.");
+                    System.out.println("Data is invalid!");
+                    //创建新的
+                    createUser(path, passWord, id);
                     return false;
                 }
-
+                //检验密码
                 if (!temp.getPassWord().equals(passWord)) {
                     warning.setTextFill(Color.RED);
-                    warning.setText("Wrong password.");
+                    warning.setText("Please check your password.");
+                    System.out.println("Wrong Password.");
                     return false;
                 }
+                if (!isRegistered) return false;
 
+                //传入数据
                 DataUtils.setUserData(temp);
+
+                System.out.println("data is valid");
                 return true;
             } catch (JsonSyntaxException e) {
+                //文件损坏
+                System.out.println("data corrupted.");
+                System.out.println(e.toString());
                 warning.setTextFill(Color.RED);
-                warning.setText("Data corrupted.");
+                warning.setText("data corrupted! Create new account.");
+                //创建新的
+                createUser(path, passWord, id);
                 return false;
             } catch (IOException e) {
+                System.out.println("Reading error.");
+                System.out.println(e.toString());
                 warning.setTextFill(Color.RED);
                 warning.setText("Reading error.");
                 return false;
             }
         } else {
-            // 注册流程
-            if (passWord.isEmpty() || confirmPassword.isEmpty()) {
-                warning.setTextFill(Color.RED);
-                warning.setText("Please enter and confirm your password.");
-                return false;
-            }
-
-            if (!passWord.equals(confirmPassword)) {
-                warning.setTextFill(Color.RED);
-                warning.setText("Passwords do not match.");
-                return false;
-            }
-
-            return createUser(userPath, passWord, id);
+            //未注册用户
+            return false;
         }
     }
 
-
-    public static boolean createUser(Path path, String passWord, String id) {
+    public static void createUser(Path path, String passWord, String id) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try {
             path = path.resolve("userData.json");
@@ -212,13 +210,12 @@ public class LoginController {
             Files.writeString(path, newData);
             //传入数据
             DataUtils.setUserData(temp);
+            temp.save();
 
             System.out.println("Welcome newcomer.");
-            return true;
         } catch (IOException e) {
             System.out.println("Creating new account fails.");
             System.out.println(e.toString());
-            return false;
         }
     }
 

@@ -50,7 +50,7 @@ public class NetUtils {
 
     public static void startClient(String ip, int port) throws RuntimeException{
         executor.submit(() -> {
-            NetUtils.client = new SocketClient(ip, port);
+            client = new SocketClient(ip, port);
             try {
                 client.startClient();
             } catch (RuntimeException e) {
